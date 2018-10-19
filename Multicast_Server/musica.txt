@@ -1,0 +1,7 @@
+nome|Shut up;artista|BEP;album|peas2001;duracao|3:02
+nome|Animals;artista|Martin Garrix;album|Animals;duracao|04:14
+nome|The Nights;artista|Avicii;album|Stories;duracao|03:44
+nome|Um dia na praia;artista|Quim caralhos;album|Pito;duracao|05:22
+nome|Adeus;artista|Tia Olinda;album|Olhar;duracao|02:32
+nome|Gods Plan;artista|Drake;album|Gods;duracao|03:10
+nome|Machine;artista|Bomber;album|Gabummm;duracao|4:20
