@@ -42,7 +42,7 @@ public class MulticastServer extends Thread {
 
                 map = string_to_hash(message);
 
-                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0)) {
+                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0) && (((String)map.get("type")).compareTo("info")!=0)) {
                     System.out.println("type: " + map.get("type"));
 
                     String resposta;
@@ -121,6 +121,19 @@ public class MulticastServer extends Thread {
                     mensagem = alterar_info(map);
                 else if(((String)map.get("operacao")).compareTo("remover")==0)
                     mensagem = remover_info(map);
+                break;
+
+            case "pesquisa":
+                mensagem = apresenta_info(map);
+                break;
+
+            case "consulta":
+                mensagem = consulta_info(map);
+                break;
+
+            case "critica":
+                mensagem = adiciona_critica(map);
+                break;
         }
 
         return mensagem;
@@ -191,8 +204,8 @@ public class MulticastServer extends Thread {
     public String inserir_info(HashMap map){
 
         // verificações -> musica e artista // album e artista
-        // musica -> nome, artista, album, duração
-        // album -> nome, artista, musicas
+        // musica -> nome, artista, album, duração , criticas -> nota
+        // album -> nome, artista, musicas, criticas -> nota
         // artista -> nome, albuns
         int controlo=-1;
         try{
@@ -208,7 +221,7 @@ public class MulticastServer extends Thread {
             if(((String)map.get("categoria")).compareTo("musica")==0)
                 pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";album|" + map.get("album") + ";duracao|" + map.get("duracao"));
             else if(((String)map.get("categoria")).compareTo("album")==0)
-                pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";musicas|" + map.get("musicas"));
+                pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";musicas|" + map.get("musicas") + ";critica|" + ";nota|");
             else if(((String)map.get("categoria")).compareTo("artista")==0)
                 pw.println("nome|" + map.get("nome") + ";albuns|" + map.get("albuns"));
             pw.close();
@@ -270,7 +283,7 @@ public class MulticastServer extends Thread {
 
     public String alterar_info(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
-        int index = Integer.parseInt((String)map.get("item"));
+        int index = Integer.parseInt((String)map.get("index"));
         String categoria = (String)map.get("categoria");
 
 
@@ -280,13 +293,85 @@ public class MulticastServer extends Thread {
 
     public String remover_info(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
-        int index = Integer.parseInt((String)map.get("item"));
+        int index = Integer.parseInt((String)map.get("index"));
         String categoria = (String)map.get("categoria");
 
         lista.remove(index);
 
         escreve_ficheiro(lista, categoria);
         return "type|resposta;username|" + map.get("username") + ";msg|Informação removida com sucesso!";
+    }
+
+    public String consulta_info(HashMap map){
+
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        int index = Integer.parseInt((String)map.get("index"));
+
+        String categoria = (String)map.get("categoria");
+        StringBuilder string = new StringBuilder();
+        String mensagem;
+
+        string.append("type|info;categoria|" + map.get("categoria") + ";detalhes|");
+        if(categoria.compareTo("musica")==0) {
+            string.append((String)lista.get(index).get("nome"));
+            string.append("/" + (String)lista.get(index).get("artista"));
+            string.append("/" + (String)lista.get(index).get("album"));
+            string.append("/" + (String)lista.get(index).get("duracao"));
+        }
+        else if(categoria.compareTo("album")==0) {
+            string.append((String) lista.get(index).get("nome"));
+            string.append("/" + (String) lista.get(index).get("artista"));
+            string.append("/" + (String) lista.get(index).get("musicas"));
+            if (((String) lista.get(index).get("critica")) == "null")
+                string.append("/Ainda não existem críticas.");
+            else{
+                string.append("/" + (String)lista.get(index).get("critica"));
+                string.append("/" + (String)lista.get(index).get("nota"));
+            }
+        }
+        else if(categoria.compareTo("artista")==0){
+            string.append((String)lista.get(index).get("nome"));
+            string.append("/" + (String)lista.get(index).get("albuns"));
+        }
+        string.append(";username|" + map.get("username"));
+        mensagem = string.toString();
+        return mensagem;
+    }
+
+    public String adiciona_critica(HashMap map){
+
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        int index = Integer.parseInt((String)map.get("index"));
+        String categoria = (String)map.get("categoria");
+        StringBuilder aux = new StringBuilder();
+
+        if(((String)lista.get(index).get("critica")) == null) {
+            lista.get(index).put("critica", (String)map.get("msg"));
+            lista.get(index).put("nota", (String)map.get("nota"));
+        }
+        else{
+            int nota;
+
+            try {
+                nota = Integer.parseInt((String) lista.get(index).get("nota"));
+            }catch (NumberFormatException e){
+                System.out.println("Ocorreu a exceção " + e);
+            }
+
+            String [] aux2 = lista.get(index).get("critica").split("/");
+
+            nota = ((nota*aux2.length) + Integer.parseInt((String)map.get("nota"))) / (aux2.length + 1);
+
+            aux.append((String)lista.get(index).get("critica"));
+            aux.append("/" + (String)map.get("msg"));
+            lista.get(index).put("critica" , aux.toString());
+            lista.get(index).put("nota", Integer.toString(nota));
+        }
+
+
+        escreve_ficheiro(lista, categoria);
+
+        return "type|resposta;username|" + map.get("username") + ";msg|Critica adicionada com sucesso";
     }
 
     //método que retorna num ArrayList a informação lida do ficheiro
@@ -328,9 +413,9 @@ public class MulticastServer extends Thread {
 
             for(int i=0; i<lista.size(); i++) {
                 if(categoria.compareTo("musica")==0)
-                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";album|" + lista.get(i).get("album") + ";duracao|" + lista.get(i).get("duracao"));
+                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";album|" + lista.get(i).get("album") + ";duracao|" + lista.get(i).get("duracao") + ";critica|" + lista.get(i).get("critica"));
                 else if(categoria.compareTo("album")==0)
-                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas"));
+                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas") + ";critica|" + lista.get(i).get("critica"));
                 else if(categoria.compareTo("artista")==0)
                     pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
             }
