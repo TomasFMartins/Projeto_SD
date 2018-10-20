@@ -17,19 +17,18 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         super();
     }
 
-    //METODOS
     public String verificaLogin(String username, String password) throws RemoteException{
         int contador = 0;
         for(int i = 0; i<username.length(); i++){
-            if(username.charAt(i) == '|' && username.charAt(i) == ';')
+            if(username.charAt(i) == '|' && username.charAt(i) == ';' || username.charAt(i) == '/')
                 contador++;
         }
         for(int i = 0; i<password.length(); i++){
-            if(password.charAt(i) == '|' || password.charAt(i) == ';')
+            if(password.charAt(i) == '|' || password.charAt(i) == ';' || password.charAt(i) == '/')
                 contador++;
         }
         if(contador != 0){
-            return "Erro! Os campos nao podem conter os caracteres ; e |.";
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
         }
         else {
             try {
@@ -44,15 +43,13 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 while(true) {
                     buffer = new byte[1024];
                     DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
-                    System.out.println("Teste");
                     socket.receive(msgPacket);
                     String msg = new String(buffer, 0, buffer.length);
-                    System.out.println(msg);
                     if(msg.startsWith("type|status") && msg.contains("username|"+username+";")){
                         if(msg.split(";")[1].contains("off")) {
                             return msg.split(";")[3].substring(4);
                         }else{
-                            return msg.split(";")[4].substring(11);
+                            return msg.split(";")[4].substring(11,17);
                         }
                     }
                 }
@@ -63,7 +60,6 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
-
     public String verificaSignUp(String username, String password) throws RemoteException{
         if(username.length()<3 || username.length()>16){
             return "Erro! O nome de utilizador deve ter entre 3 a 16 caracteres.";
@@ -72,15 +68,15 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }else{
             int contador = 0;
             for(int i = 0; i<username.length(); i++){
-                if(username.charAt(i) == '|' && username.charAt(i) == ';')
+                if(username.charAt(i) == '|' && username.charAt(i) == ';' || username.charAt(i) == '/')
                     contador++;
             }
             for(int i = 0; i<password.length(); i++){
-                if(password.charAt(i) == '|' || password.charAt(i) == ';')
+                if(password.charAt(i) == '|' || password.charAt(i) == ';' || password.charAt(i) == '/')
                     contador++;
             }
             if(contador != 0){
-                return "Erro! Os campos nao podem conter os caracteres ; e |.";
+                return "Erro! Os campos nao podem conter os caracteres ';' , '|' e '/'.";
             }
             else {
                 try {
@@ -95,10 +91,8 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                     while(true) {
                         buffer = new byte[1024];
                         DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
-                        System.out.println("Teste");
                         socket.receive(msgPacket);
                         String msg = new String(buffer, 0, buffer.length);
-                        System.out.println(msg);
                         if (msg.startsWith("type|confirmacao") && msg.contains("username|" + username + ";")) {
                             return msg.split(";")[3].substring(4);
                         }
@@ -108,6 +102,214 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                     return "Erro! CATCH";
                 }
             }
+        }
+    }
+
+    public String inserirMusica(String nome, String artista, String album, String duracao, String username) throws RemoteException{
+        int contador = 0;
+        for(int i = 0; i<nome.length(); i++){
+            if(nome.charAt(i) == '|' || nome.charAt(i) == ';' || nome.charAt(i) == '/')
+                contador++;
+        }
+        for(int i = 0; i<artista.length(); i++){
+            if(artista.charAt(i) == '|' || artista.charAt(i) == ';' || artista.charAt(i) == '/')
+                contador++;
+        }
+        for(int i = 0; i<album.length(); i++){
+            if(album.charAt(i) == '|' || album.charAt(i) == ';' || album.charAt(i) == '/')
+                contador++;
+        }
+        for(int i = 0; i<duracao.length(); i++){
+            if(duracao.charAt(i) == '|' || duracao.charAt(i) == ';' || duracao.charAt(i) == '/')
+                contador++;
+        }
+        if(contador != 0){
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
+        }
+        else{
+            try {
+                MulticastSocket socket = new MulticastSocket(PORT);
+                String data = "type|gerir;operacao|inserir;categoria|musica;nome|"+nome+";artista|"+artista+";album|"+album+";duracao|"+duracao+";username|"+username;
+                byte[] buffer = data.getBytes();
+                InetAddress group = InetAddress.getByName(IP_SERVER);
+                socket.joinGroup(group);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                socket.send(packet);
+
+                while(true) {
+                    buffer = new byte[1024];
+                    DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(msgPacket);
+                    String msg = new String(buffer, 0, buffer.length);
+                    if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
+                        return msg.split(";")[2].substring(4);
+                    }
+                }
+            } catch(IOException e){
+                e.printStackTrace();
+                return "Erro! CATCH";
+            }
+        }
+    }
+
+    public String inserirArtista(String artista, String album, String username) throws RemoteException{
+        int contador = 0;
+        for(int i = 0; i<artista.length(); i++){
+            if(artista.charAt(i) == '|' || artista.charAt(i) == ';' || artista.charAt(i) == '/')
+                contador++;
+        }
+        if(contador != 0){
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
+        }
+        else{
+            try {
+                MulticastSocket socket = new MulticastSocket(PORT);
+                String data = "type|gerir;operacao|inserir;categoria|artista;nome|"+artista+";albuns|"+album+";username|"+username;
+                byte[] buffer = data.getBytes();
+                InetAddress group = InetAddress.getByName(IP_SERVER);
+                socket.joinGroup(group);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                socket.send(packet);
+
+                while(true) {
+                    buffer = new byte[1024];
+                    DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(msgPacket);
+                    String msg = new String(buffer, 0, buffer.length);
+                    if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
+                        return msg.split(";")[2].substring(4);
+                    }
+                }
+            } catch(IOException e){
+                e.printStackTrace();
+                return "Erro! CATCH";
+            }
+        }
+    }
+
+    public String inserirAlbum(String album, String artista, String musicas, String username) throws RemoteException{
+        int contador = 0;
+        for(int i = 0; i<artista.length(); i++){
+            if(artista.charAt(i) == '|' || artista.charAt(i) == ';' || artista.charAt(i) == '/')
+                contador++;
+        }
+        for(int i = 0; i<album.length(); i++){
+            if(album.charAt(i) == '|' || album.charAt(i) == ';' || album.charAt(i) == '/')
+                contador++;
+        }
+        if(contador != 0){
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
+        }
+        else{
+            try {
+                MulticastSocket socket = new MulticastSocket(PORT);
+                String data = "type|gerir;operacao|inserir;categoria|album;nome|"+album+";artista|"+artista+";musicas|"+musicas+";username|"+username;
+                byte[] buffer = data.getBytes();
+                InetAddress group = InetAddress.getByName(IP_SERVER);
+                socket.joinGroup(group);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                socket.send(packet);
+
+                while(true) {
+                    buffer = new byte[1024];
+                    DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(msgPacket);
+                    String msg = new String(buffer, 0, buffer.length);
+                    if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
+                        return msg.split(";")[2].substring(4);
+                    }
+                }
+            } catch(IOException e){
+                e.printStackTrace();
+                return "Erro! CATCH";
+            }
+        }
+    }
+
+    public String listar(String categoria, String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|gerir;operacao|apresentar;categoria|"+categoria+";username|"+username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while(true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|lista") && msg.contains("username|" + username)) {
+                    return msg.substring(11);
+                }
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public String alterar(String categoria, String index, String campo, String novo, String username) throws RemoteException{
+        int contador = 0;
+        if(categoria.compareTo("musica") == 0) {
+            for (int i = 0; i < novo.length(); i++) {
+                if (novo.charAt(i) == '|' || novo.charAt(i) == ';' || novo.charAt(i) == '/')
+                    contador++;
+            }
+        }
+        if(contador != 0){
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
+        }
+        else{
+            try {
+                MulticastSocket socket = new MulticastSocket(PORT);
+                String data = "type|gerir;operacao|alterar;categoria|"+categoria+";item|"+index+";username|"+username+";campo|"+campo+";novo|"+novo;
+                byte[] buffer = data.getBytes();
+                InetAddress group = InetAddress.getByName(IP_SERVER);
+                socket.joinGroup(group);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                socket.send(packet);
+
+                while(true) {
+                    buffer = new byte[1024];
+                    DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(msgPacket);
+                    String msg = new String(buffer, 0, buffer.length);
+                    if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
+                        return msg.split(";")[2].substring(4);
+                    }
+                }
+            } catch(IOException e){
+                e.printStackTrace();
+                return "Erro! CATCH";
+            }
+        }
+    }
+
+    public String remover(String categoria, String index, String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|gerir;operacao|remover;categoria|"+categoria+";item|"+index+";username|"+username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while(true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
+                    return msg.split(";")[2].substring(4);
+                }
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+            return "Erro! CATCH";
         }
     }
 
