@@ -8,12 +8,20 @@ type|gerir;operacao|inserir;categoria|musica;nome|....;artista|...;album|....;du
 type|gerir;operacao|inserir;categoria|album;nome|.....;artista|...;musicas|../../..;username|...
 type|gerir;operacao|inserir;categoria|artista;nome|...;albuns|../../..;username|...
 
+->respostas do servidor
+type|resposta;username|...;msg|Informação inserida com sucesso
+
 //Alterar/Remover informação 
-type|gerir;operacao|apresentar;categoria|...
+type|gerir;operacao|apresentar;categoria|...;username|...
 
 ->resposta do servidor
-type|lista;length|x;items|nome/artista/nome/artista/nome1/artista1/...
+type|lista;length|x;items|nome/artista/nome1/artista1/nome2/artista2/...;username|... (no caso de musicas e albuns)
+type|lista;length|x;items|nome/nome1/nome2/...;username|...			      (no caso de artistas)
 
 ->após resposta do servidor 
-type|gerir;operacao|alterar;categoria|...;item|"index"
-type|gerir;operacao|remover;categoria|...;item|"index"
+type|gerir;operacao|alterar;categoria|...;item|"index";username|...
+type|gerir;operacao|remover;categoria|...;item|"index";username|...
+
+->resposta do servidor 
+type|resposta;username|...;msg|"Informação removida com sucesso" ou "Informação alterada com sucesso"
+

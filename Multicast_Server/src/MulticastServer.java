@@ -225,32 +225,17 @@ public class MulticastServer extends Thread {
         String categoria = (String)map.get("categoria");
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
 
-        /*try {
-            File f = new File(categoria + ".txt");
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
-
-            while((s = br.readLine())!=null){
-                HashMap<String, String> aux = string_to_hash(s);
-                lista.add(aux);
-            }*/
-
-            for(int i=0; i<lista.size(); i++){
-                if(categoria.compareTo("artista")!=0) {
-                    if (((String) map.get("nome")).compareTo((String) lista.get(i).get("nome")) == 0 && ((String) map.get("artista")).compareTo((String) lista.get(i).get("artista")) == 0)
-                        return 0;
-                }
-                else {
-                    if (((String) map.get("nome")).compareTo((String) lista.get(i).get("nome")) == 0)
-                        return 0;
-                }
-
+        for(int i=0; i<lista.size(); i++){
+            if(categoria.compareTo("artista")!=0) {
+                if (((String) map.get("nome")).compareTo((String) lista.get(i).get("nome")) == 0 && ((String) map.get("artista")).compareTo((String) lista.get(i).get("artista")) == 0)
+                    return 0;
             }
+            else {
+                if (((String) map.get("nome")).compareTo((String) lista.get(i).get("nome")) == 0)
+                    return 0;
+            }
+        }
 
-        /*    br.close();
-        }catch(IOException e){
-            System.out.println("Ocorreu a exceção "+ e);
-        }*/
         return 1;
     }
 
@@ -278,17 +263,30 @@ public class MulticastServer extends Thread {
                     string.append("/" + (String)lista.get(i).get("nome") + "/" + (String)lista.get(i).get("artista"));
             }
         }
-
+        string.append(";username|" + map.get("username"));
         mensagem = string.toString();
         return mensagem;
     }
 
     public String alterar_info(HashMap map){
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        int index = Integer.parseInt((String)map.get("item"));
+        String categoria = (String)map.get("categoria");
+
+
+
         return "";
     }
 
     public String remover_info(HashMap map){
-        return "";
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        int index = Integer.parseInt((String)map.get("item"));
+        String categoria = (String)map.get("categoria");
+
+        lista.remove(index);
+
+        escreve_ficheiro(lista, categoria);
+        return "type|resposta;username|" + map.get("username") + ";msg|Informação removida com sucesso!";
     }
 
     //método que retorna num ArrayList a informação lida do ficheiro
@@ -318,5 +316,28 @@ public class MulticastServer extends Thread {
         }
 
         return lista;
+    }
+
+    //método que escreve informação num ficheiro
+    public void escreve_ficheiro(ArrayList<HashMap<String, String>> lista, String categoria){
+
+        try{
+            File f = new File(categoria + ".txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for(int i=0; i<lista.size(); i++) {
+                if(categoria.compareTo("musica")==0)
+                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";album|" + lista.get(i).get("album") + ";duracao|" + lista.get(i).get("duracao"));
+                else if(categoria.compareTo("album")==0)
+                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas"));
+                else if(categoria.compareTo("artista")==0)
+                    pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
+            }
+
+            pw.close();
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+        }
     }
 }
