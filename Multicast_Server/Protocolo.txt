@@ -1,6 +1,19 @@
+
+//Login/Registo
+type|login;username|...;password|....;
+type|registo;username|...;password|...;
+
+//Inserir informação
 type|gerir;operacao|inserir;categoria|musica;nome|....;artista|...;album|....;duracao|xx:yy;username|...
 type|gerir;operacao|inserir;categoria|album;nome|.....;artista|...;musicas|../../..;username|...
 type|gerir;operacao|inserir;categoria|artista;nome|...;albuns|../../..;username|...
 
-type|login;username|...;password|....;
-type|registo;username|...;password|...;
+//Alterar/Remover informação 
+type|gerir;operacao|apresentar;categoria|...
+
+->resposta do servidor
+type|lista;length|x;items|nome/artista/nome/artista/nome1/artista1/...
+
+->após resposta do servidor 
+type|gerir;operacao|alterar;categoria|...;item|"index"
+type|gerir;operacao|remover;categoria|...;item|"index"

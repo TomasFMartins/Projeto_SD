@@ -1,2 +1,3 @@
 nome|Tom Walker;albuns|Top1/Top2/Top5
 nome|HollyShit;albuns|qwe/tug/power
+nome|tester;albuns|a/b/c

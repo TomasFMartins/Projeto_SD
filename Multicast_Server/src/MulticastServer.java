@@ -42,7 +42,7 @@ public class MulticastServer extends Thread {
 
                 map = string_to_hash(message);
 
-                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0)) {
+                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0)) {
                     System.out.println("type: " + map.get("type"));
 
                     String resposta;
@@ -62,6 +62,7 @@ public class MulticastServer extends Thread {
         }
     }
 
+    //método que converte string em HashMap
     public HashMap string_to_hash(String string){
 
         HashMap<String, String> map = new HashMap<>();
@@ -97,6 +98,7 @@ public class MulticastServer extends Thread {
         return map;
     }
 
+    //método que filtra as operações a realizar
     public String executa_info(HashMap map){
 
         String mensagem = "";
@@ -113,10 +115,12 @@ public class MulticastServer extends Thread {
             case "gerir":
                 if(((String)map.get("operacao")).compareTo("inserir")==0)
                     mensagem = inserir_info(map);
-                /*else if((String)map.get("operacao").compareTo("remover")==0)
+                else if(((String)map.get("operacao")).compareTo("apresentar")==0)
+                    mensagem = apresenta_info(map);
+                else if(((String)map.get("operacao")).compareTo("alterar")==0)
+                    mensagem = alterar_info(map);
+                else if(((String)map.get("operacao")).compareTo("remover")==0)
                     mensagem = remover_info(map);
-                else if((String)map.get("operacao").compareTo("alterar")==0)
-                    mensagem = alterar_info(map);*/
         }
 
         return mensagem;
@@ -125,37 +129,17 @@ public class MulticastServer extends Thread {
 
     public String login(HashMap map){
         String string = "";
-        ArrayList<HashMap<String, String>> lista = new ArrayList<>();
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         int confirmacao;
 
-        try{
-            File f = new File("Registos.txt");
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
+        confirmacao = verifica_dados(map, lista);
 
-            String s;
-
-            while((s = br.readLine())!=null){
-                HashMap<String, String> aux = string_to_hash(s);
-                lista.add(aux);
-            }
-
-            br.close();
-
-            confirmacao = verifica_dados(map, lista);
-
-            if(confirmacao==1)
-                return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + map.get("privilegio");
-            else if(confirmacao==-1)
-                return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Password incorreta";
-            else
-                return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Utilizador não existe";
-
-        }catch(IOException e){
-            System.out.println("Ocorreu a exceção " + e);
-        }
-
-        return "";
+        if(confirmacao==1)
+            return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + map.get("privilegio");
+        else if(confirmacao==-1)
+            return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Password incorreta";
+        else
+            return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Utilizador não existe";
     }
 
     public String registo(HashMap map){
@@ -167,7 +151,7 @@ public class MulticastServer extends Thread {
 
             //verificar se o utilizador já existe
             mensagem = login(map);
-            if(mensagem.compareTo("type|status;logged|off;msg|Erro! Utilizador não existe;username|" + map.get("username"))!=0)
+            if(mensagem.compareTo("type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Utilizador não existe")!=0)
                 return "type|confirmacao;resposta|nao;username|" + map.get("username") + ";msg|Erro! O username inserido já existe.";
 
             if(f.length()==0)
@@ -186,10 +170,9 @@ public class MulticastServer extends Thread {
 
     }
 
-
+    //método que verifica se o nome de utilziador existe e a password coicide
     public int verifica_dados(HashMap map, ArrayList<HashMap<String, String>> lista){
 
-        //Função que verifica se o nome de utilziador existe e a password coicide
         String user = (String) map.get("username");
         String pass = (String) map.get("password");
 
@@ -236,12 +219,13 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Informação inserida com sucesso";
     }
 
+    //método que verifica se a informação já foi inserida
     public int verifica_info(HashMap map){
-        String s;
-        String categoria = (String)map.get("categoria");
-        ArrayList<HashMap<String, String>> lista = new ArrayList<>();
 
-        try {
+        String categoria = (String)map.get("categoria");
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+
+        /*try {
             File f = new File(categoria + ".txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
@@ -249,7 +233,7 @@ public class MulticastServer extends Thread {
             while((s = br.readLine())!=null){
                 HashMap<String, String> aux = string_to_hash(s);
                 lista.add(aux);
-            }
+            }*/
 
             for(int i=0; i<lista.size(); i++){
                 if(categoria.compareTo("artista")!=0) {
@@ -263,10 +247,76 @@ public class MulticastServer extends Thread {
 
             }
 
-            br.close();
+        /*    br.close();
         }catch(IOException e){
             System.out.println("Ocorreu a exceção "+ e);
-        }
+        }*/
         return 1;
+    }
+
+    //método que devolve ao cliente a informação que deseja visualizar
+    public String apresenta_info(HashMap map){
+        StringBuilder string = new StringBuilder();
+        String mensagem;
+
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+
+        string.append("type|lista;length|" + lista.size() + ";items|");
+
+        for(int i=0; i<lista.size(); i++){
+            if(i==0) {
+                if(((String)map.get("categoria")).compareTo("artista")==0)
+                    string.append((String)lista.get(i).get("nome"));
+                else
+                    string.append((String)lista.get(i).get("nome") + "/" + (String)lista.get(i).get("artista"));
+
+            }
+            else {
+                if(((String)map.get("categoria")).compareTo("artista")==0)
+                    string.append("/" + (String)lista.get(i).get("nome"));
+                else
+                    string.append("/" + (String)lista.get(i).get("nome") + "/" + (String)lista.get(i).get("artista"));
+            }
+        }
+
+        mensagem = string.toString();
+        return mensagem;
+    }
+
+    public String alterar_info(HashMap map){
+        return "";
+    }
+
+    public String remover_info(HashMap map){
+        return "";
+    }
+
+    //método que retorna num ArrayList a informação lida do ficheiro
+    public ArrayList<HashMap<String, String>> le_ficheiro (HashMap map){
+        ArrayList<HashMap<String, String>> lista = new ArrayList<>();
+        String categoria;
+        String s;
+
+        if(((String)map.get("type")).compareTo("login")==0)
+            categoria = "Registos";
+        else
+            categoria = (String)map.get("categoria");
+        try{
+            File f = new File(categoria + ".txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine())!=null){
+                HashMap<String, String> aux = string_to_hash(s);
+                lista.add(aux);
+            }
+
+            br.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+        }
+
+        return lista;
     }
 }
