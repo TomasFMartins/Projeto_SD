@@ -146,7 +146,7 @@ public class MulticastServer extends Thread {
         int confirmacao;
 
         confirmacao = verifica_dados(map, lista);
-
+        
         if(confirmacao==1)
             return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + map.get("privilegio");
         else if(confirmacao==-1)
@@ -221,7 +221,7 @@ public class MulticastServer extends Thread {
             if(((String)map.get("categoria")).compareTo("musica")==0)
                 pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";album|" + map.get("album") + ";duracao|" + map.get("duracao"));
             else if(((String)map.get("categoria")).compareTo("album")==0)
-                pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";musicas|" + map.get("musicas") + ";critica|" + ";nota|");
+                pw.println("nome|" + map.get("nome") + ";artista|" + map.get("artista") + ";musicas|" + map.get("musicas") /*";critica|;nota|"*/);
             else if(((String)map.get("categoria")).compareTo("artista")==0)
                 pw.println("nome|" + map.get("nome") + ";albuns|" + map.get("albuns"));
             pw.close();
@@ -345,29 +345,23 @@ public class MulticastServer extends Thread {
         String categoria = (String)map.get("categoria");
         StringBuilder aux = new StringBuilder();
 
+        System.out.println("teste " + lista.get(index).get("critica"));
         if(((String)lista.get(index).get("critica")) == null) {
             lista.get(index).put("critica", (String)map.get("msg"));
             lista.get(index).put("nota", (String)map.get("nota"));
         }
         else{
-            int nota;
-
-            try {
-                nota = Integer.parseInt((String) lista.get(index).get("nota"));
-            }catch (NumberFormatException e){
-                System.out.println("Ocorreu a exceção " + e);
-            }
-
             String [] aux2 = lista.get(index).get("critica").split("/");
+            System.out.println("teste " + aux2.length);
+            float nota = Integer.parseInt((String)lista.get(index).get("nota"));
 
-            nota = ((nota*aux2.length) + Integer.parseInt((String)map.get("nota"))) / (aux2.length + 1);
+            nota = ((nota*aux2.length) + Integer.parseInt((String)map.get("nota"))) / (aux2.length + 1 );
 
             aux.append((String)lista.get(index).get("critica"));
             aux.append("/" + (String)map.get("msg"));
             lista.get(index).put("critica" , aux.toString());
-            lista.get(index).put("nota", Integer.toString(nota));
+            lista.get(index).put("nota" , Float.toString(nota));
         }
-
 
         escreve_ficheiro(lista, categoria);
 
@@ -413,9 +407,13 @@ public class MulticastServer extends Thread {
 
             for(int i=0; i<lista.size(); i++) {
                 if(categoria.compareTo("musica")==0)
-                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";album|" + lista.get(i).get("album") + ";duracao|" + lista.get(i).get("duracao") + ";critica|" + lista.get(i).get("critica"));
-                else if(categoria.compareTo("album")==0)
-                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas") + ";critica|" + lista.get(i).get("critica"));
+                    pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";album|" + lista.get(i).get("album") + ";duracao|" + lista.get(i).get("duracao"));
+                else if(categoria.compareTo("album")==0) {
+                    if(((String)lista.get(i).get("critica")) != null)
+                        pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas") + ";critica|" + lista.get(i).get("critica") + ";nota|" + lista.get(i).get("nota"));
+                    else
+                        pw.println("nome|" + lista.get(i).get("nome") + ";artista|" + lista.get(i).get("artista") + ";musicas|" + lista.get(i).get("musicas"));
+                }
                 else if(categoria.compareTo("artista")==0)
                     pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
             }

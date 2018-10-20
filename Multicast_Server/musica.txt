@@ -1,6 +1,0 @@
-nome|Shut up;artista|BEP;album|peas2001;duracao|3:02;critica|null
-nome|Animals;artista|Martin Garrix;album|Animals;duracao|04:14;critica|null
-nome|The Nights;artista|Avicii;album|Stories;duracao|03:44;critica|null
-nome|Um dia na praia;artista|Quim caralhos;album|Pito;duracao|05:22;critica|Musica do crl/Vamos la testar a critica nova
-nome|Adeus;artista|Tia Olinda;album|Olhar;duracao|02:32;critica|null
-nome|Gods Plan;artista|Drake;album|Gods;duracao|03:10;critica|null

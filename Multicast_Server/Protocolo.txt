@@ -1,7 +1,8 @@
-
 //Login/Registo
 cliente -> type|login;username|...;password|....;
 cliente -> type|registo;username|...;password|...;
+
+-------------------------//----------------------------
 
 //Inserir informação
 cliente -> type|gerir;operacao|inserir;categoria|musica;nome|....;artista|...;album|....;duracao|xx:yy;username|...
@@ -10,6 +11,8 @@ cliente -> type|gerir;operacao|inserir;categoria|artista;nome|...;albuns|../../.
 
 ->respostas do servidor
 type|resposta;username|...;msg|Informação inserida com sucesso
+
+-------------------------//----------------------------
 
 //Alterar/Remover informação 
 cliente -> type|gerir;operacao|apresentar;categoria|...;username|...
@@ -25,9 +28,20 @@ cliente -> type|gerir;operacao|remover;categoria|...;index|"index";username|...
 ->resposta do servidor 
 type|resposta;username|...;msg|"Informação removida com sucesso" ou "Informação alterada com sucesso"
 
+-------------------------//----------------------------
+
 //Pesquisa de informação
 cliente -> type|pesquisa;categoria|...;username|...
 
 ->servidor responde 
 type|lista;length|x;items|.../.../...
 
+cliente -> type|consulta;categoria|...;index|x;username|...
+
+->servidor responde
+type|info;categoria|...;detalhes|.../.../...
+
+cliente -> type|critica;categoria|...;index|x;msg|"critica do utilizador";nota|...;username|...
+
+servidor responde
+type|resposta;username|...;msg|"Critica adicionada com sucesso"
