@@ -22,7 +22,7 @@ type|lista;length|x;items|nome/artista/nome1/artista1/nome2/artista2/...;usernam
 type|lista;length|x;items|nome/nome1/nome2/...;username|...			      (no caso de artistas)
 
 ->após resposta do servidor 
-cliente -> type|gerir;operacao|alterar;categoria|...;index|"index";username|...
+cliente -> type|gerir;operacao|alterar;categoria|...;index|"index";campo|...;info|...username|...
 cliente -> type|gerir;operacao|remover;categoria|...;index|"index";username|...
 
 ->resposta do servidor 
@@ -45,3 +45,16 @@ cliente -> type|critica;categoria|...;index|x;msg|"critica do utilizador";nota|.
 
 servidor responde
 type|resposta;username|...;msg|"Critica adicionada com sucesso"
+
+-------------------------//-----------------------
+
+//Alterar privilégios
+cliente -> type|utilizadores;username|... 
+
+-> servidor responde
+type|lista_utili;length|x;items|../../..;username|...
+
+cliente -> type|promover;utilizador|....;username|...
+
+->servidor responde
+type|confirmacao;username|...;msg|Utilizador promovido a editor!

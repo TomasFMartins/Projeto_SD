@@ -1,0 +1,2 @@
+nome|Gods Plan;artista|Drake;album|Pssus;duracao|03:10
+nome|Kiki;artista|Drake;album|Pssus;duracao|03:45

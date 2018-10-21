@@ -42,7 +42,7 @@ public class MulticastServer extends Thread {
 
                 map = string_to_hash(message);
 
-                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0) && (((String)map.get("type")).compareTo("info")!=0)) {
+                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0) && (((String)map.get("type")).compareTo("info")!=0) && (((String)map.get("type")).compareTo("lista_utili")!=0)) {
                     System.out.println("type: " + map.get("type"));
 
                     String resposta;
@@ -134,6 +134,14 @@ public class MulticastServer extends Thread {
             case "critica":
                 mensagem = adiciona_critica(map);
                 break;
+
+            case "utilizadores":
+                mensagem = lista_utilizadores(map, "leitor");
+                break;
+
+            case "promover":
+                mensagem = promover_user(map);
+                break;
         }
 
         return mensagem;
@@ -146,9 +154,9 @@ public class MulticastServer extends Thread {
         int confirmacao;
 
         confirmacao = verifica_dados(map, lista);
-        
+
         if(confirmacao==1)
-            return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + map.get("privilegio");
+            return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + get_privilegio(map);
         else if(confirmacao==-1)
             return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Password incorreta";
         else
@@ -286,9 +294,11 @@ public class MulticastServer extends Thread {
         int index = Integer.parseInt((String)map.get("index"));
         String categoria = (String)map.get("categoria");
 
+        lista.get(index).put((String)map.get("campo"), (String)map.get("info"));
 
+        escreve_ficheiro(lista, categoria);
 
-        return "";
+        return "type|resposta;username|" + map.get("username") + ";msg|Informação alterada com sucesso";
     }
 
     public String remover_info(HashMap map){
@@ -368,13 +378,51 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Critica adicionada com sucesso";
     }
 
+    public String lista_utilizadores(HashMap map, String flag){
+
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        StringBuilder string = new StringBuilder();
+
+        string.append("type|lista_utili;length|" + lista.size() + ";items|");
+
+        int controlador = 0;
+        for(int i=0; i<lista.size(); i++) {
+            if (((String)lista.get(i).get("privilegio")).compareTo(flag) == 0) {
+                if (controlador == 0) {
+                    string.append((String) lista.get(i).get("username"));
+                    controlador++;
+                } else
+                    string.append("/" + (String) lista.get(i).get("username"));
+            }
+        }
+
+        string.append(";username|" + (String)map.get("username"));
+        return string.toString();
+    }
+
+    public String promover_user(HashMap map){
+
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        String utilizador = (String)map.get("utilizador");
+
+        for(int i=0; i<lista.size(); i++){
+            if(utilizador.compareTo((String)lista.get(i).get("username"))==0){
+                lista.get(i).put("privilegio", "editor");
+                escreve_ficheiro(lista, "Registos");
+                return "type|confirmacao;username|" + utilizador + ";msg|Utilizador promovido a editor!";
+            }
+        }
+
+        return "";
+    }
+
     //método que retorna num ArrayList a informação lida do ficheiro
     public ArrayList<HashMap<String, String>> le_ficheiro (HashMap map){
         ArrayList<HashMap<String, String>> lista = new ArrayList<>();
         String categoria;
         String s;
 
-        if(((String)map.get("type")).compareTo("login")==0)
+        if(((String)map.get("type")).compareTo("login")==0 || ((String) map.get("type")).compareTo("utilizadores")==0 || ((String) map.get("type")).compareTo("promover")==0)
             categoria = "Registos";
         else
             categoria = (String)map.get("categoria");
@@ -416,6 +464,8 @@ public class MulticastServer extends Thread {
                 }
                 else if(categoria.compareTo("artista")==0)
                     pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
+                else if(categoria.compareTo("Registos")==0)
+                    pw.println("username|" + lista.get(i).get("username") + ";password|" + lista.get(i).get("password") + ";privilegio|" + lista.get(i).get("privilegio"));
             }
 
             pw.close();
@@ -423,4 +473,19 @@ public class MulticastServer extends Thread {
             System.out.println("Ocorreu a exceção " + e);
         }
     }
+
+    //método que retorna o privilegio de um dado username
+    public String get_privilegio(HashMap map){
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        String utilizador = (String)map.get("username");
+        String privilegio = "";
+
+        for(int i=0; i<lista.size(); i++){
+            if(utilizador.compareTo((String)lista.get(i).get("username"))==0)
+                privilegio = (String)lista.get(i).get("privilegio");
+        }
+
+        return privilegio;
+    }
+
 }

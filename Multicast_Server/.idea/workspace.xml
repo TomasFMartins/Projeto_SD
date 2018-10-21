@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bd1e858a-f6fa-4c31-bd03-a1ae9beb87ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Protocolo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Protocolo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/album.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/artista.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/musica.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MulticastServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulticastServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,20 +53,21 @@
     <session id="-73676224">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5835" />
+          <entry key="java" value="7836" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5835" />
+          <entry key="JAVA" value="7836" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -91,11 +88,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="400" column="92" selection-start-line="400" selection-start-column="92" selection-end-line="400" selection-end-column="92" />
+            <state relative-caret-position="301">
+              <caret line="414" column="8" selection-start-line="414" selection-start-column="8" selection-end-line="414" selection-end-column="8" />
               <folding>
                 <element signature="method#main#0;class#MulticastServer#0" />
                 <element signature="method#string_to_hash#0;class#MulticastServer#0" />
+                <element signature="method#login#0;class#MulticastServer#0" />
                 <element signature="method#registo#0;class#MulticastServer#0" />
                 <element signature="method#verifica_dados#0;class#MulticastServer#0" />
                 <element signature="method#inserir_info#0;class#MulticastServer#0" />
@@ -105,8 +103,9 @@
                 <element signature="method#remover_info#0;class#MulticastServer#0" />
                 <element signature="method#consulta_info#0;class#MulticastServer#0" />
                 <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
+                <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
                 <element signature="method#le_ficheiro#0;class#MulticastServer#0" />
-                <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
+                <element signature="method#get_privilegio#0;class#MulticastServer#0" />
               </folding>
             </state>
           </provider>
@@ -115,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="663">
               <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
               <folding>
                 <element signature="e#2042#2043#0" expanded="true" />
@@ -138,12 +137,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/MulticastServer.java" />
         <option value="$PROJECT_DIR$/src/MulticastClient.java" />
+        <option value="$PROJECT_DIR$/src/MulticastServer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -154,9 +153,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,7 +181,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540077715984" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540077856649" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -201,7 +200,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.server">
+  <component name="RunManager" selected="Application.JavaClient">
     <configuration name="JavaClient" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MulticastClient" />
       <module name="Projeto" />
@@ -244,10 +243,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.061073825" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12760055" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -257,7 +256,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.2609929" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.26398852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -298,9 +297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="371" selection-start-line="371" selection-end-line="371" />
-          <folding>
-            <element signature="e#13945#13946#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -325,24 +321,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
-          <folding>
-            <element signature="e#2042#2043#0" expanded="true" />
-            <element signature="e#2104#2105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="400" column="92" selection-start-line="400" selection-start-column="92" selection-end-line="400" selection-end-column="92" />
+        <state relative-caret-position="301">
+          <caret line="414" column="8" selection-start-line="414" selection-start-column="8" selection-end-line="414" selection-end-column="8" />
           <folding>
             <element signature="method#main#0;class#MulticastServer#0" />
             <element signature="method#string_to_hash#0;class#MulticastServer#0" />
+            <element signature="method#login#0;class#MulticastServer#0" />
             <element signature="method#registo#0;class#MulticastServer#0" />
             <element signature="method#verifica_dados#0;class#MulticastServer#0" />
             <element signature="method#inserir_info#0;class#MulticastServer#0" />
@@ -352,8 +338,20 @@
             <element signature="method#remover_info#0;class#MulticastServer#0" />
             <element signature="method#consulta_info#0;class#MulticastServer#0" />
             <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
+            <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
             <element signature="method#le_ficheiro#0;class#MulticastServer#0" />
-            <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
+            <element signature="method#get_privilegio#0;class#MulticastServer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+          <folding>
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2104#2105#0" expanded="true" />
           </folding>
         </state>
       </provider>
