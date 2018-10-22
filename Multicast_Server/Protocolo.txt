@@ -31,12 +31,12 @@ type|resposta;username|...;msg|"Informação removida com sucesso" ou "Informação 
 -------------------------//----------------------------
 
 //Pesquisa de informação
-cliente -> type|pesquisa;categoria|...;username|...
+cliente -> type|pesquisa;categoria|...;nome|...;username|... (na pesquisa de artistas só é preciso type|consulta uma vez que supõem-se que não há artistas com o mesmo nome)
 
 ->servidor responde 
 type|lista;length|x;items|.../.../...
 
-cliente -> type|consulta;categoria|...;index|x;username|...
+cliente -> type|consulta;categoria|...;nome|...;artista|...;username|... (pesquisa de artistas so se usa o campo nome)
 
 ->servidor responde
 type|info;categoria|...;detalhes|.../.../...

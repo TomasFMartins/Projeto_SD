@@ -100,8 +100,9 @@ public class MulticastServer extends Thread {
 
     //método que filtra as operações a realizar
     public String executa_info(HashMap map){
-
+        ArrayList<HashMap<String, String>> lista = new ArrayList<>();
         String mensagem = "";
+
         switch((String)map.get("type")){
 
             case "login":
@@ -116,7 +117,7 @@ public class MulticastServer extends Thread {
                 if(((String)map.get("operacao")).compareTo("inserir")==0)
                     mensagem = inserir_info(map);
                 else if(((String)map.get("operacao")).compareTo("apresentar")==0)
-                    mensagem = apresenta_info(map);
+                    mensagem = apresenta_info(map, null);
                 else if(((String)map.get("operacao")).compareTo("alterar")==0)
                     mensagem = alterar_info(map);
                 else if(((String)map.get("operacao")).compareTo("remover")==0)
@@ -124,11 +125,16 @@ public class MulticastServer extends Thread {
                 break;
 
             case "pesquisa":
-                mensagem = apresenta_info(map);
+                lista = preenche_lista(map);
+                mensagem = apresenta_info(map, lista);
                 break;
 
             case "consulta":
-                mensagem = consulta_info(map);
+                if(((String)map.get("categoria")).compareTo("artista")==0)
+                    lista = le_ficheiro(map);
+                else
+                    lista = preenche_lista(map);
+                mensagem = consulta_info(map, lista);
                 break;
 
             case "critica":
@@ -260,12 +266,27 @@ public class MulticastServer extends Thread {
         return 1;
     }
 
+    //método que cria uma lista com os dados da pesquisa do cliente
+    public ArrayList<HashMap<String, String>> preenche_lista(HashMap map){
+        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        ArrayList<HashMap<String, String>> aux_lista = new ArrayList<>();
+        String nome = (String)map.get("nome");
+
+        for(int i=0; i<lista.size(); i++){
+            if(((String)lista.get(i).get("nome")).contains(nome))
+                aux_lista.add(lista.get(i));
+        }
+
+        return aux_lista;
+    }
+
     //método que devolve ao cliente a informação que deseja visualizar
-    public String apresenta_info(HashMap map){
+    public String apresenta_info(HashMap map, ArrayList<HashMap<String,String>> lista){
         StringBuilder string = new StringBuilder();
         String mensagem;
 
-        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        if(lista==null)
+            lista = le_ficheiro(map);
 
         string.append("type|lista;length|" + lista.size() + ";items|");
 
@@ -312,14 +333,20 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Informação removida com sucesso!";
     }
 
-    public String consulta_info(HashMap map){
+    public String consulta_info(HashMap map, ArrayList<HashMap<String, String>> lista){
 
-        ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
-        int index = Integer.parseInt((String)map.get("index"));
+        //ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
+        int index = -1;
 
+        String artista = (String)map.get("artista");
         String categoria = (String)map.get("categoria");
         StringBuilder string = new StringBuilder();
-        String mensagem;
+
+        if(categoria.compareTo("artista")!=0)
+            for(int i=0; i<lista.size(); i++){
+                if(((String)lista.get(i).get("artista")).compareTo(artista)==0)
+                    index = i;
+            }
 
         string.append("type|info;categoria|" + map.get("categoria") + ";detalhes|");
         if(categoria.compareTo("musica")==0) {
@@ -340,12 +367,16 @@ public class MulticastServer extends Thread {
             }
         }
         else if(categoria.compareTo("artista")==0){
-            string.append((String)lista.get(index).get("nome"));
-            string.append("/" + (String)lista.get(index).get("albuns"));
+            for(int i=0; i<lista.size(); i++)
+                if(((String)lista.get(i).get("nome")).compareTo((String)map.get("nome"))==0){
+                    string.append((String)lista.get(i).get("nome"));
+                    string.append("/" + (String)lista.get(i).get("albuns"));
+                }
+
         }
         string.append(";username|" + map.get("username"));
-        mensagem = string.toString();
-        return mensagem;
+
+        return string.toString();
     }
 
     public String adiciona_critica(HashMap map){

@@ -1,0 +1,2 @@
+nome|Teste1;albuns|a/b/c
+nome|Teste2;albuns|f/e/d
