@@ -481,7 +481,7 @@ public class RmiClient {
                                             String lista = rmiInterface.listar("artista", name);
                                             int length = Integer.parseInt(lista.split(";")[0].substring(7));
                                             for (int i = 1; i <= length; i++) {
-                                                System.out.println(i + ") Artista: " + lista.split(";")[1].substring(6).split("/")[i]);
+                                                System.out.println(i + ") Artista: " + lista.split(";")[1].substring(6).split("/")[i-1]);
                                             }
                                             System.out.println((length + 1) + ") Voltar");
                                             System.out.print("Escolha: ");
