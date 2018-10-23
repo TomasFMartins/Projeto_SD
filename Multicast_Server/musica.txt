@@ -4,3 +4,4 @@ nome|Kiki;artista|Teste1;album|....;duracao|xx:yy
 nome|Kiki;artista|Teste2;album|....;duracao|xx:yy
 nome|Kiki;artista|Teste3;album|....;duracao|xx:yy
 nome|Kiki;artista|Teste4;album|....;duracao|xx:yy
+nome|Kiki2;artista|Drake2;album|Album2;duracao|22:22

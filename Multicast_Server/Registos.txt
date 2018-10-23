@@ -3,3 +3,4 @@ username|damiao;password|12345;privilegio|editor
 username|Andre;password|123qwe;privilegio|leitor
 username|martim;password|martins;privilegio|leitor
 username|angela;password|mike;privilegio|leitor
+username|Truta;password|123qwe;privilegio|leitor

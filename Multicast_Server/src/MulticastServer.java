@@ -130,10 +130,7 @@ public class MulticastServer extends Thread {
                 break;
 
             case "consulta":
-                if(((String)map.get("categoria")).compareTo("artista")==0)
-                    lista = le_ficheiro(map);
-                else
-                    lista = preenche_lista(map);
+                lista = preenche_lista(map);
                 mensagem = consulta_info(map, lista);
                 break;
 
@@ -218,7 +215,7 @@ public class MulticastServer extends Thread {
     public String inserir_info(HashMap map){
 
         // verificações -> musica e artista // album e artista
-        // musica -> nome, artista, album, duração , criticas -> nota
+        // musica -> nome, artista, album, duração
         // album -> nome, artista, musicas, criticas -> nota
         // artista -> nome, albuns
         int controlo=-1;
@@ -359,8 +356,10 @@ public class MulticastServer extends Thread {
             string.append((String) lista.get(index).get("nome"));
             string.append("/" + (String) lista.get(index).get("artista"));
             string.append("/" + (String) lista.get(index).get("musicas"));
-            if (((String) lista.get(index).get("critica")) == "null")
-                string.append("/Ainda não existem críticas.");
+            if (((String)lista.get(index).get("critica")) == null) {
+                string.append(";username|" + map.get("username") + ";msg|Ainda não existem críticas.");
+                return string.toString();
+            }
             else{
                 string.append("/" + (String)lista.get(index).get("critica"));
                 string.append("/" + (String)lista.get(index).get("nota"));
@@ -382,9 +381,14 @@ public class MulticastServer extends Thread {
     public String adiciona_critica(HashMap map){
 
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
-        int index = Integer.parseInt((String)map.get("index"));
+        int index = -1;
         String categoria = (String)map.get("categoria");
         StringBuilder aux = new StringBuilder();
+
+        for(int i=0; i<lista.size(); i++){
+            if(((String)lista.get(i).get("nome")).compareTo((String)map.get("nome"))==0 && ((String)lista.get(i).get("artista")).compareTo((String)map.get("artista"))==0 )
+                index = i;
+        }
 
         System.out.println("teste " + lista.get(index).get("critica"));
         if(((String)lista.get(index).get("critica")) == null) {
