@@ -152,14 +152,14 @@ public class RmiClient {
                                                 String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)-1],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)],name, "album");
                                                 System.out.println("Nome Album: "+detalhes.split(";")[0].split("/")[0]);
                                                 System.out.println("Nome Artista: "+detalhes.split(";")[0].split("/")[1]);
-                                                for(int i = 3; i<Integer.parseInt(detalhes.split(";")[0].split("/")[2]); i++){
+                                                for(int i = 2; i<detalhes.split(";")[0].split("/").length; i++){
                                                     System.out.println("Musica: " + detalhes.split(";")[0].split("/")[i]);
                                                 }
-                                                if(detalhes.split(";")[0].split("/").length != 3+Integer.parseInt(detalhes.split(";")[0].split("/")[2])) {
-                                                    for (int i = 3+Integer.parseInt(detalhes.split(";")[0].split("/")[2]); i < detalhes.split(";")[0].split("/").length-1; i++) {
-                                                        System.out.println("Criticas: " + detalhes.split(";")[0].split("/")[i]);
+                                                if(detalhes.split(";").length == 3) {
+                                                    for (int i = 0; i < detalhes.split(";")[1].split("/").length - 1; i++) {
+                                                        System.out.println("Criticas: " + detalhes.split(";")[1].split("/")[i]);
                                                     }
-                                                    System.out.println("Rating: " + detalhes.split(";")[0].split("/")[detalhes.split(";")[0].split("/").length]);
+                                                    System.out.println("Rating: " + detalhes.split(";")[1].split("/")[detalhes.split(";")[1].split("/").length]);
                                                 }
                                                 int verificar2 = 0;
                                                 while(verificar2 == 0) {
