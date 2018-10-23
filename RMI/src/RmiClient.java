@@ -43,6 +43,7 @@ public class RmiClient {
                                 String lista = rmiInterface.pedir_pesquisa(nome, "musica", name);
                                 if(lista.startsWith("Erro!")){
                                     System.out.println(lista);
+                                    verifica = 1;
                                 }
                                 else{
                                     int verificar = 0;
@@ -88,6 +89,7 @@ public class RmiClient {
                                 String lista = rmiInterface.pedir_pesquisa(nome, "artista", name);
                                 if(lista.startsWith("Erro!")){
                                     System.out.println(lista);
+                                    verifica = 1;
                                 }
                                 else{
                                     int verificar = 0;
@@ -124,8 +126,85 @@ public class RmiClient {
                             }
                         }
                         else if(escolha.compareTo("3") == 0){
-                            System.out.print("Introduza o nome do album que deseja pesquisar: ");
-                            String nome = string.nextLine();
+                            int verifica = 0;
+                            while(verifica == 0) {
+                                System.out.print("Introduza o nome do album que deseja pesquisar: ");
+                                String nome = string.nextLine();
+                                String lista = rmiInterface.pedir_pesquisa(nome, "album", name);
+                                if(lista.startsWith("Erro!")){
+                                    System.out.println(lista);
+                                    verifica = 1;
+                                }
+                                else{
+                                    int verificar = 0;
+                                    while(verificar == 0) {
+                                        int length = Integer.parseInt(lista.split(";")[0].substring(7));
+                                        int contador = 0;
+                                        for (int i = 1; i <= length; i++) {
+                                            System.out.println(i + ") Album: " + lista.split(";")[1].substring(6).split("/")[contador] + " | Artista: " + lista.split(";")[1].substring(6).split("/")[contador + 1]);
+                                            contador = contador + 2;
+                                        }
+                                        System.out.println((length + 1) + ") Voltar");
+                                        System.out.print("Escolha: ");
+                                        try {
+                                            escolha = string.nextLine();
+                                            if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
+                                                String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) - 1],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) - 1],name, "album");
+                                                System.out.println("Nome Album: "+detalhes.split(";")[0].split("/")[0]);
+                                                System.out.println("Nome Artista: "+detalhes.split(";")[0].split("/")[1]);
+                                                for(int i = 2; i<detalhes.split(";")[0].split("/").length; i++){
+                                                    System.out.println("Musica: " + detalhes.split(";")[0].split("/")[i]);
+                                                }
+                                                for(int i = 0; i<detalhes.split(";")[1].split("/").length-1; i++){
+                                                    System.out.println("Criticas: " + detalhes.split(";")[1].split("/")[i]);
+                                                }
+                                                System.out.println("Rating: " + detalhes.split(";")[1].split("/")[detalhes.split(";")[1].split("/").length]);
+                                                int verificar2 = 0;
+                                                while(verificar2 == 0) {
+                                                    System.out.println("\n1) Desejo introduzir uma critica");
+                                                    System.out.println("2) Voltar");
+                                                    System.out.print("Escolha: ");
+                                                    escolha = string.nextLine();
+                                                    if (escolha.compareTo("1") == 0) {
+                                                        while(verificar2 == 0) {
+                                                            System.out.print("Introduza a critica (max 300 caracteres): ");
+                                                            String critica = string.nextLine();
+                                                            System.out.print("Introduza uma nota (1 a 5): ");
+                                                            String nota = string.nextLine();
+                                                            String resposta = rmiInterface.enviarCritica(detalhes.split(";")[0].split("/")[0],detalhes.split(";")[0].split("/")[1],critica,nota,name);
+                                                            if(resposta.startsWith("Erro!")){
+                                                                System.out.println(resposta);
+                                                            }
+                                                            else{
+                                                                System.out.println(resposta);
+                                                                verificar2 = 1;
+                                                                verifica = 1;
+                                                                verificar = 1;
+                                                                escolha = "4";
+                                                            }
+                                                        }
+                                                    } else if (escolha.compareTo("2") == 0) {
+                                                        verificar2 = 1;
+                                                        verifica = 1;
+                                                        verificar = 1;
+                                                        escolha = "4";
+                                                    } else {
+                                                        System.out.println("Escolha nao valida.");
+                                                    }
+                                                }
+                                            } else if (Integer.parseInt(escolha) == (length + 1)) {
+                                                verifica = 1;
+                                                verificar = 1;
+                                                escolha = "0";
+                                            } else {
+                                                System.out.println("Escolha não válida.");
+                                            }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Escolha não válida.");
+                                        }
+                                    }
+                                }
+                            }
                         }
                         else if(escolha.compareTo("4") != 0){
                             System.out.println("Escolha nao valida.");

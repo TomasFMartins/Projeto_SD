@@ -12,4 +12,5 @@ public interface RmiInterface extends Remote {
     public String remover(String categoria, String index, String username) throws RemoteException;
     public String pedir_pesquisa(String nome, String categoria, String username) throws RemoteException;
     public String pedir_detalhes(String nome, String nome2, String username, String categoria) throws RemoteException;
+    public String enviarCritica(String nome, String artista, String critica, String nota, String username) throws RemoteException;
 }

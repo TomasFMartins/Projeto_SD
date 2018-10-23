@@ -369,7 +369,46 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 socket.receive(msgPacket);
                 String msg = new String(buffer, 0, buffer.length);
                 if (msg.startsWith("type|info") && msg.contains("username|" + username)) {
-                    return msg.split(";")[2].substring(9);
+                    if(categoria != "album")
+                        return msg.split(";")[2].substring(9);
+                    else
+                        return msg.split(";")[2].substring(9) + msg.split(";")[3];
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public String enviarCritica(String nome, String artista, String critica, String nota, String username) throws RemoteException{
+        int contador = 0;
+        for (int i = 0; i < critica.length(); i++) {
+            if (nome.charAt(i) == '|' || nome.charAt(i) == ';' || nome.charAt(i) == '/')
+                contador++;
+        }
+        if(contador != 0){
+            return "Erro! A critica nao pode conter os caracteres ';' , '|' ou '/'.";
+        }
+        if(nota.compareTo("1") != 0 && nota.compareTo("2") != 0 && nota.compareTo("3") != 0 && nota.compareTo("4") != 0 && nota.compareTo("5") != 0){
+            return "Erro! A nota e um numero inteiro de 1 a 5.";
+        }
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|critica;categoria|album;nome|" + nome + ";artista|"+artista+";msg|"+critica+";nota|"+nota+";username|"+username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while (true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|resposta") && msg.contains("username|" + username)) {
+                    return msg.split(";")[2].substring(4);
                 }
             }
         } catch (IOException e) {
