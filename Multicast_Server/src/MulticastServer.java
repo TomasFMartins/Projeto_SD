@@ -364,13 +364,15 @@ public class MulticastServer extends Thread {
         else if(categoria.compareTo("album")==0) {
             string.append((String)lista.get(index).get("nome"));
             string.append("/" + (String) lista.get(index).get("artista"));
+            String [] contador = ((String)lista.get(index).get("musicas")).split("/");
+            string.append("/" + contador.length);
             string.append("/" + (String) lista.get(index).get("musicas"));
             if (((String)lista.get(index).get("critica")) == null) {
                 string.append(";username|" + map.get("username") + ";msg|Ainda não existem críticas.");
                 return string.toString();
             }
             else{
-                string.append(";" + (String)lista.get(index).get("critica"));
+                string.append("/" + (String)lista.get(index).get("critica"));
                 string.append("/" + (String)lista.get(index).get("nota"));
             }
         }
@@ -466,7 +468,7 @@ public class MulticastServer extends Thread {
         String utilizador = (String)map.get("utilizador");
         String categoria = "notificacoes";
 
-        
+
     }
 
     //método que retorna num ArrayList a informação lida do ficheiro
@@ -519,8 +521,9 @@ public class MulticastServer extends Thread {
                     pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
                 else if(categoria.compareTo("Registos")==0)
                     pw.println("username|" + lista.get(i).get("username") + ";password|" + lista.get(i).get("password") + ";privilegio|" + lista.get(i).get("privilegio"));
-                else if(categoria.compareTo("notificacoes")==0)
+                else if(categoria.compareTo("notificacoes")==0) {
                     //escrever notificação num ficheiro
+                }
             }
 
             pw.close();
