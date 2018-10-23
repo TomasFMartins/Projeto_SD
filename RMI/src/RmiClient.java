@@ -155,10 +155,12 @@ public class RmiClient {
                                                 for(int i = 2; i<detalhes.split(";")[0].split("/").length; i++){
                                                     System.out.println("Musica: " + detalhes.split(";")[0].split("/")[i]);
                                                 }
-                                                for(int i = 0; i<detalhes.split(";")[1].split("/").length-1; i++){
-                                                    System.out.println("Criticas: " + detalhes.split(";")[1].split("/")[i]);
+                                                if(detalhes.split(";").length == 3) {
+                                                    for (int i = 0; i < detalhes.split(";")[1].split("/").length - 1; i++) {
+                                                        System.out.println("Criticas: " + detalhes.split(";")[1].split("/")[i]);
+                                                    }
+                                                    System.out.println("Rating: " + detalhes.split(";")[1].split("/")[detalhes.split(";")[1].split("/").length]);
                                                 }
-                                                System.out.println("Rating: " + detalhes.split(";")[1].split("/")[detalhes.split(";")[1].split("/").length]);
                                                 int verificar2 = 0;
                                                 while(verificar2 == 0) {
                                                     System.out.println("\n1) Desejo introduzir uma critica");
