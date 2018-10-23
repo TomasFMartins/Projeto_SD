@@ -265,7 +265,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         else{
             try {
                 MulticastSocket socket = new MulticastSocket(PORT);
-                String data = "type|gerir;operacao|alterar;categoria|"+categoria+";item|"+index+";username|"+username+";campo|"+campo+";novo|"+novo;
+                String data = "type|gerir;operacao|alterar;categoria|"+categoria+";index|"+index+";username|"+username+";campo|"+campo+";info|"+novo;
                 byte[] buffer = data.getBytes();
                 InetAddress group = InetAddress.getByName(IP_SERVER);
                 socket.joinGroup(group);
@@ -291,7 +291,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
     public String remover(String categoria, String index, String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
-            String data = "type|gerir;operacao|remover;categoria|"+categoria+";item|"+index+";username|"+username;
+            String data = "type|gerir;operacao|remover;categoria|"+categoria+";index|"+index+";username|"+username;
             byte[] buffer = data.getBytes();
             InetAddress group = InetAddress.getByName(IP_SERVER);
             socket.joinGroup(group);
@@ -308,6 +308,71 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 }
             }
         } catch(IOException e){
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public String pedir_pesquisa(String nome, String categoria, String username) throws RemoteException{
+        int contador = 0;
+        for (int i = 0; i < nome.length(); i++) {
+            if (nome.charAt(i) == '|' || nome.charAt(i) == ';' || nome.charAt(i) == '/')
+                contador++;
+        }
+        if(contador != 0){
+            return "Erro! Os campos nao podem conter os caracteres ';' , '|' ou '/'.";
+        }
+        else {
+            try {
+                MulticastSocket socket = new MulticastSocket(PORT);
+                String data = "type|pesquisa;categoria|" + categoria + ";nome|" + nome + ";username|" + username;
+                byte[] buffer = data.getBytes();
+                InetAddress group = InetAddress.getByName(IP_SERVER);
+                socket.joinGroup(group);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                socket.send(packet);
+
+                while (true) {
+                    buffer = new byte[1024];
+                    DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                    socket.receive(msgPacket);
+                    String msg = new String(buffer, 0, buffer.length);
+                    if (msg.startsWith("type|lista") && msg.contains("username|" + username)) {
+                        if(msg.charAt(18) == '0'){
+                            return "Erro! Nao existe qualquer "+categoria+" com esse nome.";
+                        }
+                        else {
+                            return msg.substring(11);
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "Erro! CATCH";
+            }
+        }
+    }
+
+    public String pedir_detalhes(String nome, String nome2, String username, String categoria) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|consulta;categoria|" + categoria + ";nome|" + nome + ";artista|"+nome2+";username|" + username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while (true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|info") && msg.contains("username|" + username)) {
+                    return msg.split(";")[2].substring(9);
+                }
+            }
+        } catch (IOException e) {
             e.printStackTrace();
             return "Erro! CATCH";
         }

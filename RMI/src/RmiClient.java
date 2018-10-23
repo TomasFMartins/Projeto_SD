@@ -35,7 +35,101 @@ public class RmiClient {
                         System.out.println("4) - Voltar");
                         System.out.print("Escolha: ");
                         escolha = string.nextLine();
-                        //Continuar aqui
+                        if(escolha.compareTo("1") == 0){
+                            int verifica = 0;
+                            while(verifica == 0) {
+                                System.out.print("Introduza o nome da musica que deseja pesquisar: ");
+                                String nome = string.nextLine();
+                                String lista = rmiInterface.pedir_pesquisa(nome, "musica", name);
+                                if(lista.startsWith("Erro!")){
+                                    System.out.println(lista);
+                                }
+                                else{
+                                    int verificar = 0;
+                                    while(verificar == 0) {
+                                        int length = Integer.parseInt(lista.split(";")[0].substring(7));
+                                        int contador = 0;
+                                        for (int i = 1; i <= length; i++) {
+                                            System.out.println(i + ") Música: " + lista.split(";")[1].substring(6).split("/")[contador] + " | Artista: " + lista.split(";")[1].substring(6).split("/")[contador + 1]);
+                                            contador = contador + 2;
+                                        }
+                                        System.out.println((length + 1) + ") Voltar");
+                                        System.out.print("Escolha: ");
+                                        try {
+                                            escolha = string.nextLine();
+                                            if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
+                                                String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) - 1],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) - 1],name, "musica");
+                                                System.out.println("Nome musica: "+detalhes.split("/")[0]);
+                                                System.out.println("Nome Artista: "+detalhes.split("/")[1]);
+                                                System.out.println("Nome Album: "+detalhes.split("/")[2]);
+                                                System.out.println("Duracao: "+detalhes.split("/")[3]);
+                                                verifica = 1;
+                                                verificar = 1;
+                                                escolha = "4";
+                                            } else if (Integer.parseInt(escolha) == (length + 1)) {
+                                                verifica = 1;
+                                                verificar = 1;
+                                                escolha = "0";
+                                            } else {
+                                                System.out.println("Escolha não válida.");
+                                            }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Escolha não válida.");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if(escolha.compareTo("2") == 0){
+                            int verifica = 0;
+                            while(verifica == 0) {
+                                System.out.print("Introduza o nome do artista que deseja pesquisar: ");
+                                String nome = string.nextLine();
+                                String lista = rmiInterface.pedir_pesquisa(nome, "artista", name);
+                                if(lista.startsWith("Erro!")){
+                                    System.out.println(lista);
+                                }
+                                else{
+                                    int verificar = 0;
+                                    while(verificar == 0) {
+                                        int length = Integer.parseInt(lista.split(";")[0].substring(7));
+                                        for (int i = 1; i <= length; i++) {
+                                            System.out.println(i + ") Artista: " + lista.split(";")[1].substring(6).split("/")[i-1]);
+                                        }
+                                        System.out.println((length + 1) + ") Voltar");
+                                        System.out.print("Escolha: ");
+                                        try {
+                                            escolha = string.nextLine();
+                                            if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
+                                                String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) - 1],"",name, "artista");
+                                                System.out.println("Nome Artista: "+detalhes.split("/")[0]);
+                                                for(int i = 1; i<detalhes.split("/").length; i++){
+                                                    System.out.println("Album: " + detalhes.split("/")[i]);
+                                                }
+                                                verifica = 1;
+                                                verificar = 1;
+                                                escolha = "4";
+                                            } else if (Integer.parseInt(escolha) == (length + 1)) {
+                                                verifica = 1;
+                                                verificar = 1;
+                                                escolha = "0";
+                                            } else {
+                                                System.out.println("Escolha não válida.");
+                                            }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Escolha não válida.");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if(escolha.compareTo("3") == 0){
+                            System.out.print("Introduza o nome do album que deseja pesquisar: ");
+                            String nome = string.nextLine();
+                        }
+                        else if(escolha.compareTo("4") != 0){
+                            System.out.println("Escolha nao valida.");
+                        }
                     }
                 }
                 else if(escolha.compareTo("2") == 0){
