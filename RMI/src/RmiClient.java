@@ -149,7 +149,7 @@ public class RmiClient {
                                         try {
                                             escolha = string.nextLine();
                                             if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
-                                                String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)+1],name, "album");
+                                                String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)-1],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)],name, "album");
                                                 System.out.println("Nome Album: "+detalhes.split(";")[0].split("/")[0]);
                                                 System.out.println("Nome Artista: "+detalhes.split(";")[0].split("/")[1]);
                                                 for(int i = 2; i<detalhes.split(";")[0].split("/").length; i++){
@@ -712,7 +712,7 @@ public class RmiClient {
                                             String lista = rmiInterface.listar("artista", name);
                                             int length = Integer.parseInt(lista.split(";")[0].substring(7));
                                             for (int i = 1; i <= length; i++) {
-                                                System.out.println(i + ") Artista: " + lista.split(";")[1].substring(6).split("/")[i]);
+                                                System.out.println(i + ") Artista: " + lista.split(";")[1].substring(6).split("/")[i-1]);
                                             }
                                             System.out.println((length + 1) + ") Voltar");
                                             System.out.print("Escolha: ");
