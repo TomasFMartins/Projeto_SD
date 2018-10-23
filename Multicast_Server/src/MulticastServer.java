@@ -338,12 +338,21 @@ public class MulticastServer extends Thread {
         String artista = (String)map.get("artista");
         String categoria = (String)map.get("categoria");
         StringBuilder string = new StringBuilder();
+        String nome = (String)map.get("nome");
 
-        if(categoria.compareTo("artista")!=0)
-            for(int i=0; i<lista.size(); i++){
-                if(((String)lista.get(i).get("artista")).compareTo(artista)==0)
+        System.out.println("teste: " + nome + " " + artista + " " + categoria);
+
+        if(categoria.compareTo("artista")==0)
+            for(int i=0; i<lista.size(); i++) {
+                if (((String)lista.get(i).get("nome")).compareTo(nome) == 0)
                     index = i;
             }
+        else{
+            for(int i=0; i<lista.size(); i++) {
+                if (((String)lista.get(i).get("artista")).compareTo(artista) == 0 && ((String)lista.get(i).get("nome")).compareTo(nome) == 0)
+                    index = i;
+            }
+        }
 
         string.append("type|info;categoria|" + map.get("categoria") + ";detalhes|");
         if(categoria.compareTo("musica")==0) {
@@ -353,7 +362,7 @@ public class MulticastServer extends Thread {
             string.append("/" + (String)lista.get(index).get("duracao"));
         }
         else if(categoria.compareTo("album")==0) {
-            string.append((String) lista.get(index).get("nome"));
+            string.append((String)lista.get(index).get("nome"));
             string.append("/" + (String) lista.get(index).get("artista"));
             string.append("/" + (String) lista.get(index).get("musicas"));
             if (((String)lista.get(index).get("critica")) == null) {
@@ -361,7 +370,7 @@ public class MulticastServer extends Thread {
                 return string.toString();
             }
             else{
-                string.append("/" + (String)lista.get(index).get("critica"));
+                string.append(";" + (String)lista.get(index).get("critica"));
                 string.append("/" + (String)lista.get(index).get("nota"));
             }
         }
@@ -398,7 +407,7 @@ public class MulticastServer extends Thread {
         else{
             String [] aux2 = lista.get(index).get("critica").split("/");
             System.out.println("teste " + aux2.length);
-            float nota = Integer.parseInt((String)lista.get(index).get("nota"));
+            float nota = Float.parseFloat((String)lista.get(index).get("nota"));
 
             nota = ((nota*aux2.length) + Integer.parseInt((String)map.get("nota"))) / (aux2.length + 1 );
 
@@ -444,11 +453,20 @@ public class MulticastServer extends Thread {
             if(utilizador.compareTo((String)lista.get(i).get("username"))==0){
                 lista.get(i).put("privilegio", "editor");
                 escreve_ficheiro(lista, "Registos");
+                gera_notificacao(map, "promovido");
                 return "type|confirmacao;username|" + utilizador + ";msg|Utilizador promovido a editor!";
             }
         }
 
         return "";
+    }
+
+    //método que gere notificações
+    public void gera_notificacao(HashMap map, String flag){
+        String utilizador = (String)map.get("utilizador");
+        String categoria = "notificacoes";
+
+        
     }
 
     //método que retorna num ArrayList a informação lida do ficheiro
@@ -501,6 +519,8 @@ public class MulticastServer extends Thread {
                     pw.println("nome|" + lista.get(i).get("nome") + ";albuns|" + lista.get(i).get("albuns"));
                 else if(categoria.compareTo("Registos")==0)
                     pw.println("username|" + lista.get(i).get("username") + ";password|" + lista.get(i).get("password") + ";privilegio|" + lista.get(i).get("privilegio"));
+                else if(categoria.compareTo("notificacoes")==0)
+                    //escrever notificação num ficheiro
             }
 
             pw.close();

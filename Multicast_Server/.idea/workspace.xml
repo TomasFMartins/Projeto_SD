@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bd1e858a-f6fa-4c31-bd03-a1ae9beb87ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Protocolo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Protocolo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Registos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/album.txt" beforeDir="false" afterPath="$PROJECT_DIR$/album.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artista.txt" beforeDir="false" afterPath="$PROJECT_DIR$/artista.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/musica.txt" beforeDir="false" afterPath="$PROJECT_DIR$/musica.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MulticastServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulticastServer.java" afterDir="false" />
@@ -13,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RMI/src/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/src/RmiServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,23 +64,24 @@
     <session id="-73676224">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.26" value="2" />
           <entry key="project.open.time.30" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="9051" />
+          <entry key="java" value="9645" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="9051" />
+          <entry key="JAVA" value="9645" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -99,10 +102,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="383" column="22" selection-start-line="383" selection-start-column="22" selection-end-line="383" selection-end-column="22" />
+            <state relative-caret-position="270">
+              <caret line="468" column="8" lean-forward="true" selection-start-line="468" selection-start-column="8" selection-end-line="468" selection-end-column="8" />
               <folding>
                 <element signature="method#main#0;class#MulticastServer#0" />
+                <element signature="method#run#0;class#MulticastServer#0" />
+                <element signature="method#string_to_hash#0;class#MulticastServer#0" />
                 <element signature="method#login#0;class#MulticastServer#0" />
                 <element signature="method#registo#0;class#MulticastServer#0" />
                 <element signature="method#verifica_dados#0;class#MulticastServer#0" />
@@ -113,10 +118,9 @@
                 <element signature="method#alterar_info#0;class#MulticastServer#0" />
                 <element signature="method#remover_info#0;class#MulticastServer#0" />
                 <element signature="method#consulta_info#0;class#MulticastServer#0" />
+                <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
                 <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
-                <element signature="method#promover_user#0;class#MulticastServer#0" />
                 <element signature="method#le_ficheiro#0;class#MulticastServer#0" />
-                <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
                 <element signature="method#get_privilegio#0;class#MulticastServer#0" />
               </folding>
             </state>
@@ -126,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+            <state relative-caret-position="136">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
                 <element signature="e#2042#2043#0" expanded="true" />
                 <element signature="e#2104#2105#0" expanded="true" />
@@ -154,10 +158,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="675" />
-    <option name="width" value="698" />
-    <option name="height" value="745" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-9" />
+    <option name="width" value="975" />
+    <option name="height" value="1059" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -165,6 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,13 +192,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540264177717" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540264333793" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RMI" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -255,10 +259,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06510067" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06711409" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -333,12 +337,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding>
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2104#2105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="383" column="22" selection-start-line="383" selection-start-column="22" selection-end-line="383" selection-end-column="22" />
+        <state relative-caret-position="270">
+          <caret line="468" column="8" lean-forward="true" selection-start-line="468" selection-start-column="8" selection-end-line="468" selection-end-column="8" />
           <folding>
             <element signature="method#main#0;class#MulticastServer#0" />
+            <element signature="method#run#0;class#MulticastServer#0" />
+            <element signature="method#string_to_hash#0;class#MulticastServer#0" />
             <element signature="method#login#0;class#MulticastServer#0" />
             <element signature="method#registo#0;class#MulticastServer#0" />
             <element signature="method#verifica_dados#0;class#MulticastServer#0" />
@@ -349,22 +366,10 @@
             <element signature="method#alterar_info#0;class#MulticastServer#0" />
             <element signature="method#remover_info#0;class#MulticastServer#0" />
             <element signature="method#consulta_info#0;class#MulticastServer#0" />
+            <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
             <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
-            <element signature="method#promover_user#0;class#MulticastServer#0" />
             <element signature="method#le_ficheiro#0;class#MulticastServer#0" />
-            <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
             <element signature="method#get_privilegio#0;class#MulticastServer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
-          <folding>
-            <element signature="e#2042#2043#0" expanded="true" />
-            <element signature="e#2104#2105#0" expanded="true" />
           </folding>
         </state>
       </provider>

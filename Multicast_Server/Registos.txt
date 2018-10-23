@@ -4,3 +4,5 @@ username|Andre;password|123qwe;privilegio|leitor
 username|martim;password|martins;privilegio|leitor
 username|angela;password|mike;privilegio|leitor
 username|Truta;password|123qwe;privilegio|leitor
+username|rien;password|paneleiro;privilegio|leitor
+username|alex;password|jet7;privilegio|leitor
