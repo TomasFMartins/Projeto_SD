@@ -111,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="868">
-              <caret line="355" column="117" selection-start-line="355" selection-start-column="117" selection-end-line="355" selection-end-column="117" />
+            <state relative-caret-position="519">
+              <caret line="369" column="66" selection-start-line="369" selection-start-column="66" selection-end-line="369" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#RmiServer#0;class#RmiServer#0" />
@@ -121,10 +121,10 @@
                 <element signature="method#inserirMusica#0;class#RmiServer#0" />
                 <element signature="method#inserirArtista#0;class#RmiServer#0" />
                 <element signature="method#inserirAlbum#0;class#RmiServer#0" />
+                <element signature="method#listar#0;class#RmiServer#0" />
                 <element signature="method#alterar#0;class#RmiServer#0" />
                 <element signature="method#remover#0;class#RmiServer#0" />
                 <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
-                <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
                 <element signature="method#enviarCritica#0;class#RmiServer#0" />
               </folding>
             </state>
@@ -134,8 +134,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="162" column="49" selection-start-line="162" selection-start-column="49" selection-end-line="162" selection-end-column="49" />
+            <state relative-caret-position="340">
+              <caret line="161" column="118" selection-start-line="161" selection-start-column="118" selection-end-line="161" selection-end-column="118" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#main#0;class#RmiClient#0" />
@@ -185,7 +185,7 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540317535274" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540321105120" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -292,8 +292,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="868">
-          <caret line="355" column="117" selection-start-line="355" selection-start-column="117" selection-end-line="355" selection-end-column="117" />
+        <state relative-caret-position="519">
+          <caret line="369" column="66" selection-start-line="369" selection-start-column="66" selection-end-line="369" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#RmiServer#0;class#RmiServer#0" />
@@ -302,10 +302,10 @@
             <element signature="method#inserirMusica#0;class#RmiServer#0" />
             <element signature="method#inserirArtista#0;class#RmiServer#0" />
             <element signature="method#inserirAlbum#0;class#RmiServer#0" />
+            <element signature="method#listar#0;class#RmiServer#0" />
             <element signature="method#alterar#0;class#RmiServer#0" />
             <element signature="method#remover#0;class#RmiServer#0" />
             <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
-            <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
             <element signature="method#enviarCritica#0;class#RmiServer#0" />
           </folding>
         </state>
@@ -313,8 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="162" column="49" selection-start-line="162" selection-start-column="49" selection-end-line="162" selection-end-column="49" />
+        <state relative-caret-position="340">
+          <caret line="161" column="118" selection-start-line="161" selection-start-column="118" selection-end-line="161" selection-end-column="118" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#RmiClient#0" />
