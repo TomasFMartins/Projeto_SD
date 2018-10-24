@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf4f1f46-b24f-46ef-b245-0797bd1fd31d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/Registos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/album.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/album.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RmiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,21 +85,22 @@
     <session id="-51183392">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2492" />
+          <entry key="java" value="4801" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2492" />
+          <entry key="JAVA" value="4801" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -99,20 +113,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="130" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret column="23" selection-start-column="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="369" column="66" selection-start-line="369" selection-start-column="66" selection-end-line="369" selection-end-column="66" />
+            <state relative-caret-position="680">
+              <caret line="524" column="33" selection-start-line="524" selection-start-column="33" selection-end-line="524" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#RmiServer#0;class#RmiServer#0" />
@@ -125,20 +136,24 @@
                 <element signature="method#alterar#0;class#RmiServer#0" />
                 <element signature="method#remover#0;class#RmiServer#0" />
                 <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
+                <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
                 <element signature="method#enviarCritica#0;class#RmiServer#0" />
+                <element signature="method#pedirUtilizadores#0;class#RmiServer#0" />
+                <element signature="method#promover#0;class#RmiServer#0" />
+                <element signature="method#Notificacoes#0;class#RmiServer#0" />
+                <element signature="method#killThread#0;class#RmiServer#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="161" column="118" selection-start-line="161" selection-start-column="118" selection-end-line="161" selection-end-column="118" />
+            <state relative-caret-position="802">
+              <caret line="955" column="29" selection-start-line="955" selection-start-column="29" selection-end-line="955" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#main#0;class#RmiClient#0" />
               </folding>
             </state>
           </provider>
@@ -157,6 +172,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>System.out.print</find>
+      <find>concat</find>
+      <find>notificacao</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,8 +184,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/MulticastServer.java" />
         <option value="$PROJECT_DIR$/src/RmiInterface.java" />
-        <option value="$PROJECT_DIR$/src/RmiServer.java" />
         <option value="$PROJECT_DIR$/src/RmiClient.java" />
+        <option value="$PROJECT_DIR$/src/RmiServer.java" />
       </list>
     </option>
   </component>
@@ -185,8 +202,8 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540321105120" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540348098408" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Multicast_Server" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -244,7 +261,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.34379905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -255,7 +271,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26502147" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26502147" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -263,7 +279,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.29354838" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.29291844" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -278,12 +294,37 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/RmiServer.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/RmiServer.java</url>
+          <line>191</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java" />
     <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="130" />
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="802">
+          <caret line="955" column="29" selection-start-line="955" selection-start-column="29" selection-end-line="955" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -292,8 +333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="369" column="66" selection-start-line="369" selection-start-column="66" selection-end-line="369" selection-end-column="66" />
+        <state relative-caret-position="680">
+          <caret line="524" column="33" selection-start-line="524" selection-start-column="33" selection-end-line="524" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#RmiServer#0;class#RmiServer#0" />
@@ -306,18 +347,12 @@
             <element signature="method#alterar#0;class#RmiServer#0" />
             <element signature="method#remover#0;class#RmiServer#0" />
             <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
+            <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
             <element signature="method#enviarCritica#0;class#RmiServer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="161" column="118" selection-start-line="161" selection-start-column="118" selection-end-line="161" selection-end-column="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#RmiClient#0" />
+            <element signature="method#pedirUtilizadores#0;class#RmiServer#0" />
+            <element signature="method#promover#0;class#RmiServer#0" />
+            <element signature="method#Notificacoes#0;class#RmiServer#0" />
+            <element signature="method#killThread#0;class#RmiServer#0" />
           </folding>
         </state>
       </provider>

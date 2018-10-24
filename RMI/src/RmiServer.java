@@ -61,6 +61,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
     }
 
     public String verificaSignUp(String username, String password) throws RemoteException{
+        System.out.println("Entrou");
         if(username.length()<3 || username.length()>16){
             return "Erro! O nome de utilizador deve ter entre 3 a 16 caracteres.";
         }else if(password.length()<3 || password.length()>16){
@@ -241,7 +242,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
                 socket.receive(msgPacket);
                 String msg = new String(buffer, 0, buffer.length);
-                if (msg.startsWith("type|lista") && msg.contains("username|" + username)) {
+                if (msg.startsWith("type|lista") && msg.contains("username|" + username + ";")) {
                     return msg.substring(11);
                 }
             }
@@ -337,7 +338,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                     DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
                     socket.receive(msgPacket);
                     String msg = new String(buffer, 0, buffer.length);
-                    if (msg.startsWith("type|lista") && msg.contains("username|" + username)) {
+                    if (msg.startsWith("type|lista") && msg.contains("username|" + username + ";")) {
                         if(msg.charAt(18) == '0'){
                             return "Erro! Nao existe qualquer "+categoria+" com esse nome.";
                         }
@@ -368,7 +369,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
                 socket.receive(msgPacket);
                 String msg = new String(buffer, 0, buffer.length);
-                if (msg.startsWith("type|info") && msg.contains("username|" + username)) {
+                if (msg.startsWith("type|info") && msg.contains("username|" + username + ";")) {
                     if(categoria != "album")
                         return msg.split(";")[2].substring(9);
                     else
@@ -407,7 +408,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
                 socket.receive(msgPacket);
                 String msg = new String(buffer, 0, buffer.length);
-                if (msg.startsWith("type|resposta") && msg.contains("username|" + username)) {
+                if (msg.startsWith("type|resposta") && msg.contains("username|" + username + ";")) {
                     return msg.split(";")[2].substring(4);
                 }
             }
@@ -417,11 +418,111 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    public String pedirUtilizadores(String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|utilizadores;username|"+username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while (true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|lista_utili") && msg.contains("username|" + username + ";")) {
+                    return msg;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public String promover(String change, String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            String data = "type|promover;utilizador|"+change+";username|"+username;
+            byte[] buffer = data.getBytes();
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+
+            while (true) {
+                buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|notificacao") && msg.contains("username2|" + username + ";")) {
+                    return "Operacao com Sucesso!";
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public String Notificacoes(String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+
+            while (true) {
+                byte[] buffer = new byte[1024];
+                DatagramPacket msgPacket = new DatagramPacket(buffer, buffer.length);
+                socket.receive(msgPacket);
+                String msg = new String(buffer, 0, buffer.length);
+                if (msg.startsWith("type|notificacao") && msg.contains("username|" + username + ";")) {
+                    String data = "type|noticonfirma;username|"+username;
+                    buffer = data.getBytes();
+                    DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                    socket.send(packet);
+                    if(msg.split(";").length == 3){
+                        return msg.split(";")[2].substring(4);
+                    }
+                    else{
+                        return msg.split(";")[3].substring(4);
+                    }
+                }
+                if(msg.startsWith("type|killthread") && msg.contains("username|" + username + ";")){
+                    return "Fim";
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Erro! CATCH";
+        }
+    }
+
+    public void killThread(String username) throws RemoteException{
+        try {
+            MulticastSocket socket = new MulticastSocket(PORT);
+            InetAddress group = InetAddress.getByName(IP_SERVER);
+            socket.joinGroup(group);
+            String data = "type|killthread;username|"+username+";";
+            byte[] buffer = new byte[1024];
+            buffer = data.getBytes();
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+            socket.send(packet);
+            return;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String args[]){
         try{
             RmiServer server = new RmiServer();
             Registry r = LocateRegistry.createRegistry(7000);
             r.rebind("rmiSERVER", server);
+            System.out.println("=== Rmi Server Arrancou ===");
         } catch (RemoteException re){
             System.out.println("Exception in Main " + re);
         }

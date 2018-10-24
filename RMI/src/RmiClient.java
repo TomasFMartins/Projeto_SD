@@ -9,7 +9,35 @@ public class RmiClient {
     static String name;
     static String privilegio;
 
+    public static class Notificacoes extends Thread{
+        private RmiInterface face;
+        boolean running;
+
+        Notificacoes(RmiInterface faceT){
+            face = faceT;
+            running = true;
+        }
+
+        public void run(){
+            try {
+                while (running) {
+                    String resposta = face.Notificacoes(name);
+                    if(resposta.compareTo("Fim") == 0){
+                        return;
+                    }
+                    else
+                        System.out.println("\n=== "+resposta+" ===\n");
+                }
+            } catch(Exception e){
+                System.out.println("Exception in Client: "+e);
+                e.printStackTrace();
+            }
+        }
+    }
+
     static void menu(RmiInterface rmiInterface){
+        Notificacoes thread = new Notificacoes(rmiInterface);
+        thread.start();
         try{
             String escolha;
             while(true){
@@ -150,16 +178,16 @@ public class RmiClient {
                                             escolha = string.nextLine();
                                             if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
                                                 String detalhes = rmiInterface.pedir_detalhes(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)-1],lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha)],name, "album");
-                                                System.out.println("Nome Album: "+detalhes.split(";")[0].split("/")[0]);
-                                                System.out.println("Nome Artista: "+detalhes.split(";")[0].split("/")[1]);
-                                                for(int i = 3; i<Integer.parseInt(detalhes.split(";")[0].split("/")[2]); i++){
-                                                    System.out.println("Musica: " + detalhes.split(";")[0].split("/")[i]);
+                                                System.out.println("Nome Album: "+detalhes.split("/")[0]);
+                                                System.out.println("Nome Artista: "+detalhes.split("/")[1]);
+                                                for(int i = 3; i<Integer.parseInt(detalhes.split("/")[2])+3; i++){
+                                                    System.out.println("Musica: " + detalhes.split("/")[i]);
                                                 }
-                                                if(detalhes.split(";")[0].split("/").length != 3+Integer.parseInt(detalhes.split(";")[0].split("/")[2])) {
-                                                    for (int i = 3+Integer.parseInt(detalhes.split(";")[0].split("/")[2]); i < detalhes.split(";")[0].split("/").length-1; i++) {
+                                                if(detalhes.split("/").length != 3+Integer.parseInt(detalhes.split("/")[2])) {
+                                                    for (int i = 3+Integer.parseInt(detalhes.split("/")[2]); i < detalhes.split("/").length-1; i++) {
                                                         System.out.println("Criticas: " + detalhes.split(";")[0].split("/")[i]);
                                                     }
-                                                    System.out.println("Rating: " + detalhes.split(";")[0].split("/")[detalhes.split(";")[0].split("/").length]);
+                                                    System.out.println("Rating: " + detalhes.split("/")[detalhes.split("/").length-1]);
                                                 }
                                                 int verificar2 = 0;
                                                 while(verificar2 == 0) {
@@ -671,7 +699,7 @@ public class RmiClient {
                                     if(escolha.compareTo("1") == 0){
                                         int verifica = 0;
                                         while(verifica == 0) {
-                                            System.out.println("\n === Remover UMA MÚSICA ===\n(Selecione a música que deseja remover)");
+                                            System.out.println("\n === REMOVER UMA MÚSICA ===\n(Selecione a música que deseja remover)");
                                             String lista = rmiInterface.listar("musica", name);
                                             int length = Integer.parseInt(lista.split(";")[0].substring(7));
                                             int contador = 0;
@@ -791,7 +819,39 @@ public class RmiClient {
                     }
                 }
                 else if(escolha.compareTo("3") == 0){
-                    //DAR PREVILEGIO
+                    if(privilegio.compareTo("editor") != 0){
+                        System.out.println("\nAviso: Só os editores têm premissão para dar privilegio de editor.");
+
+                    }
+                    else{
+                        String lista = rmiInterface.pedirUtilizadores(name);
+                        int verifica = 0;
+                        while(verifica == 0) {
+                            System.out.println("=== DAR PRIVILEGIO ===\n(Utilizadores Leitores)");
+                            for (int i = 0; i < Integer.parseInt(lista.split(";")[1].substring(7)); i++) {
+                                System.out.println((i + 1) + ") " + lista.split(";")[2].substring(6).split("/")[i]);
+                            }
+                            System.out.println((Integer.parseInt(lista.split(";")[1].substring(7)) + 1) + ") Voltar");
+                            System.out.print("Escolha: ");
+                            escolha = string.nextLine();
+                            try {
+                                if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= lista.split("/").length){
+                                    String resposta = rmiInterface.promover(lista.split("/")[Integer.parseInt(escolha)-1], name);
+                                    System.out.println(resposta);
+                                    verifica = 1;
+                                    escolha = "0";
+                                }
+                                else if(Integer.parseInt(escolha) == lista.split("/").length+1){
+                                    verifica = 1;
+                                }
+                                else{
+                                    System.out.println("Escolha nao valida");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Escolha nao valida.");
+                            }
+                        }
+                    }
                 }
                 else if(escolha.compareTo("4") == 0){
                     //UPLOAD
@@ -803,7 +863,8 @@ public class RmiClient {
                     //GERIR SUA BIBLIOTECA
                 }
                 else if(escolha.compareTo("7") == 0){
-                    //LOGOUT
+                    rmiInterface.killThread(name);
+                    thread.running = false;
                     return;
                 }
             }
@@ -835,7 +896,7 @@ public class RmiClient {
                         String username = string.nextLine();
                         System.out.print("Password: ");
                         String password = string.nextLine();
-                        if (!username.equals("0") && !password.equals("0")) {
+                        if (!username.equals("0") || !password.equals("0")) {
                             String resposta = rmiInterface.verificaLogin(username, password);
                             if (resposta.startsWith("Erro!")) {
                                 System.out.println(resposta);
@@ -860,7 +921,7 @@ public class RmiClient {
                         String username = string.nextLine();
                         System.out.print("Password: ");
                         String password = string.nextLine();
-                        if (!username.equals("0") && !password.equals("0")) {
+                        if (!username.equals("0") || !password.equals("0")) {
                             String resposta = rmiInterface.verificaSignUp(username, password);
                             if (resposta.startsWith("Erro!")) {
                                 System.out.println(resposta);
@@ -890,3 +951,6 @@ public class RmiClient {
     }
 
 }
+
+//Falta receber a notificacao quando da login
+//Falta atualizar para editor
