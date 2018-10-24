@@ -39,7 +39,9 @@ type|lista;length|x;items|.../.../...:username|...
 cliente -> type|consulta;categoria|...;nome|...;artista|...;username|...
 
 ->servidor responde
-type|info;categoria|...;detalhes|.../.../...
+type|info;categoria|musica;detalhes|nome/artista/album/duracao
+type|info;categoria|album;detalhes|nome/artista/n_musicas/musicas/criticas/nota
+type|info;categoria|artista;detalhes|nome/albuns
 
 cliente -> type|critica;categoria|...;nome|...;artista|...;msg|"critica do utilizador";nota|...;username|...
 
@@ -57,4 +59,8 @@ type|lista_utili;length|x;items|../../..;username|...
 cliente -> type|promover;utilizador|....;username|...
 
 ->servidor responde
-type|confirmacao;username|...;msg|Utilizador promovido a editor!
+type|notificacao;username|...;username2|...;msg|Foi promovido a editor!;
+
+cliente -> type|noticonfirma;username|...   (resposta de qualquer notificacao)
+
+-------------------------//-----------------------

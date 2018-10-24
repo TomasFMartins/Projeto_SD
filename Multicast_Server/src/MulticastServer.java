@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.MulticastSocket;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
@@ -42,7 +43,7 @@ public class MulticastServer extends Thread {
 
                 map = string_to_hash(message);
 
-                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0) && (((String)map.get("type")).compareTo("info")!=0) && (((String)map.get("type")).compareTo("lista_utili")!=0)) {
+                if((((String)map.get("type")).compareTo("confirmacao")!=0) && (((String)map.get("type")).compareTo("status")!=0) && (((String)map.get("type")).compareTo("resposta")!=0) && (((String)map.get("type")).compareTo("lista")!=0) && (((String)map.get("type")).compareTo("info")!=0) && (((String)map.get("type")).compareTo("lista_utili")!=0) && (((String)map.get("type")).compareTo("notificacao")!=0) && (((String)map.get("type")).compareTo("killthread")!=0)) {
                     System.out.println("type: " + map.get("type"));
 
                     String resposta;
@@ -145,6 +146,10 @@ public class MulticastServer extends Thread {
             case "promover":
                 mensagem = promover_user(map);
                 break;
+
+            case "noticonfirma":
+                notificacao_confirmada(map);
+                break;
         }
 
         return mensagem;
@@ -158,8 +163,13 @@ public class MulticastServer extends Thread {
 
         confirmacao = verifica_dados(map, lista);
 
-        if(confirmacao==1)
-            return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + get_privilegio(map);
+        if(confirmacao==1) {
+            string = get_notificacoes(map);
+            if(string.compareTo("")==0)
+                return "type|status;logged|on;msg|Bem-vindo!;username|" + map.get("username") + ";privilegio|" + get_privilegio(map);
+            else
+                return "type|status;logged|on;msg|Bem-vindo!\nFoi promovido a editor!;username|" + map.get("username") + ";privilegio|" + get_privilegio(map);
+        }
         else if(confirmacao==-1)
             return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Password incorreta";
         else
@@ -302,7 +312,7 @@ public class MulticastServer extends Thread {
                     string.append("/" + (String)lista.get(i).get("nome") + "/" + (String)lista.get(i).get("artista"));
             }
         }
-        string.append(";username|" + map.get("username"));
+        string.append(";username|" + map.get("username") + ";");
         mensagem = string.toString();
         return mensagem;
     }
@@ -339,8 +349,6 @@ public class MulticastServer extends Thread {
         String categoria = (String)map.get("categoria");
         StringBuilder string = new StringBuilder();
         String nome = (String)map.get("nome");
-
-        System.out.println("teste: " + nome + " " + artista + " " + categoria);
 
         if(categoria.compareTo("artista")==0)
             for(int i=0; i<lista.size(); i++) {
@@ -384,7 +392,7 @@ public class MulticastServer extends Thread {
                 }
 
         }
-        string.append(";username|" + map.get("username"));
+        string.append(";username|" + map.get("username") + ";");
 
         return string.toString();
     }
@@ -428,8 +436,13 @@ public class MulticastServer extends Thread {
 
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         StringBuilder string = new StringBuilder();
+        int contador=0;
 
-        string.append("type|lista_utili;length|" + lista.size() + ";items|");
+        for(int i=0; i<lista.size(); i++)
+            if (((String)lista.get(i).get("privilegio")).compareTo(flag) == 0)
+                contador++;
+
+        string.append("type|lista_utili;length|" + contador + ";items|");
 
         int controlador = 0;
         for(int i=0; i<lista.size(); i++) {
@@ -442,7 +455,7 @@ public class MulticastServer extends Thread {
             }
         }
 
-        string.append(";username|" + (String)map.get("username"));
+        string.append(";username|" + (String)map.get("username") + ";");
         return string.toString();
     }
 
@@ -456,7 +469,7 @@ public class MulticastServer extends Thread {
                 lista.get(i).put("privilegio", "editor");
                 escreve_ficheiro(lista, "Registos");
                 gera_notificacao(map, "promovido");
-                return "type|confirmacao;username|" + utilizador + ";msg|Utilizador promovido a editor!";
+                return "type|notificacao;username|" + utilizador + ";username2|" + map.get("username") + ";msg|Foi promovido a editor!";
             }
         }
 
@@ -467,8 +480,68 @@ public class MulticastServer extends Thread {
     public void gera_notificacao(HashMap map, String flag){
         String utilizador = (String)map.get("utilizador");
         String categoria = "notificacoes";
+        HashMap<String, String> new_map = new HashMap<>();
+
+        new_map.put("type", "notificacao");
+        new_map.put("username", (String)map.get("utilizador"));
+        if(flag.compareTo("promovido")==0)
+            new_map.put("msg", "Foi promovido a editor!");
+        //restantes notificações
+
+        regista_notificao(new_map, categoria);
+    }
+
+    //método que guarda as notificações num ficheiro
+    public void regista_notificao(HashMap<String, String> map, String categoria){
+
+        try{
+            File f = new File(categoria + ".txt");
+            FileWriter fw = new FileWriter(f, true);
+            PrintWriter pw = new PrintWriter(fw);
+
+            pw.println("type|" + map.get("type") + ";username|" + map.get("username") + ";msg|" + map.get("msg"));
+
+            pw.close();
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+        }
+    }
+
+    public void notificacao_confirmada(HashMap<String, String> map){
+        map.put("categoria" , "notificacoes");
+        ArrayList<HashMap<String, String>> lista = le_ficheiro_notificacoes(map);
+        String username = (String)map.get("username");
+
+        System.out.println("teste2");
+        for(int i=0; i<lista.size(); i++)
+            System.out.println(lista.get(i).get("username"));
 
 
+        for(int i=0; i<lista.size(); i++){
+            if(username.compareTo((String)lista.get(i).get("username"))==0)
+                lista.remove(i);
+        }
+
+        System.out.println("teste2");
+        for(int i=0; i<lista.size(); i++)
+            System.out.println(lista.get(i).get("username"));
+
+        escreve_ficheiro(lista, "notificacoes");
+    }
+
+    //método que verifica se o utilizador que realizou login possui notificações
+    public String get_notificacoes(HashMap<String, String> map){
+        ArrayList<HashMap<String, String>> lista = le_ficheiro_notificacoes(map);
+        String msg="";
+
+        for(int i=0; i<lista.size(); i++){
+            if(((String)lista.get(i).get("username")).compareTo((String)map.get("username"))==0) {
+                msg = "entrou";
+                notificacao_confirmada(map);
+            }
+        }
+
+        return msg;
     }
 
     //método que retorna num ArrayList a informação lida do ficheiro
@@ -479,10 +552,35 @@ public class MulticastServer extends Thread {
 
         if(((String)map.get("type")).compareTo("login")==0 || ((String) map.get("type")).compareTo("utilizadores")==0 || ((String) map.get("type")).compareTo("promover")==0)
             categoria = "Registos";
+
         else
             categoria = (String)map.get("categoria");
         try{
             File f = new File(categoria + ".txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine())!=null){
+                HashMap<String, String> aux = string_to_hash(s);
+                lista.add(aux);
+            }
+
+            br.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+        }
+
+        return lista;
+    }
+
+    //método que lê ficheiro de notificações
+    public ArrayList<HashMap<String, String>> le_ficheiro_notificacoes(HashMap map){
+        String s;
+        ArrayList<HashMap<String, String>> lista = new ArrayList<>();
+
+        try{
+            File f = new File("notificacoes.txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
 
@@ -522,7 +620,7 @@ public class MulticastServer extends Thread {
                 else if(categoria.compareTo("Registos")==0)
                     pw.println("username|" + lista.get(i).get("username") + ";password|" + lista.get(i).get("password") + ";privilegio|" + lista.get(i).get("privilegio"));
                 else if(categoria.compareTo("notificacoes")==0) {
-                    //escrever notificação num ficheiro
+                    pw.println("type|notificacao;username|" + lista.get(i).get("username") + ";msg|" + lista.get(i).get("msg"));
                 }
             }
 

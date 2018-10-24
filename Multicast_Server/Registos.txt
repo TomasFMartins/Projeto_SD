@@ -1,8 +1,27 @@
 username|tomas;password|123qwe;privilegio|editor
 username|damiao;password|12345;privilegio|editor
-username|Andre;password|123qwe;privilegio|leitor
-username|martim;password|martins;privilegio|leitor
-username|angela;password|mike;privilegio|leitor
-username|Truta;password|123qwe;privilegio|leitor
-username|rien;password|paneleiro;privilegio|leitor
-username|alex;password|jet7;privilegio|leitor
+username|Andre;password|123qwe;privilegio|editor
+username|martim;password|martins;privilegio|editor
+username|angela;password|mike;privilegio|editor
+username|Truta;password|123qwe;privilegio|editor
+username|rien;password|paneleiro;privilegio|editor
+username|alex;password|jet7;privilegio|editor
+username|dami1;password|123qwe;privilegio|editor
+username|tomas1;password|qwe123;privilegio|editor
+username|testeFDP;password|123qwe;privilegio|editor
+username|Teste1;password|123qwe;privilegio|editor
+username|testeteste1;password|123qwe;privilegio|editor
+username|dd1;password|123;privilegio|editor
+username|dd2;password|123;privilegio|editor
+username|dd3;password|123;privilegio|editor
+username|111;password|123;privilegio|editor
+username|123;password|123;privilegio|editor
+username|macaco1;password|123123;privilegio|editor
+username|gorila;password|123123;privilegio|editor
+username|chimpaze;password|123123;privilegio|editor
+username|macaquinho;password|123123;privilegio|editor
+username|Dois Macacos;password|123qwe;privilegio|editor
+username|KillTT;password|123qwe;privilegio|editor
+username|TomMachin;password|123qwe;privilegio|editor
+username|E AGORA;password|123qwe;privilegio|editor
+username|NOOB;password|123qwe;privilegio|editor
