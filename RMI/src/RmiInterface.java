@@ -1,3 +1,4 @@
+import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -17,4 +18,7 @@ public interface RmiInterface extends Remote {
     public String promover(String change, String username) throws RemoteException;
     public String Notificacoes(String username) throws RemoteException;
     public void killThread(String username) throws RemoteException;
+    public String tcp(File file, String action, String username, int index, String nome, String artista) throws RemoteException;
+    public String pedirBiblioteca(String username) throws RemoteException;
+    public String permissao(String user, String username, String musica, String artista) throws RemoteException;
 }
