@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf4f1f46-b24f-46ef-b245-0797bd1fd31d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastUser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RmiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,17 +59,18 @@
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6799" />
+          <entry key="java" value="6819" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6799" />
+          <entry key="JAVA" value="6819" />
         </counts>
       </usages-collector>
     </session>
@@ -106,55 +107,71 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            <state relative-caret-position="187">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#RmiServer#0;class#RmiServer#0" />
-                <element signature="method#verificaLogin#0;class#RmiServer#0" />
-                <element signature="method#verificaSignUp#0;class#RmiServer#0" />
-                <element signature="method#inserirMusica#0;class#RmiServer#0" />
-                <element signature="method#inserirArtista#0;class#RmiServer#0" />
-                <element signature="method#inserirAlbum#0;class#RmiServer#0" />
-                <element signature="method#listar#0;class#RmiServer#0" />
-                <element signature="method#alterar#0;class#RmiServer#0" />
-                <element signature="method#remover#0;class#RmiServer#0" />
-                <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
-                <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
-                <element signature="method#enviarCritica#0;class#RmiServer#0" />
-                <element signature="method#pedirUtilizadores#0;class#RmiServer#0" />
-                <element signature="method#promover#0;class#RmiServer#0" />
-                <element signature="method#Notificacoes#0;class#RmiServer#0" />
-                <element signature="method#killThread#0;class#RmiServer#0" />
-                <element signature="method#tcp#0;class#RmiServer#0" />
-                <element signature="method#pedirBiblioteca#0;class#RmiServer#0" />
-                <element signature="method#permissao#0;class#RmiServer#0" />
-                <element signature="method#main#0;class#RmiServer#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="897">
+              <caret line="593" column="4" selection-start-line="593" selection-start-column="4" selection-end-line="593" selection-end-column="4" />
+              <folding>
+                <element signature="docComment;class#RmiServer#0" />
+                <element signature="docComment;field#serialVersionUID#0;class#RmiServer#0" />
+                <element signature="docComment;method#RmiServer#0;class#RmiServer#0" />
+                <element signature="method#RmiServer#0;class#RmiServer#0" />
+                <element signature="docComment;method#verificaLogin#0;class#RmiServer#0" />
+                <element signature="method#verificaLogin#0;class#RmiServer#0" />
+                <element signature="docComment;method#verificaSignUp#0;class#RmiServer#0" />
+                <element signature="method#verificaSignUp#0;class#RmiServer#0" />
+                <element signature="docComment;method#inserirMusica#0;class#RmiServer#0" />
+                <element signature="method#inserirMusica#0;class#RmiServer#0" />
+                <element signature="docComment;method#inserirArtista#0;class#RmiServer#0" />
+                <element signature="method#inserirArtista#0;class#RmiServer#0" />
+                <element signature="docComment;method#inserirAlbum#0;class#RmiServer#0" />
+                <element signature="method#inserirAlbum#0;class#RmiServer#0" />
+                <element signature="docComment;method#listar#0;class#RmiServer#0" />
+                <element signature="method#listar#0;class#RmiServer#0" />
+                <element signature="docComment;method#alterar#0;class#RmiServer#0" />
+                <element signature="method#alterar#0;class#RmiServer#0" />
+                <element signature="docComment;method#remover#0;class#RmiServer#0" />
+                <element signature="method#remover#0;class#RmiServer#0" />
+                <element signature="docComment;method#pedir_pesquisa#0;class#RmiServer#0" />
+                <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
+                <element signature="docComment;method#pedir_detalhes#0;class#RmiServer#0" />
+                <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
+                <element signature="docComment;method#enviarCritica#0;class#RmiServer#0" />
+                <element signature="method#enviarCritica#0;class#RmiServer#0" />
+                <element signature="docComment;method#pedirUtilizadores#0;class#RmiServer#0" />
+                <element signature="docComment;method#promover#0;class#RmiServer#0" />
+                <element signature="docComment;method#Notificacoes#0;class#RmiServer#0" />
+                <element signature="method#Notificacoes#0;class#RmiServer#0" />
+                <element signature="docComment;method#killThread#0;class#RmiServer#0" />
+                <element signature="method#killThread#0;class#RmiServer#0" />
+                <element signature="docComment;method#tcp#0;class#RmiServer#0" />
+                <element signature="method#tcp#0;class#RmiServer#0" />
+                <element signature="docComment;method#pedirBiblioteca#0;class#RmiServer#0" />
+                <element signature="method#pedirBiblioteca#0;class#RmiServer#0" />
+                <element signature="docComment;method#permissao#0;class#RmiServer#0" />
+                <element signature="method#permissao#0;class#RmiServer#0" />
+                <element signature="docComment;method#main#0;class#RmiServer#0" />
+                <element signature="method#main#0;class#RmiServer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2650">
+              <caret line="832" column="126" selection-start-line="832" selection-start-column="126" selection-end-line="832" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -185,8 +202,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/MulticastServer.java" />
         <option value="$PROJECT_DIR$/src/RmiInterface.java" />
-        <option value="$PROJECT_DIR$/src/RmiClient.java" />
         <option value="$PROJECT_DIR$/src/RmiServer.java" />
+        <option value="$PROJECT_DIR$/src/RmiClient.java" />
       </list>
     </option>
   </component>
@@ -205,7 +222,7 @@
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540523032270" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Multicast_Server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -262,7 +279,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.34379905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -296,40 +314,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/RmiServer.java</url>
-          <line>94</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/RmiServer.java</url>
-          <line>249</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java" />
     <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="187">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -338,31 +328,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="897">
+          <caret line="593" column="4" selection-start-line="593" selection-start-column="4" selection-end-line="593" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#RmiServer#0" />
+            <element signature="docComment;field#serialVersionUID#0;class#RmiServer#0" />
+            <element signature="docComment;method#RmiServer#0;class#RmiServer#0" />
             <element signature="method#RmiServer#0;class#RmiServer#0" />
+            <element signature="docComment;method#verificaLogin#0;class#RmiServer#0" />
             <element signature="method#verificaLogin#0;class#RmiServer#0" />
+            <element signature="docComment;method#verificaSignUp#0;class#RmiServer#0" />
             <element signature="method#verificaSignUp#0;class#RmiServer#0" />
+            <element signature="docComment;method#inserirMusica#0;class#RmiServer#0" />
             <element signature="method#inserirMusica#0;class#RmiServer#0" />
+            <element signature="docComment;method#inserirArtista#0;class#RmiServer#0" />
             <element signature="method#inserirArtista#0;class#RmiServer#0" />
+            <element signature="docComment;method#inserirAlbum#0;class#RmiServer#0" />
             <element signature="method#inserirAlbum#0;class#RmiServer#0" />
+            <element signature="docComment;method#listar#0;class#RmiServer#0" />
             <element signature="method#listar#0;class#RmiServer#0" />
+            <element signature="docComment;method#alterar#0;class#RmiServer#0" />
             <element signature="method#alterar#0;class#RmiServer#0" />
+            <element signature="docComment;method#remover#0;class#RmiServer#0" />
             <element signature="method#remover#0;class#RmiServer#0" />
+            <element signature="docComment;method#pedir_pesquisa#0;class#RmiServer#0" />
             <element signature="method#pedir_pesquisa#0;class#RmiServer#0" />
+            <element signature="docComment;method#pedir_detalhes#0;class#RmiServer#0" />
             <element signature="method#pedir_detalhes#0;class#RmiServer#0" />
+            <element signature="docComment;method#enviarCritica#0;class#RmiServer#0" />
             <element signature="method#enviarCritica#0;class#RmiServer#0" />
-            <element signature="method#pedirUtilizadores#0;class#RmiServer#0" />
-            <element signature="method#promover#0;class#RmiServer#0" />
+            <element signature="docComment;method#pedirUtilizadores#0;class#RmiServer#0" />
+            <element signature="docComment;method#promover#0;class#RmiServer#0" />
+            <element signature="docComment;method#Notificacoes#0;class#RmiServer#0" />
             <element signature="method#Notificacoes#0;class#RmiServer#0" />
+            <element signature="docComment;method#killThread#0;class#RmiServer#0" />
             <element signature="method#killThread#0;class#RmiServer#0" />
+            <element signature="docComment;method#tcp#0;class#RmiServer#0" />
             <element signature="method#tcp#0;class#RmiServer#0" />
+            <element signature="docComment;method#pedirBiblioteca#0;class#RmiServer#0" />
             <element signature="method#pedirBiblioteca#0;class#RmiServer#0" />
+            <element signature="docComment;method#permissao#0;class#RmiServer#0" />
             <element signature="method#permissao#0;class#RmiServer#0" />
+            <element signature="docComment;method#main#0;class#RmiServer#0" />
             <element signature="method#main#0;class#RmiServer#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2650">
+          <caret line="832" column="126" selection-start-line="832" selection-start-column="126" selection-end-line="832" selection-end-column="126" />
         </state>
       </provider>
     </entry>

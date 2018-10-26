@@ -825,12 +825,12 @@ public class RmiClient {
                                 System.out.print("Escolha: ");
                                 escolha = string.nextLine();
                                 try {
-                                    if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= lista.split("/").length) {
-                                        String resposta = rmiInterface.promover(lista.split("/")[Integer.parseInt(escolha) - 1], name);
+                                    if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= Integer.parseInt(lista.split(";")[1].substring(7))) {
+                                        String resposta = rmiInterface.promover(lista.split(";")[2].substring(6).split("/")[Integer.parseInt(escolha)-1], name);
                                         System.out.println(resposta);
                                         verifica = 1;
                                         escolha = "0";
-                                    } else if (Integer.parseInt(escolha) == lista.split("/").length + 1) {
+                                    } else if (Integer.parseInt(escolha) == Integer.parseInt(lista.split(";")[1].substring(7)) + 1) {
                                         verifica = 1;
                                     } else {
                                         System.out.println("Escolha nao valida");
