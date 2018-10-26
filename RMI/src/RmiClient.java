@@ -5,20 +5,41 @@ import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.Scanner;
 
+/**
+ * É o RMI Client.
+ *
+ * @author Damião Santos
+ *
+ */
 public class RmiClient {
 
+    /**
+     * @param name É o nome do Utilizador que estará logged.
+     * @param privilegio É o tipo do Utilizador (Editor ou Leitor).
+     *
+     */
     static String name;
     static String privilegio;
 
+    /**
+     * É uma thread que está à espera de Notificações.
+     */
     public static class Notificacoes extends Thread{
         private RmiInterface face;
         boolean running;
 
+        /**
+         * Construtor da thread.
+         * @param faceT É o registo a que está ligado ao Rmi Server.
+         */
         Notificacoes(RmiInterface faceT){
             face = faceT;
             running = true;
         }
 
+        /**
+         * A funcao que corre para estar à escuta de notificações.
+         */
         public void run(){
             try {
                 while (running) {
@@ -37,6 +58,10 @@ public class RmiClient {
         }
     }
 
+    /**
+     * É o menu do Rmi Client após ter  dado login.
+     * @param rmiInterface É o registo a que está ligado ao Rmi Server.
+     */
     static void menu(RmiInterface rmiInterface){
         int rmiControlo = 0;
         while(true) {
@@ -946,6 +971,10 @@ public class RmiClient {
         }
     }
 
+    /**
+     * A função que inicia o Rmi Client apresentando o menu inicial antes do login.
+     * @param args Sem valor.
+     */
     public static void main(String args[]){
         int rmiControlo = 0;
         while(rmiControlo == 0) {

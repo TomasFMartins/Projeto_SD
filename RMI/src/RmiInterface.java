@@ -2,6 +2,11 @@ import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+/**
+ * É o Rmi Interface.
+ *
+ * @author Damião Santos
+ */
 public interface RmiInterface extends Remote {
     public String verificaLogin(String username, String password) throws RemoteException;
     public String verificaSignUp(String username, String password) throws RemoteException;

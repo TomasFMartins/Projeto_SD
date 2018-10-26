@@ -9,17 +9,38 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.*;
 
+/**
+ * É o Rmi Server.
+ *
+ * @author Damião Santos
+ */
 public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
 
+    /**
+     * @param IP_SERVER É o ip para o multicast.
+     * @param IP_PORT É o port para o multicast.
+     * @param PORTTCP É o port para a ligação TCP.
+     */
     private static final long serialVersionUID = 1L;
     private String IP_SERVER = "224.3.2.1";
     private int PORT = 4321;
     private int PORTTCP = 1904;
 
+    /**
+     * Construtor do Rmi Server.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public RmiServer() throws  RemoteException{
         super();
     }
 
+    /**
+     * Serve para realizar a verificação do Login de um utilizador comunicando com o Multicast.
+     * @param username Nome do utilizador
+     * @param password Password do utilizador
+     * @return Retorna se foi válido ou não o Login.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String verificaLogin(String username, String password) throws RemoteException{
         int contador = 0;
         for(int i = 0; i<username.length(); i++){
@@ -63,6 +84,13 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para realizar o Sign Up de um utilizador comunicando com o Multicast.
+     * @param username Nome do utilizador
+     * @param password Password do utilizador
+     * @return Retorna se foi válido ou não o Sign Up.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String verificaSignUp(String username, String password) throws RemoteException{
         System.out.println("Entrou");
         if(username.length()<3 || username.length()>16){
@@ -109,6 +137,16 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para um editor inserir uma nova música.
+     * @param nome Nome da música
+     * @param artista Nome do artista
+     * @param album Nome do album
+     * @param duracao Duração da música
+     * @param username Nome do utilizador que está a fazer o pedido
+     * @return Retorna se foi efetuado com sucesso.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String inserirMusica(String nome, String artista, String album, String duracao, String username) throws RemoteException{
         int contador = 0;
         for(int i = 0; i<nome.length(); i++){
@@ -156,6 +194,14 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para um editor inserir um novo artista.
+     * @param artista Nome do artista
+     * @param album Nome dos albuns
+     * @param username Nome do utilizador que está a fazer o pedido
+     * @return Retorna se foi efetuado com sucesso.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String inserirArtista(String artista, String album, String username) throws RemoteException{
         int contador = 0;
         for(int i = 0; i<artista.length(); i++){
@@ -191,6 +237,15 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para um editor inserir um novo album.
+     * @param album Nome do album
+     * @param artista Nome do artista
+     * @param musicas Nome das músicas
+     * @param username Nome do utilizador que está a fazer o pedido
+     * @return Retorna se foi efetuado com sucesso.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String inserirAlbum(String album, String artista, String musicas, String username) throws RemoteException{
         int contador = 0;
         for(int i = 0; i<artista.length(); i++){
@@ -230,6 +285,13 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para pedir a listagem de uma determinada categoria.
+     * @param categoria Pode ser música, artista ou album
+     * @param username Nome do utilizador que está a fazer o pedido
+     * @return Retorna a lista.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String listar(String categoria, String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -255,6 +317,16 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para um editor alterar um item de uma determinada categoria.
+     * @param categoria Pode ser música, artista ou album.
+     * @param index A posição na lista do item que quere alterar.
+     * @param campo O campo que deseja mudar.
+     * @param novo O novo nome para o campo.
+     * @param username Nome do utilizador que está a fazer o pedido.
+     * @return Retorna se foi efetuado com sucesso.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String alterar(String categoria, String index, String campo, String novo, String username) throws RemoteException{
         int contador = 0;
         if(categoria.compareTo("musica") == 0) {
@@ -292,6 +364,14 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para um editor remover um item de uma determinada categoria.
+     * @param categoria Pode ser música, artista, ou album.
+     * @param index A posição na lista do item que quere remover.
+     * @param username Nome do utilizador que está  a fazer o pedido.
+     * @return Retorna se foi efetuado com sucesso.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String remover(String categoria, String index, String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -317,6 +397,14 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para pesquisar um item de uma determinada categoria.
+     * @param nome Nome do item
+     * @param categoria Pode ser música, artista ou album.
+     * @param username Nome do utilizador que está a fazer o pedido.
+     * @return Retorna a lista dos items correspondidos.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String pedir_pesquisa(String nome, String categoria, String username) throws RemoteException{
         int contador = 0;
         for (int i = 0; i < nome.length(); i++) {
@@ -357,6 +445,15 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para pedir os detalhes de um item de uma determinada categoira.
+     * @param nome Nome do item
+     * @param nome2 Caso seja musica ou album é preciso o nome do artista.
+     * @param username Nome do utilizador que está a fazer o pedido.
+     * @param categoria Pode ser música, artista ou album.
+     * @return Retorna os detalhes do item.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String pedir_detalhes(String nome, String nome2, String username, String categoria) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -385,6 +482,16 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para escrever uma crítica num album.
+     * @param nome Nome do album
+     * @param artista Nome do artista
+     * @param critica A critica
+     * @param nota Nota ao album
+     * @param username Nome do utilizador que está a fazer a critica.
+     * @return Retorna se foi com sucesso ou não.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String enviarCritica(String nome, String artista, String critica, String nota, String username) throws RemoteException{
         int contador = 0;
         for (int i = 0; i < critica.length(); i++) {
@@ -421,6 +528,12 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para pedir a lista de utilizadores que sao leitores para promover.
+     * @param username Nome do utilizador que está a fazer o pedido.
+     * @return Retorna a lista dos utilizadores.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String pedirUtilizadores(String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -446,6 +559,13 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para promover um leitor.
+     * @param change O nome do utilizador para promover.
+     * @param username O nome do utilizador que está a realizar o pedido.
+     * @return Retorna se foi com sucesso ou não.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String promover(String change, String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -471,6 +591,12 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para o utilizador estar á espera de notificações.
+     * @param username O nome do utilizador que está à espera.
+     * @return Retorna a notificação.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String Notificacoes(String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -504,6 +630,11 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para terminar a thread que está à espera de notificações.
+     * @param username O nome do utilizador que está à espera.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public void killThread(String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -520,6 +651,17 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para estabelecer a ligação TCP para o upload/download de músicas
+     * @param file Música a enviar se for upload.
+     * @param action Se é upload ou download
+     * @param username Nome do utilizador que quere realizar a tarefa.
+     * @param index A música que deseja dar upload.
+     * @param nome O nome da música que deseja dar download.
+     * @param artista O nome do artista da música que deseja dar download.
+     * @return Retorna se foi com sucesso ou não.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String tcp(File file, String action, String username, int index, String nome, String artista) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -588,6 +730,12 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para pedir a biblioteca do utilizador.
+     * @param username Nome do utilizador que está a fazer o pedido.
+     * @return Retorna a biblioteca.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String pedirBiblioteca(String username) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -613,6 +761,15 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * Serve para dar permissão a um determinado utilizador para que possa utilizar uma música da sua biblioteca.
+     * @param user O nome do utilizador a quem deseja dar permissão.
+     * @param username O nome do utilizador que está a dar a permissão.
+     * @param musica A música que quere dar permissão.
+     * @param artista O artista da música que quere dar permissão.
+     * @return Retorna se foi com sucesso ou não.
+     * @throws RemoteException Devido a ser Remota a ligação.
+     */
     public String permissao(String user, String username, String musica, String artista) throws RemoteException{
         try {
             MulticastSocket socket = new MulticastSocket(PORT);
@@ -638,6 +795,10 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
         }
     }
 
+    /**
+     * A main que inicializa o RMI Server e põe o Remoto.
+     * @param args
+     */
     public static void main(String args[]) {
         int controlo = 0;
         while (controlo == 0){
