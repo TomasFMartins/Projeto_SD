@@ -4,10 +4,16 @@
     <list default="true" id="bd1e858a-f6fa-4c31-bd03-a1ae9beb87ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Protocolo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Protocolo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Registos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/album.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/artista.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/musica.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notificacoes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MulticastServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulticastServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient$Notificacoes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient$Notificacoes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" afterDir="false" />
@@ -60,25 +66,29 @@
     <session id="-73676224">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.37" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.open.time.59" value="1" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12214" />
+          <entry key="java" value="24131" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12214" />
+          <entry key="JAVA" value="24131" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -99,24 +109,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="475" column="16" selection-start-line="475" selection-start-column="16" selection-end-line="475" selection-end-column="16" />
+            <state relative-caret-position="333">
+              <caret line="609" column="69" selection-start-line="609" selection-start-column="69" selection-end-line="609" selection-end-column="69" />
               <folding>
-                <element signature="method#main#0;class#MulticastServer#0" />
-                <element signature="method#run#0;class#MulticastServer#0" />
                 <element signature="method#string_to_hash#0;class#MulticastServer#0" />
-                <element signature="method#login#0;class#MulticastServer#0" />
                 <element signature="method#registo#0;class#MulticastServer#0" />
                 <element signature="method#verifica_dados#0;class#MulticastServer#0" />
                 <element signature="method#inserir_info#0;class#MulticastServer#0" />
                 <element signature="method#verifica_info#0;class#MulticastServer#0" />
                 <element signature="method#preenche_lista#0;class#MulticastServer#0" />
                 <element signature="method#apresenta_info#0;class#MulticastServer#0" />
-                <element signature="method#alterar_info#0;class#MulticastServer#0" />
                 <element signature="method#remover_info#0;class#MulticastServer#0" />
                 <element signature="method#consulta_info#0;class#MulticastServer#0" />
                 <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
                 <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
+                <element signature="method#promover_user#0;class#MulticastServer#0" />
                 <element signature="method#gera_notificacao#0;class#MulticastServer#0" />
                 <element signature="method#regista_notificao#0;class#MulticastServer#0" />
                 <element signature="method#get_notificacoes#0;class#MulticastServer#0" />
@@ -124,6 +131,13 @@
                 <element signature="method#le_ficheiro_notificacoes#0;class#MulticastServer#0" />
                 <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
                 <element signature="method#get_privilegio#0;class#MulticastServer#0" />
+                <element signature="method#verificacao_upload#0;class#MulticastServer#0" />
+                <element signature="method#enviar_playlist#0;class#MulticastServer#0" />
+                <element signature="method#partilha_musica#0;class#MulticastServer#0" />
+                <element signature="method#verificacao_download#0;class#MulticastServer#0" />
+                <element signature="method#verifica_editores#0;class#MulticastServer#0" />
+                <element signature="class#TCPThread#0" />
+                <element signature="method#string_to_hash#0;class#TCPThread#0" />
               </folding>
             </state>
           </provider>
@@ -132,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+            <state relative-caret-position="132">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="23" />
               <folding>
                 <element signature="e#2042#2043#0" expanded="true" />
                 <element signature="e#2104#2105#0" expanded="true" />
@@ -150,6 +164,10 @@
       <find>System.out</find>
       <find>notificacao_confirmada</find>
       <find>return &quot;&quot;</find>
+      <find>get_notificacoes</find>
+      <find>alerta_editor</find>
+      <find>regista_notificao</find>
+      <find>gera_notificacao</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,10 +181,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="979" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -174,6 +193,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,12 +217,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540264333793" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540453946531" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RMI" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -264,9 +283,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="830" extended-state="1" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.026352288" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.012751678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -276,7 +296,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.2625538" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.26241136" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -284,7 +304,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50067115" side_tool="true" weight="0.21560283" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32711622" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3248227" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -343,8 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+        <state relative-caret-position="132">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="23" />
           <folding>
             <element signature="e#2042#2043#0" expanded="true" />
             <element signature="e#2104#2105#0" expanded="true" />
@@ -354,24 +374,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="475" column="16" selection-start-line="475" selection-start-column="16" selection-end-line="475" selection-end-column="16" />
+        <state relative-caret-position="333">
+          <caret line="609" column="69" selection-start-line="609" selection-start-column="69" selection-end-line="609" selection-end-column="69" />
           <folding>
-            <element signature="method#main#0;class#MulticastServer#0" />
-            <element signature="method#run#0;class#MulticastServer#0" />
             <element signature="method#string_to_hash#0;class#MulticastServer#0" />
-            <element signature="method#login#0;class#MulticastServer#0" />
             <element signature="method#registo#0;class#MulticastServer#0" />
             <element signature="method#verifica_dados#0;class#MulticastServer#0" />
             <element signature="method#inserir_info#0;class#MulticastServer#0" />
             <element signature="method#verifica_info#0;class#MulticastServer#0" />
             <element signature="method#preenche_lista#0;class#MulticastServer#0" />
             <element signature="method#apresenta_info#0;class#MulticastServer#0" />
-            <element signature="method#alterar_info#0;class#MulticastServer#0" />
             <element signature="method#remover_info#0;class#MulticastServer#0" />
             <element signature="method#consulta_info#0;class#MulticastServer#0" />
             <element signature="method#adiciona_critica#0;class#MulticastServer#0" />
             <element signature="method#lista_utilizadores#0;class#MulticastServer#0" />
+            <element signature="method#promover_user#0;class#MulticastServer#0" />
             <element signature="method#gera_notificacao#0;class#MulticastServer#0" />
             <element signature="method#regista_notificao#0;class#MulticastServer#0" />
             <element signature="method#get_notificacoes#0;class#MulticastServer#0" />
@@ -379,6 +396,13 @@
             <element signature="method#le_ficheiro_notificacoes#0;class#MulticastServer#0" />
             <element signature="method#escreve_ficheiro#0;class#MulticastServer#0" />
             <element signature="method#get_privilegio#0;class#MulticastServer#0" />
+            <element signature="method#verificacao_upload#0;class#MulticastServer#0" />
+            <element signature="method#enviar_playlist#0;class#MulticastServer#0" />
+            <element signature="method#partilha_musica#0;class#MulticastServer#0" />
+            <element signature="method#verificacao_download#0;class#MulticastServer#0" />
+            <element signature="method#verifica_editores#0;class#MulticastServer#0" />
+            <element signature="class#TCPThread#0" />
+            <element signature="method#string_to_hash#0;class#TCPThread#0" />
           </folding>
         </state>
       </provider>

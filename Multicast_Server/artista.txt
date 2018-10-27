@@ -1,4 +1,0 @@
-nome|Kura;albuns|a/b/c
-nome|Snake;albuns|f/e/d
-nome|DamiaoDJ;albuns|Troca Tintas/Mix tap/Drop 
-nome|DJ Tuga;albuns|sd

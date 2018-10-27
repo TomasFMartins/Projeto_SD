@@ -1,7 +1,0 @@
-nome|Gods Plan;artista|Drake;album|Pssus;duracao|03:10
-nome|Kiki;artista|Drake;album|Pssus;duracao|03:45
-nome|Kiki;artista|Teste1;album|....;duracao|xx:yy
-nome|Kiki;artista|Teste2;album|....;duracao|xx:yy
-nome|Kiki;artista|Teste3;album|....;duracao|xx:yy
-nome|NewMusic;artista|Teste4;album|....;duracao|xx:yy
-nome|Animals;artista|Garrix;album|Animals;duracao|3:21

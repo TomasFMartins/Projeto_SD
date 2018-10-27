@@ -2,6 +2,14 @@
 cliente -> type|login;username|...;password|....;
 cliente -> type|registo;username|...;password|...;
 
+-> servidor responde (login)
+type|status;logged|on;msg|Bem-vindo!(\nFoi promovido a editor...);username|...;privilegio|...
+type|status;logged|off;username|....;msg|Erro!Password incorreta(Utilizador não existe)
+
+-> servidor responde (registo)
+type|confirmacao;resposta|nao;username|...;msg|Erro!O username inserido já existe.
+type|confirmacao;resposta|sim;username|...;msg|Registo efetuado com sucesso!
+
 -------------------------//----------------------------
 
 //Inserir informação
@@ -64,3 +72,24 @@ type|notificacao;username|...;username2|...;msg|Foi promovido a editor!;
 cliente -> type|noticonfirma;username|...   (resposta de qualquer notificacao)
 
 -------------------------//-----------------------
+
+//Download/Upload
+cliente -> type|pedirIP;acao|upload;index|x;username|...
+cliente -> type|pedirIP;acao|download;index|x;username|....
+
+-> servidor responde
+type|confIP;IP|....;username|...;
+
+-------------------------//-----------------------
+
+Partilha de PlayList 
+
+cliente -> type|playlist;username|...
+
+-> servidor responde 
+type|listplay;length|x;items|musica/artista/musica2/artista2....;username|...;
+
+cliente -> type|autorizacao;musica|...;artista|...;utilizador|...;username|...
+
+-> servidor responde
+type|auto_res;username|...;msg|"Erro!Utilizador não existe" ou "Operacação efetuada com sucesso!"
