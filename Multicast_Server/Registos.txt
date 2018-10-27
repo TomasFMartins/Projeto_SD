@@ -1,0 +1,1 @@
+username|tomas;password|123qwe;privilegio|editor

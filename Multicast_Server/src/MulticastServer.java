@@ -5,6 +5,9 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author Tomás Martins
+ */
 public class MulticastServer extends Thread {
     private String MULTICAST_ADDRESS = "224.3.2.1";
     private int PORT = 4321;
@@ -20,6 +23,9 @@ public class MulticastServer extends Thread {
         super("Server " + (long) (Math.random() * 1000));
     }
 
+    /**
+     * Função "mãe" do servidor multicast. Recebe os pedidos, faz o tratamento de dados e envia os resultados.
+     */
     public void run() {
         MulticastSocket socket = null;
 
@@ -63,7 +69,12 @@ public class MulticastServer extends Thread {
         }
     }
 
-    //método que converte string em HashMap
+
+    /**
+     * Método que converte string em HashMap
+     * @param string mensagem enviada pelo cliente
+     * @return retorna a mensagem recebi em formato HashMap
+     */
     public HashMap string_to_hash(String string){
 
         HashMap<String, String> map = new HashMap<>();
@@ -99,7 +110,13 @@ public class MulticastServer extends Thread {
         return map;
     }
 
-    //método que filtra as operações a realizar
+
+
+    /**
+     * Método que filtra as operações a realizar
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorma mensagem consoante o pedido do utilizador
+     */
     public String executa_info(HashMap map){
         ArrayList<HashMap<String, String>> lista = new ArrayList<>();
         String mensagem = "";
@@ -184,7 +201,12 @@ public class MulticastServer extends Thread {
         return mensagem;
     }
 
-    //método que realiza login de um utilizador
+
+    /**
+     * Método que realiza login de um utilizador
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna verificação de Login (se foi efetuado com sucesso ou não)
+     */
     public String login(HashMap map){
         String string = "";
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
@@ -205,7 +227,12 @@ public class MulticastServer extends Thread {
             return "type|status;logged|off;username|" + map.get("username") + ";msg|Erro! Utilizador não existe";
     }
 
-    //método que realiza registo de um utilizador
+
+    /**
+     * Método que realiza registo de um utilizador
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retornar verificação de Registo (se foi efetuado com sucesso ou não)
+     */
     public String registo(HashMap map){
         String mensagem;
         try{
@@ -234,7 +261,13 @@ public class MulticastServer extends Thread {
 
     }
 
-    //método que verifica se o nome de utilziador existe e a password coicide
+
+    /**
+     * Método que verifica se o nome de utilizador existe a se a password coicide
+     * @param map HashMap com a informação que têm de ser executada
+     * @param lista Lista com a informação dos utilizadores registados no sistema
+     * @return
+     */
     public int verifica_dados(HashMap map, ArrayList<HashMap<String, String>> lista){
 
         String user = (String) map.get("username");
@@ -252,7 +285,12 @@ public class MulticastServer extends Thread {
         return 0;
     }
 
-    //método que insere informação num determinado campo
+
+    /**
+     * Método que insere informação num determinado campo
+     * @param map HashMap com a informação que têm de ser executada
+     * @return  Retorna mensagem de confirmação
+     */
     public String inserir_info(HashMap map){
 
         // verificações -> musica e artista // album e artista
@@ -284,7 +322,12 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Informação inserida com sucesso";
     }
 
-    //método que verifica se a informação já foi inserida
+
+    /**
+     * Método que verifica se a informação já foi inserida
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna 0 se a informação já existe, retorna 1 caso contrário
+     */
     public int verifica_info(HashMap map){
 
         String categoria = (String)map.get("categoria");
@@ -304,7 +347,12 @@ public class MulticastServer extends Thread {
         return 1;
     }
 
-    //método que cria uma lista com os dados da pesquisa do cliente
+
+    /**
+     * Método que cria uma lista com os dadeos de pesquisa do cliente
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna um ArrayList com a informação pretendida
+     */
     public ArrayList<HashMap<String, String>> preenche_lista(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         ArrayList<HashMap<String, String>> aux_lista = new ArrayList<>();
@@ -318,7 +366,13 @@ public class MulticastServer extends Thread {
         return aux_lista;
     }
 
-    //método que devolve ao cliente a informação que deseja visualizar
+
+    /**
+     * Método que devolve ao cliente a informação que deseja visualizar
+     * @param map HashMap com a informação que têm de ser executada
+     * @param lista Lista com a informação que têm de ser filtrada
+     * @return Mensagem com a informação que é pedida
+     */
     public String apresenta_info(HashMap map, ArrayList<HashMap<String,String>> lista){
         StringBuilder string = new StringBuilder();
         String mensagem;
@@ -348,7 +402,12 @@ public class MulticastServer extends Thread {
         return mensagem;
     }
 
-    //método que altera informação de um determinado campo
+
+    /**
+     * Método que altera informação de um determinado campo
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna mensagem de confirmação
+     */
     public String alterar_info(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         int index = Integer.parseInt((String)map.get("index"));
@@ -368,7 +427,12 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Informação alterada com sucesso";
     }
 
-    //método que apaga uma determinada informação
+
+    /**
+     * Método que apaga uma determinada informação
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna mensagem de confirmação
+     */
     public String remover_info(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         int index = Integer.parseInt((String)map.get("index"));
@@ -380,7 +444,13 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Informação removida com sucesso!";
     }
 
-    //método que retorna a informação detalhada
+
+    /**
+     * Método que retorna a informação detalhada
+     * @param map HashMap com a informação que têm de ser executada
+     * @param lista Lista com a informação que têm de ser filtrada
+     * @return Mensagem com a informação de um determinado objeto
+     */
     public String consulta_info(HashMap map, ArrayList<HashMap<String, String>> lista){
 
         int index = -1;
@@ -437,7 +507,12 @@ public class MulticastServer extends Thread {
         return string.toString();
     }
 
-    //método para adicionar critica a um album
+
+    /**
+     * Método que adiciona a critica de um utilizador a um album
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Mensagem de confirmação
+     */
     public String adiciona_critica(HashMap map){
 
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
@@ -473,7 +548,13 @@ public class MulticastServer extends Thread {
         return "type|resposta;username|" + map.get("username") + ";msg|Critica adicionada com sucesso";
     }
 
-    //método que retorna uma determinada lista de utilizadores (lista de editores ou leitores)
+
+    /**
+     * Método que retorna uma determinada lista de utilizadores (lista de editores ou de leitores)
+     * @param map HashMap com a informação que têm de ser executada
+     * @param flag Flag caso seja pretendida uma lista de editores (flag = "editor") ou de leitores (flag = "leitor")
+     * @return Mensagem com a lista pretendida
+     */
     public String lista_utilizadores(HashMap map, String flag){
 
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
@@ -501,7 +582,12 @@ public class MulticastServer extends Thread {
         return string.toString();
     }
 
-    //método que promove um leitor a editor
+
+    /**
+     * Método que promove um leitor a editor
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Mensagem de confirmação
+     */
     public String promover_user(HashMap map){
 
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
@@ -519,7 +605,12 @@ public class MulticastServer extends Thread {
         return "";
     }
 
-    //método que gere notificações
+
+    /**
+     * Método que gera notificações
+     * @param map HashMap com a informação que têm de ser executada
+     * @param flag Flag que condiciona o tipo de notificação criada (flag = "promovido" -> notificação que um dado utilizador foi promovido ; flag = "editor" -> notifica editores que certa informação foi alterada)
+     */
     public void gera_notificacao(HashMap map, String flag){
         String utilizador = (String)map.get("username");
         String categoria = "notificacoes";
@@ -559,7 +650,12 @@ public class MulticastServer extends Thread {
             regista_notificao(new_map, categoria);
     }
 
-    //método que guarda as notificações num ficheiro
+
+    /**
+     * Método que guarda as notificações num ficheiro
+     * @param map HashMap com a informação que têm de ser executada
+     * @param categoria Flag para controlar o tipo de ficheiro onde se escreve as notificações
+     */
     public void regista_notificao(HashMap<String, String> map, String categoria){
 
         try{
@@ -575,7 +671,12 @@ public class MulticastServer extends Thread {
         }
     }
 
-    //método que confirma que a notificação chegou ao utilizador
+
+
+    /**
+     * Método que confirma que a notificação chegou ao utilizador
+     * @param map HashMap com a informação que têm de ser executada
+     */
     public void notificacao_confirmada(HashMap<String, String> map){
         map.put("categoria" , "notificacoes");
         ArrayList<HashMap<String, String>> lista = le_ficheiro_notificacoes(map);
@@ -616,7 +717,12 @@ public class MulticastServer extends Thread {
         escreve_ficheiro(lista, "notificacoes");
     }
 
-    //método que verifica se o utilizador que realizou login possui notificações
+
+    /**
+     * Método que verifica se o utilizador que realizou login possui notificações
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna notificações de um utilizador
+     */
     public String get_notificacoes(HashMap<String, String> map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro_notificacoes(map);
         StringBuilder msg = new StringBuilder();
@@ -638,7 +744,12 @@ public class MulticastServer extends Thread {
             return msg.toString();
     }
 
-    //método que retorna num ArrayList a informação lida do ficheiro
+
+    /**
+     * Método que retorna num ArrayList a informação lido de um ficheiro texto
+     * @param map HashMap com a informção que têm de ser executada
+     * @return Retorna ArrayList com a informação pretendida
+     */
     public ArrayList<HashMap<String, String>> le_ficheiro (HashMap map){
         ArrayList<HashMap<String, String>> lista = new ArrayList<>();
         String categoria;
@@ -667,7 +778,12 @@ public class MulticastServer extends Thread {
         return lista;
     }
 
-    //método que lê ficheiro de notificações
+
+    /**
+     * Método que lê ficheiro de notificações
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna ArrayList com as notificações que existem
+     */
     public ArrayList<HashMap<String, String>> le_ficheiro_notificacoes(HashMap map){
         String s;
         ArrayList<HashMap<String, String>> lista = new ArrayList<>();
@@ -691,7 +807,12 @@ public class MulticastServer extends Thread {
         return lista;
     }
 
-    //método que escreve informação num ficheiro
+
+    /**
+     * Método que escreve informação num determinado ficheiro texto
+     * @param lista Lista com o contéudo que se deseja inserir no ficheiro texto
+     * @param categoria Categoria do ficheiro texto
+     */
     public void escreve_ficheiro(ArrayList<HashMap<String, String>> lista, String categoria){
 
         try{
@@ -731,7 +852,12 @@ public class MulticastServer extends Thread {
         }
     }
 
-    //método que retorna o privilegio de um dado username
+
+    /**
+     * Método que retorna o privilegio de um dado username
+     * @param map HashMap com a informção que têm de ser executada
+     * @return Retorna o privilégio do username em causa
+     */
     public String get_privilegio(HashMap map){
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
         String utilizador = (String)map.get("username");
@@ -745,6 +871,10 @@ public class MulticastServer extends Thread {
         return privilegio;
     }
 
+    /**
+     *  Verifica se o é possível realizar o Upload
+     * @param map HashMap com a informação que têm de ser executada
+     */
     public void verificacao_upload(HashMap map){
 
         map.put("categoria", "dados");
@@ -785,6 +915,11 @@ public class MulticastServer extends Thread {
         escreve_ficheiro(lista, "dados");
     }
 
+    /**
+     *  Método que envia uma determinada PlayList
+     * @param map HashMap com a informação que têm de ser executada
+     * @return A PlayList desejada
+     */
     public String enviar_playlist(HashMap map){
         map.put("categoria", "dados");
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
@@ -821,6 +956,11 @@ public class MulticastServer extends Thread {
         return string.toString();
     }
 
+    /**
+     * Método que realiza a partilha de músicas com outros utilizadores
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna mensagem de confirmação
+     */
     public String partilha_musica(HashMap map){
         //verificar se utilizador existe
         ArrayList<HashMap<String, String>> lista_utilizadores = le_ficheiro(map);
@@ -863,6 +1003,11 @@ public class MulticastServer extends Thread {
         return "type|auto_res;username|" + map.get("username") + ";msg|Operação efetuada com sucesso";
     }
 
+    /**
+     * Método que verifica se é possível realizar o download em causa
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorna mensagem de confirmação
+     */
     public String verificacao_download(HashMap map){
         HashMap<String, String> aux = new HashMap<>();
         aux.put("type", "random");
@@ -903,6 +1048,11 @@ public class MulticastServer extends Thread {
             return "msg|Requisitos completos!";
     }
 
+    /**
+     * Método que verifica os editores de uma dada informação
+     * @param map HashMap com a informação que têm de ser executada
+     * @return Retorn 1 caso seja um novo editor a editar determinada informação
+     */
     public int verifica_editores(HashMap map){
         String editor = (String)map.get("username");
         ArrayList<HashMap<String, String>> lista = le_ficheiro(map);
