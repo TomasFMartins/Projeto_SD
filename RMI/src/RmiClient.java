@@ -20,6 +20,7 @@ public class RmiClient {
      */
     static String name;
     static String privilegio;
+    static String ip_rmi;
 
     /**
      * É uma thread que está à espera de Notificações.
@@ -67,7 +68,7 @@ public class RmiClient {
         while(true) {
             try {
                 if(rmiControlo == 1){
-                    rmiInterface = (RmiInterface) LocateRegistry.getRegistry(7000).lookup("rmiSERVER");
+                    rmiInterface = (RmiInterface) LocateRegistry.getRegistry(ip_rmi, 7000).lookup("rmiSERVER");
                 }
                 Notificacoes thread = new Notificacoes(rmiInterface);
                 thread.start();
@@ -976,10 +977,11 @@ public class RmiClient {
      * @param args Sem valor.
      */
     public static void main(String args[]){
+        ip_rmi=args[0];
         int rmiControlo = 0;
         while(rmiControlo == 0) {
             try {
-                RmiInterface rmiInterface = (RmiInterface) LocateRegistry.getRegistry(7000).lookup("rmiSERVER");
+                RmiInterface rmiInterface = (RmiInterface) LocateRegistry.getRegistry(ip_rmi,7000).lookup("rmiSERVER");
                 String escolha;
                 while (true) {
                     System.out.println("\n=== Projeto de SD ===");

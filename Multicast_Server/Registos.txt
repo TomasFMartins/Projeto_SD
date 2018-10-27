@@ -1,1 +1,3 @@
 username|tomas;password|123qwe;privilegio|editor
+username|damiao;password|12345;privilegio|editor
+username|teste;password|111222;privilegio|leitor

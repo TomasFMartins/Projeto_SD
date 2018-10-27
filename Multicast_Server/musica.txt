@@ -1,0 +1,3 @@
+nome|In My Feelings;artista|Drake;album|Scorpion;duracao|3:30;editor|tomas
+nome|Nonstop;artista|Drake;album|Scorpion;duracao|3:58;editor|tomas
+nome|Gods Plan;artista|Drake;album|Scorpion;duracao|3:18;editor|tomas

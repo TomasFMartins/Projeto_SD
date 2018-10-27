@@ -1,0 +1,1 @@
+type|notificacao;username|damiao;msg|Foi promovido a editor!

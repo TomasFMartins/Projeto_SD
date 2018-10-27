@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="bf4f1f46-b24f-46ef-b245-0797bd1fd31d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/Registos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/MulticastServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/TCPThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Multicast_Server/out/production/Projeto/TCPThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiClient$Notificacoes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiClient$Notificacoes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/RmiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/RmiServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RmiClient.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -101,13 +107,30 @@
       <usages-collector id="statistics.file.extensions.open" />
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
+    <session id="1695974498">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="130" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="130" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="153">
               <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,10 +139,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
+            <state relative-caret-position="986">
               <caret line="593" column="4" selection-start-line="593" selection-start-column="4" selection-end-line="593" selection-end-column="4" />
               <folding>
                 <element signature="docComment;class#RmiServer#0" />
@@ -155,7 +178,6 @@
                 <element signature="docComment;method#killThread#0;class#RmiServer#0" />
                 <element signature="method#killThread#0;class#RmiServer#0" />
                 <element signature="docComment;method#tcp#0;class#RmiServer#0" />
-                <element signature="method#tcp#0;class#RmiServer#0" />
                 <element signature="docComment;method#pedirBiblioteca#0;class#RmiServer#0" />
                 <element signature="method#pedirBiblioteca#0;class#RmiServer#0" />
                 <element signature="docComment;method#permissao#0;class#RmiServer#0" />
@@ -167,11 +189,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2650">
-              <caret line="832" column="126" selection-start-line="832" selection-start-column="126" selection-end-line="832" selection-end-column="126" />
+            <state relative-caret-position="406">
+              <caret line="833" column="126" selection-start-line="833" selection-start-column="126" selection-end-line="833" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -192,6 +214,9 @@
       <find>concat</find>
       <find>notificacao</find>
       <find>syste</find>
+      <find>Socket</find>
+      <find>socket</find>
+      <find>LocateRegistry</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,10 +232,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1057" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -220,12 +245,12 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540523032270" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540664387925" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -249,6 +274,7 @@
     <configuration name="RmiClient" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="RmiClient" />
       <module name="Projeto" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.68" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -279,8 +305,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <frame x="762" y="0" width="781" height="830" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.34379905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -291,7 +316,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26502147" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26685795" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,7 +324,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.29291844" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.28936172" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -318,7 +343,7 @@
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java" />
     <entry file="file://$PROJECT_DIR$/src/RmiInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="153">
           <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -326,9 +351,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="833" column="126" selection-start-line="833" selection-start-column="126" selection-end-line="833" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RmiServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
+        <state relative-caret-position="986">
           <caret line="593" column="4" selection-start-line="593" selection-start-column="4" selection-end-line="593" selection-end-column="4" />
           <folding>
             <element signature="docComment;class#RmiServer#0" />
@@ -364,7 +396,6 @@
             <element signature="docComment;method#killThread#0;class#RmiServer#0" />
             <element signature="method#killThread#0;class#RmiServer#0" />
             <element signature="docComment;method#tcp#0;class#RmiServer#0" />
-            <element signature="method#tcp#0;class#RmiServer#0" />
             <element signature="docComment;method#pedirBiblioteca#0;class#RmiServer#0" />
             <element signature="method#pedirBiblioteca#0;class#RmiServer#0" />
             <element signature="docComment;method#permissao#0;class#RmiServer#0" />
@@ -372,13 +403,6 @@
             <element signature="docComment;method#main#0;class#RmiServer#0" />
             <element signature="method#main#0;class#RmiServer#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RmiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2650">
-          <caret line="832" column="126" selection-start-line="832" selection-start-column="126" selection-end-line="832" selection-end-column="126" />
         </state>
       </provider>
     </entry>
@@ -422,7 +446,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>10</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

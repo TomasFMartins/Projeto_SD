@@ -7,13 +7,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bd1e858a-f6fa-4c31-bd03-a1ae9beb87ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MulticastServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MulticastServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/MulticastServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/TCPThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/TCPThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient$Notificacoes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient$Notificacoes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/out/production/Projeto/RmiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RMI/src/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RMI/src/RmiClient.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -107,12 +110,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="1053" column="80" selection-start-line="1053" selection-start-column="80" selection-end-line="1053" selection-end-column="80" />
+            <state relative-caret-position="92">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#454#455#0" expanded="true" />
                 <element signature="e#518#519#0" expanded="true" />
-                <element signature="method#run#0;class#MulticastServer#0" />
                 <element signature="method#string_to_hash#0;class#MulticastServer#0" />
                 <element signature="method#executa_info#0;class#MulticastServer#0" />
                 <element signature="method#login#0;class#MulticastServer#0" />
@@ -141,7 +143,6 @@
                 <element signature="method#partilha_musica#0;class#MulticastServer#0" />
                 <element signature="method#verificacao_download#0;class#MulticastServer#0" />
                 <element signature="method#verifica_editores#0;class#MulticastServer#0" />
-                <element signature="class#TCPThread#0" />
                 <element signature="method#TCPThread#0;class#TCPThread#0" />
                 <element signature="method#run#0;class#TCPThread#0" />
                 <element signature="method#le_ficheiro#0;class#TCPThread#0" />
@@ -154,7 +155,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
+            <state relative-caret-position="234">
               <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="23" />
               <folding>
                 <element signature="e#2042#2043#0" expanded="true" />
@@ -191,10 +192,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-8" />
-    <option name="width" value="975" />
-    <option name="height" value="1058" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -230,7 +231,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540659937784" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540664387863" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RMI" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -249,7 +250,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JavaClient">
+  <component name="RunManager" selected="Application.server">
     <configuration name="JavaClient" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MulticastClient" />
       <module name="Projeto" />
@@ -292,10 +293,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.012751678" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.026352288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -305,7 +305,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.26241136" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.26542324" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -326,6 +326,18 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MulticastServer.java</url>
+          <line>411</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Thread.java">
@@ -370,14 +382,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="23" />
+          <folding>
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2104#2105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MulticastServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="1053" column="80" selection-start-line="1053" selection-start-column="80" selection-end-line="1053" selection-end-column="80" />
+        <state relative-caret-position="92">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
           <folding>
             <element signature="e#454#455#0" expanded="true" />
             <element signature="e#518#519#0" expanded="true" />
-            <element signature="method#run#0;class#MulticastServer#0" />
             <element signature="method#string_to_hash#0;class#MulticastServer#0" />
             <element signature="method#executa_info#0;class#MulticastServer#0" />
             <element signature="method#login#0;class#MulticastServer#0" />
@@ -406,22 +428,10 @@
             <element signature="method#partilha_musica#0;class#MulticastServer#0" />
             <element signature="method#verificacao_download#0;class#MulticastServer#0" />
             <element signature="method#verifica_editores#0;class#MulticastServer#0" />
-            <element signature="class#TCPThread#0" />
             <element signature="method#TCPThread#0;class#TCPThread#0" />
             <element signature="method#run#0;class#TCPThread#0" />
             <element signature="method#le_ficheiro#0;class#TCPThread#0" />
             <element signature="method#string_to_hash#0;class#TCPThread#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MulticastClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="23" />
-          <folding>
-            <element signature="e#2042#2043#0" expanded="true" />
-            <element signature="e#2104#2105#0" expanded="true" />
           </folding>
         </state>
       </provider>
