@@ -678,50 +678,7 @@ public class RmiServer extends UnicastRemoteObject implements  RmiInterface {
                 socket.receive(msgPacket);
                 String msg = new String(buffer, 0, buffer.length);
                 if (msg.startsWith("type|confIP") && msg.contains("username|" + username + ";")) {
-                    if(msg.split(";")[3].substring(4).startsWith("Erro!")){
-                        return msg.split(";")[3].substring(4);
-                    }
-                    Socket clientSocket = new Socket(msg.split(";")[1].substring(3), PORTTCP);
-                    if(action.compareTo("upload") == 0){
-                        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-                        OutputStream os = clientSocket.getOutputStream();
-                        byte[] contents;
-                        long fileLength = file.length();
-                        long current = 0;
-
-                        while(current!=fileLength){
-                            int size = 10000;
-                            if(fileLength - current >= size)
-                                current += size;
-                            else{
-                                size = (int)(fileLength - current);
-                                current = fileLength;
-                            }
-                            contents = new byte[size];
-                            bis.read(contents, 0, size);
-                            os.write(contents);
-                        }
-                        os.flush();
-                        clientSocket.close();
-                        return "Ficheiro enviado com sucesso.";
-                    }
-                    else{
-                        byte[] mybytearray = new byte[10000];
-                        InputStream is = clientSocket.getInputStream();
-                        int bytesRead = 0;
-                        if(is.read(mybytearray) != -1) {
-                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nome+" - "+artista+".mp3"));
-                            while ((bytesRead = is.read(mybytearray)) != -1)
-                                bos.write(mybytearray, 0, bytesRead);
-                            bos.flush();
-                            clientSocket.close();
-                            return "Ficheiro recebido com sucesso.";
-                        }
-                        else{
-                            clientSocket.close();
-                            return "Erro! A musica nao existe.";
-                        }
-                    }
+                    return msg;
                 }
             }
         } catch (IOException e) {

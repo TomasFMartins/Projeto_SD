@@ -1,5 +1,5 @@
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.rmi.registry.LocateRegistry;
 import java.sql.SQLOutput;
 import java.text.ParseException;
@@ -21,6 +21,7 @@ public class RmiClient {
     static String name;
     static String privilegio;
     static String ip_rmi;
+    static int PORTTCP = 1904;
 
     /**
      * É uma thread que está à espera de Notificações.
@@ -864,12 +865,38 @@ public class RmiClient {
                                             String ficheiro = string.nextLine();
                                             File file = new File(ficheiro);
                                             String resposta = rmiInterface.tcp(file, "upload", name, Integer.parseInt(escolha)-1, "", "");
-                                            System.out.println(resposta);
-                                            controlo = 1;
-                                            verifica = 1;
-                                            escolha = "0";
+                                            if(resposta.split(";")[3].substring(4).startsWith("Erro!")){
+                                                System.out.println(resposta.split(";")[3].substring(4));
+                                            }
+                                            else {
+                                                Socket clientSocket = new Socket(resposta.split(";")[1].substring(3), PORTTCP);
+                                                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+                                                OutputStream os = clientSocket.getOutputStream();
+                                                byte[] contents;
+                                                long fileLength = file.length();
+                                                long current = 0;
+
+                                                while (current != fileLength) {
+                                                    int size = 10000;
+                                                    if (fileLength - current >= size)
+                                                        current += size;
+                                                    else {
+                                                        size = (int) (fileLength - current);
+                                                        current = fileLength;
+                                                    }
+                                                    contents = new byte[size];
+                                                    bis.read(contents, 0, size);
+                                                    os.write(contents);
+                                                }
+                                                os.flush();
+                                                clientSocket.close();
+                                                System.out.println("Ficheiro enviado com sucesso.");
+                                                controlo = 1;
+                                                verifica = 1;
+                                                escolha = "0";
+                                            }
                                         } catch (Exception e) {
-                                            System.out.println("Ficheiro nao localizado.");
+                                            e.printStackTrace();
                                         }
                                     }
                                 } else if (Integer.parseInt(escolha) == (length + 1)) {
@@ -899,12 +926,27 @@ public class RmiClient {
                                 escolha = string.nextLine();
                                 if (Integer.parseInt(escolha) >= 1 && Integer.parseInt(escolha) <= length) {
                                     String resposta = rmiInterface.tcp(null, "download", name, Integer.parseInt(escolha) - 1, lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) * 2 - 2], lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) * 2 - 1]);
-                                    if (resposta.startsWith("Erro!"))
-                                        System.out.println(resposta);
-                                    else{
-                                        System.out.println(resposta);
-                                        verifica = 1;
-                                        escolha = "0";
+                                    if(resposta.split(";")[3].substring(4).startsWith("Erro!")){
+                                        System.out.println(resposta.split(";")[3].substring(4));
+                                    }
+                                    else {
+                                        Socket clientSocket = new Socket(resposta.split(";")[1].substring(3), PORTTCP);
+                                        byte[] mybytearray = new byte[10000];
+                                        InputStream is = clientSocket.getInputStream();
+                                        int bytesRead = 0;
+                                        if (is.read(mybytearray) != -1) {
+                                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) * 2 - 2] + " - " + lista.split(";")[1].substring(6).split("/")[Integer.parseInt(escolha) * 2 - 1] + ".mp3"));
+                                            while ((bytesRead = is.read(mybytearray)) != -1)
+                                                bos.write(mybytearray, 0, bytesRead);
+                                            bos.flush();
+                                            clientSocket.close();
+                                            System.out.println("Ficheiro recebido com sucesso.");
+                                            verifica = 1;
+                                            escolha = "0";
+                                        } else {
+                                            clientSocket.close();
+                                            System.out.println("Erro! A musica nao existe.");
+                                        }
                                     }
                                 } else if (Integer.parseInt(escolha) == (length + 1)) {
                                     verifica = 1;
