@@ -13,11 +13,16 @@
 </head>
 <body>
     <s:form action="registar" method="post">
-        <s:text name="Username:" />
-        <s:textfield name="username" /><br>
-        <s:text name="Password: " />
-        <s:password name="password" /><br>
-        <s:submit />
+        <div class="form-group">
+            <label for="formGroupExampleInput">Username</label>
+            <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
     </s:form>
 </body>
 </html>
