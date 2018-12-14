@@ -13,42 +13,21 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.jsp">DropMusic</a>
+        <a class="navbar-brand" href="#">DropMusic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Inserir
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Música</a>
-                        <a class="dropdown-item" href="#">Álbum</a>
-                        <a class="dropdown-item" href="#">Artista</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="inserir.jsp">Inserir</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Alterar
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Música</a>
-                        <a class="dropdown-item" href="#">Álbum</a>
-                        <a class="dropdown-item" href="#">Artista</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Alterar</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Remover
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Música</a>
-                        <a class="dropdown-item" href="#">Álbum</a>
-                        <a class="dropdown-item" href="#">Artista</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Remover</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Permissões<span class="sr-only">(current)</span></a>
