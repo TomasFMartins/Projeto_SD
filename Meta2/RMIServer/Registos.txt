@@ -1,0 +1,4 @@
+tomas;123qwe;editor
+damiao;123qwe;leitor
+alex;123456;leitor
+rien;123qwe;leitor
