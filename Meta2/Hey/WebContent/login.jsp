@@ -11,20 +11,32 @@
 <head>
     <title>Login Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .container{
+            width: 300px;
+            background-color: #5ecfff;
+        }
+        .box{
+            width: 250px;
+            margin-top: 200px;
+        }
+    </style>
 </head>
 <body>
     <s:form action="login" method="post">
-
-        <div class="form-group">
-            <label for="formGroupExampleInput">Username</label>
-            <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="">
+        <div class="container" align="center">
+            <div class="box">
+                <div class="form-group"><br>
+                    <label for="formGroupExampleInput">Username</label>
+                    <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="Username">
+                </div><br>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button><br><br>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
     </s:form>
 
 

@@ -42,7 +42,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
          <result>login.jsp</result>
      </action>
 
-      <action name="signup">
+      <action name="signuppage">
           <result>signup.jsp</result>
       </action>
 

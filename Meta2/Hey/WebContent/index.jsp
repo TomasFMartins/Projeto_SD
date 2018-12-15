@@ -6,13 +6,61 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>DropMusic</title>
+	<style type="text/css">
+		.blogin{
+			float: left;
+			position: relative;
+			top: 220px;
+			left: 41%;
+			background-color: white;
+			border: none;
+		}
+
+		.bsign{
+			float: right;
+			position: relative;
+			right: 39%;
+			top: 220px;
+			background-color: white;
+			border: none;
+		}
+
+		.blogin:hover{
+			color: black;
+		}
+
+		.bsign:hover{
+			color: black;
+		}
+
+        .text1{
+            width: 192px;
+            height: 36px;
+            font-size: 30px;
+            font-family: Drugs;
+            font-weight: bold;
+        }
+
+        .vl{
+            width:4px;
+            float: left;
+            background-color:#000;
+            position:absolute;
+            top:200px;
+            height: 100px;
+            left:50%;
+            z-index: 1;
+        }
+
+    </style>
 </head>
 <body>
-	<s:form action="loginpage" method="post">
-		<s:submit value="Login"/>
-	</s:form>
-	<s:form action="signup" method="post">
-		<s:submit value="Sign Up"/>
-	</s:form>
+    <s:form action="loginpage" method="post">
+        <button type="submit" class="blogin"><span class="text1">Login</span></button>
+    </s:form>
+    <div class="vl"></div>
+    <s:form action="signuppage" method="post">
+        <button type="submit" class="bsign"><span class="text1">Sign Up</span></button>
+    </s:form>
 </body>
 </html>
