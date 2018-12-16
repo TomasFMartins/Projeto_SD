@@ -68,6 +68,11 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="Erro">error.jsp</result>
       </action>
 
+      <action name="permissaopage" class="Permissao.PermissaoAction" method="execute">
+          <result name="Sucesso">permisao.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
 
   </package>
 

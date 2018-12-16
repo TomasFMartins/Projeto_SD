@@ -32,8 +32,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Remover</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Permissões</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<s:url action="permissaopage" />">Permissões</a>
                     </li>
                 </c:if>
                 <li class="nav-item">

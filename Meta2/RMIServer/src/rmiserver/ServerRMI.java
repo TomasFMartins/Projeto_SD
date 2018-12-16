@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 
 public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface {
@@ -238,6 +239,33 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
 
         return resposta;
 
+    }
+
+    public String get_leitores() throws RemoteException{
+        String s;
+        String leitores = "";
+
+        try{
+            File f = new File("Registos.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine()) != null){
+                if(s.split(";")[2].compareTo("leitor")==0)
+                    leitores += s.split(";")[0] + ";";
+            }
+
+            br.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!IOException.";
+        }
+
+        if(leitores.equals(""))
+            return "Erro!Não existem utilizadores com permissão de leitor.";
+
+        return leitores;
     }
 
 
