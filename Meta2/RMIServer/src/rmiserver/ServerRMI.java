@@ -1,12 +1,15 @@
 package rmiserver;
 
 import java.io.*;
+import java.nio.Buffer;
+import java.nio.file.Files;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface {
@@ -266,6 +269,45 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
             return "Erro!Não existem utilizadores com permissão de leitor.";
 
         return leitores;
+    }
+
+    public String update_leitor(String username) throws RemoteException{
+        String s;
+        ArrayList<String> utilizadores = new ArrayList<>();
+        String aux_utilizador = "";
+
+        try{
+            File f = new File("Registos.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine()) != null){
+                utilizadores.add(s);
+                if(s.split(";")[0].compareTo(username)==0)
+                    aux_utilizador += s.split(";")[0] + ";" + s.split(";")[1] + ";editor";
+            }
+
+            br.close();
+
+            f = new File("Registos.txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for(int i=0; i<utilizadores.size(); i++){
+                if(utilizadores.get(i).split(";")[0].compareTo(username)==0)
+                    pw.println(aux_utilizador);
+                else
+                    pw.println(utilizadores.get(i));
+            }
+
+            pw.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!IOException.";
+        }
+
+        return "Sucesso";
     }
 
 

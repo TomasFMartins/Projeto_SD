@@ -15,4 +15,5 @@ public interface RMIServerInterface extends Remote {
 	public String inserir_artista(String artista, String albuns) throws RemoteException;
 	public String pesquisa_info(String pesquisa) throws RemoteException;
 	public String get_leitores() throws RemoteException;
+	public String update_leitor(String username) throws RemoteException;
 }

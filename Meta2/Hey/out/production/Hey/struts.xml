@@ -69,7 +69,12 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       </action>
 
       <action name="permissaopage" class="Permissao.PermissaoAction" method="execute">
-          <result name="Sucesso">permisao.jsp</result>
+          <result name="Sucesso">permissao.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
+      <action name="promover" class="Promover.PromoverAction" method="execute">
+          <result name="Sucesso">promover.jsp</result>
           <result name="Erro">error.jsp</result>
       </action>
 
