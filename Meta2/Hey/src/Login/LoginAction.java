@@ -14,6 +14,9 @@ public class LoginAction extends Action implements SessionAware {
 
     @Override
     public String execute() throws RemoteException {
+        session.clear();
+        session.put("site","loginpage");
+        session.put("loggedin", false);
         if(this.username != null && !username.equals("") && this.password != null && !password.equals("")) {
             this.getLoginBean().setUsername(this.username);
             this.getLoginBean().setPassword(this.password);
@@ -21,12 +24,20 @@ public class LoginAction extends Action implements SessionAware {
             if(resposta.startsWith("Sucesso")) {
                 session.put("username", username);
                 session.put("loggedin", true);
-                if (resposta.split(";")[1].equals("editor"))
-                    return "Editor";
-                else
-                    return "Leitor";
+                if (resposta.split(";")[1].equals("editor")) {
+                    session.put("tipo","editor");
+                }
+                else {
+                    session.put("tipo","leitor");
+                }
+                return "Sucesso";
+            }
+            else{
+                session.put("erro", resposta);
+                return "Erro";
             }
         }
+        session.put("erro", "Os campos da página login não se encontram preenchidos!");
         return "Erro";
     }
 

@@ -33,8 +33,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 
 	<!-- 'login' action calls 'execute' in 'LoginAction' -->
     <action name="login" class="Login.LoginAction" method="execute">
-        <result name="Editor">/menuEditor.jsp</result>
-        <result name="Leitor">/menuLeitor.jsp</result>
+        <result name="Sucesso">/menu.jsp</result>
         <result name="Erro">/error.jsp</result>
     </action>
 
@@ -46,10 +45,29 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result>signup.jsp</result>
       </action>
 
+      <action name="inserirpage">
+          <result>inserir.jsp</result>
+      </action>
+
+      <action name="menupage">
+          <result>menu.jsp</result>
+      </action>
+
       <action name="registar" class="Registar.RegistarAction" method="execute">
-          <result name="Editor">menuEditor.jsp</result>
+          <result name="Editor">menu.jsp</result>
           <result name="Erro">error.jsp</result>
       </action>
+
+      <action name="inserir" class="Inserir.InserirAction" method="execute">
+          <result name="Sucesso">sucesso.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
+      <action name="pesquisar" class="Pesquisar.PesquisarAction" method="execute">
+          <result name="Sucesso">pesquisar.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
 
   </package>
 

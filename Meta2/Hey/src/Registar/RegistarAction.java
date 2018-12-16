@@ -15,6 +15,7 @@ public class RegistarAction extends  Action implements SessionAware {
 
     @Override
     public String execute() throws RemoteException {
+        session.put("site","signuppage");
         if(this.username != null && !username.equals("") && this.password != null && !password.equals("")) {
             this.getRegistarBean().setUsername(this.username);
             this.getRegistarBean().setPassword(this.password);
@@ -25,7 +26,12 @@ public class RegistarAction extends  Action implements SessionAware {
                 super.session.put("loggedin", true);
                 return "Editor";
             }
+            else{
+                session.put("erro","Esse utilizador já existe!");
+                return "Erro";
+            }
         }
+        session.put("erro","Os campos devem estar preenchidos");
         return "Erro";
     }
 
