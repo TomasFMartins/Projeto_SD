@@ -18,4 +18,6 @@ public interface RMIServerInterface extends Remote {
 	public String update_leitor(String username) throws RemoteException;
 	public String adiciona_critica(String critica, String nota, String album, String artista) throws RemoteException;
 	public String pesquisa_album(String album, String artista) throws RemoteException;
+	public String altera_album(String album, String artista, String musicas) throws  RemoteException;
+	public String remove_artista(String artista) throws RemoteException;
 }

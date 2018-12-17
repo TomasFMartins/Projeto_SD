@@ -7,3 +7,4 @@ Natural;Natural;Imagine Dragons;3:05
 Thunder;Natural;Imagine Dragons;3:05
 Believer;Natural;Imagine Dragons;3:05
 aaa;aaa;aaa;aaa
+Duss;album;artista;3

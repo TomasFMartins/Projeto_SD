@@ -1,1 +1,2 @@
-Artista1;Album1
+Tomy;aaa, aaaa
+dami;asda

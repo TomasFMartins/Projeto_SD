@@ -1,2 +1,2 @@
-Album1;Atista1;Musica, Musica2;8.545455;Bom album§Quase otimo§Nice§Horrivel§Razoavel§Nice one§Muito mau§vai dar§eee§dsfsdf§fhjf
-sasss;ssas;sassa;18.7;aaa§sss§duss§bota dormir§1§gdfjkdasgf§oi§adeus§ulha§amanha ha PGI crl
+﻿Album1;Atista1;Teste1,TEste2;28.545455;Bom album§Quase otimo§Nice§Horrivel§Razoavel§Nice one§Muito mau§vai dar§eee§dsfsdf§fhjf
+sasss;ssas;Boa;18.7;aaa§sss§duss§bota dormir§1§gdfjkdasgf§oi§adeus§ulha§amanha ha PGI crl

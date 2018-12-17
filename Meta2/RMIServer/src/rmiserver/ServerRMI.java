@@ -387,6 +387,83 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
         }
     }
 
+    public String altera_album(String album, String artista, String musicas) throws RemoteException{
+        String s;
+        ArrayList<String> lista = new ArrayList<>();
+        String linha;
+        try{
+            File f = new File("Albuns.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine()) != null){
+                if(s.split(";")[0].compareTo(album)==0 && s.split(";")[1].compareTo(artista)==0 ){
+                    int aux = s.split(";").length;
+                    if(aux==3)
+                        linha = s.split(";")[0] + ";" + s.split(";")[1] + ";" + musicas;
+                    else
+                        linha = s.split(";")[0] + ";" + s.split(";")[1] + ";" + musicas + ";" + s.split(";")[3] + ";" + s.split(";")[4];
+
+                    lista.add(linha);
+
+                }
+                else
+                    lista.add(s);
+            }
+
+            br.close();
+
+            int i;
+            f = new File("Albuns.txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for(i=0; i<lista.size(); i++)
+                pw.println(lista.get(i));
+
+            pw.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!IOException";
+        }
+
+        return "Sucesso";
+    }
+
+    public String remove_artista(String artista) throws RemoteException{
+        String s;
+        ArrayList<String> lista = new ArrayList<>();
+
+        try{
+            File f = new File("Artistas.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine()) != null){
+                if(s.split(";")[0].compareTo(artista)!=0)
+                    lista.add(s);
+            }
+
+            br.close();
+
+            f = new File("Artistas.txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for(int i=0; i<lista.size(); i++)
+                pw.println(lista.get(i));
+
+            pw.close();
+
+        }catch (IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!IOException";
+        }
+
+        return "Sucesso";
+    }
+
 
     public static void main(String args[]) {
         int controlo = 0;
