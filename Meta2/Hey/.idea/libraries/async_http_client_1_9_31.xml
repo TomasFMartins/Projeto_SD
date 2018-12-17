@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="async-http-client-1.9.31">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/Ficha8_REST/lib/async-http-client-1.9.31.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Ficha8_REST/lib/json_simple-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Ficha8_REST/lib/slf4j-api-1.7.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

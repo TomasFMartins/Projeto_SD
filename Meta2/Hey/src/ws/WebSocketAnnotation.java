@@ -31,7 +31,6 @@ public class WebSocketAnnotation {
     @OnOpen
     public void start(Session session) {
         this.session = session;
-        System.out.println(session);
         this.users.add(this);
     }
 
@@ -47,12 +46,13 @@ public class WebSocketAnnotation {
         // characters should be replaced with &lt; &gt; &quot; &amp;
         username = message.split("#")[0];
         tipo = message.split("#")[1];
-        System.out.println(message);
         if(message.split("#").length>2) {
             if (message.split("#")[2].equals("promover"))
                 sendPromovido(message.split("#")[3]);
             else if (message.split("#")[2].equals("Nota"))
                 sendAtualizaNota(message.split("#")[2] + "#" + message.split("#")[3] + "#" + message.split("#")[4]);
+            else if (message.split("#")[2].equals("Album"))
+                sendAlbum(message.split("#")[3].split("_")[0],message.split("#")[3].split("_")[1]);
         }
     }
     
@@ -110,6 +110,21 @@ public class WebSocketAnnotation {
         try {
             for(WebSocketAnnotation user:users){
                 user.session.getBasicRemote().sendText("Nota;"+resposta);
+            }
+        } catch (IOException e) {
+            try {
+                this.session.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void sendAlbum(String album, String artista){
+        try {
+            for(WebSocketAnnotation user:users){
+                if(user.tipo.equals("editor") && !user.username.equals(username))
+                    user.session.getBasicRemote().sendText("Foi alterado as músicas do álbum '"+album+"' do artista '"+artista+"'.");
             }
         } catch (IOException e) {
             try {

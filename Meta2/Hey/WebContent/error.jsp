@@ -10,6 +10,55 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
+	<script type="text/javascript">
+
+		var websocket = null;
+
+		window.onload = function() { // URI = ws://10.16.0.165:8080/WebSocket/ws
+			connect('ws://' + window.location.host + '/Hey/ws');
+		}
+
+		function connect(host) { // connect to the host websocket
+			if ('WebSocket' in window)
+				websocket = new WebSocket(host);
+			else if ('MozWebSocket' in window)
+				websocket = new MozWebSocket(host);
+			else {
+				return;
+			}
+
+			websocket.onopen    = onOpen; // set the 4 event listeners below
+			websocket.onclose   = onClose;
+			websocket.onmessage = onMessage;
+			websocket.onerror   = onError;
+		}
+
+		function onOpen(event) {
+			if(!"${session.site}".includes("loginpage"))
+				websocket.send("${session.username}"+"#"+"${session.tipo}");
+
+		}
+
+		function onClose(event) {
+			console.log("On Close" + event);
+		}
+
+		function onMessage(message) { // print the received message
+			if(message.data.includes("Promovido")){
+				alert("Foi Promovido a Editor!");
+				location.href="<s:url action = "promovidoAction"/>";
+			}
+			else if(message.data.includes("Foi alterado as músicas do álbum"))
+				alert(message.data);
+		}
+
+		function onError(event) {
+			console.log("On Error" + event);
+		}
+
+
+	</script>
 	<c:choose>
 		<c:when test="${session.loggedin == true}">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,13 +78,13 @@
 							</li>
 						</c:if>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Playlist</a>
+							<a class="nav-link" href="<s:url action="dropboxpage" />">Dropbox</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Dropbox</a>
+							<a class="nav-link" href="<s:url action="indexPage" />">Logout</a>
 						</li>
 					</ul>
-					<form action="pesquisar" method="post" class="form-inline my-2 my-lg-0">
+					<form action="pesquisar" method="get" class="form-inline my-2 my-lg-0">
 						<input name="pesquisa" class="form-control mr-sm-2" type="search" placeholder="Pesquisa" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
 					</form>

@@ -39,7 +39,7 @@
         }
 
         function onClose(event) {
-            alert("On Close" + event);
+            console.log("On Close" + event);
         }
 
         function onMessage(message) { // print the received message
@@ -54,13 +54,13 @@
                 document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"M").innerHTML="Músicas: " + message.data.split(";")[3];
                 document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"N").innerHTML="Nota: " + message.data.split(";")[4];
                 document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"C").innerHTML="Crítica: " + message.data.split(";")[5].split("§")[message.data.split(";")[5].split("§").length-1];
-
-
             }
+            else if(message.data.includes("Foi alterado as músicas do álbum"))
+                alert(message.data);
         }
 
         function onError(event) {
-            alert("On Error" + event);
+            console.log("On Error" + event);
         }
 
 
@@ -83,13 +83,13 @@
                 </li>
             </c:if>
             <li class="nav-item">
-                <a class="nav-link" href="#">Playlist</a>
+                <a class="nav-link" href="<s:url action="dropboxpage" />">Dropbox</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Dropbox</a>
+                <a class="nav-link" href="<s:url action="indexPage" />">Logout</a>
             </li>
         </ul>
-        <form action="pesquisar" method="post" class="form-inline my-2 my-lg-0">
+        <form action="pesquisar" method="get" class="form-inline my-2 my-lg-0">
             <input name="pesquisa" class="form-control mr-sm-2" type="search" placeholder="Pesquisa" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
         </form>
@@ -134,9 +134,42 @@
             <div class="tab-content" id="nav-tabContent">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'artista'}">
-                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">Artista: <c:out value="${value.split(';')[1]}" /><br>Álbuns: <c:out value="${value.split(';')[2]}" /></div>
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
+                            <s:form action="remover" mehtod="post">
+                                Artista: <c:out value="${value.split(';')[1]}" /><br>
+                                Álbuns: <c:out value="${value.split(';')[2]}" /><br>
+                                <input type="hidden" name="artista"  value="${value.split(';')[1]}">
+                                <button type="submit" class="btn btn-primary"/>
+                                    Remover Artista
+                                </button>
+                            </s:form>
+                        </div>
                     </c:if>
                 </c:forEach>
+                <!--Modal-->
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Alterar Músicas</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <s:form action="alterar" mehtod="post">
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" name="musicas" id="formGroupExampleInput" placeholder="Músicas Novas">
+                                    <br>
+                                    <input type="hidden" name="album" id="a_escolhido">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submite" class="btn btn-primary">Alterar Músicas</button>
+                                </div>
+                            </s:form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -209,6 +242,9 @@
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="document.getElementById('album_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}'" />
                                 Adicionar Critica
+                            </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2" onclick="document.getElementById('a_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}'" />
+                                Alterar Músicas
                             </button>
                         </div>
                     </c:if>

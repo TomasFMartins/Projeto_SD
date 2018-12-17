@@ -89,6 +89,25 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="Erro">error.jsp</result>
       </action>
 
+      <action name="alterar" class="Alterar.AlterarAction" method="execute">
+          <result name="Sucesso">sucesso.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
+      <action name="remover" class="Remover.RemoverAction" method="execute">
+          <result name="Sucesso">sucesso.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
+      <action name="indexPage">
+          <result>index.jsp</result>
+      </action>
+
+      <action name="dropboxpage" class="DropBox.DropBoxAction" method="execute">
+          <result name="teste">teste.jsp</result>
+          <result name="Sucesso">sucesso.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
 
   </package>
 

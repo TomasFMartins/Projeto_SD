@@ -43,15 +43,20 @@
         }
 
         function onClose(event) {
-            alert("On Close" + event);
+            console.log("On Close" + event);
         }
 
         function onMessage(message) { // print the received message
-            alert(message.data);
+            if(message.data.includes("Promovido")){
+                alert("Foi Promovido a Editor!");
+                location.href="<s:url action = "promovidoAction"/>";
+            }
+            else if(message.data.includes("Foi alterado as músicas do álbum"))
+                alert(message.data);
         }
 
         function onError(event) {
-            alert("On Error" + event);
+            console.log("On Error" + event);
         }
 
 
@@ -73,13 +78,13 @@
                 </li>
             </c:if>
             <li class="nav-item">
-                <a class="nav-link" href="#">Playlist</a>
+                <a class="nav-link" href="<s:url action="dropboxpage" />">Dropbox</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Dropbox</a>
+                <a class="nav-link" href="<s:url action="indexPage" />">Logout</a>
             </li>
         </ul>
-        <form action="pesquisar" method="post" class="form-inline my-2 my-lg-0">
+        <form action="pesquisar" method="get" class="form-inline my-2 my-lg-0">
             <input name="pesquisa" class="form-control mr-sm-2" type="search" placeholder="Pesquisa" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
         </form>
