@@ -310,7 +310,6 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
         return "Sucesso";
     }
 
-
     public String adiciona_critica(String critica, String nota, String album, String artista) throws RemoteException{
         String s;
         String linha="";
@@ -365,7 +364,28 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
         return "Sucesso";
     }
 
+    public String pesquisa_album(String album, String artista) throws RemoteException{
+        String s;
+        String resposta="";
+        String [] aux;
+        try{
+            File f = new File("Albuns.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
 
+            while((s = br.readLine()) != null){
+                if(s.split(";")[0].compareTo(album) == 0 && s.split(";")[1].compareTo(artista) == 0){
+                    resposta = s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + ";" + s.split(";")[3] + ";" + s.split(";")[4];
+                }
+            }
+
+            br.close();
+            return resposta;
+        } catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!";
+        }
+    }
 
 
     public static void main(String args[]) {
