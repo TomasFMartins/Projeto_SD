@@ -5,6 +5,7 @@ import Login.LoginBean;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
@@ -14,17 +15,18 @@ public class RegistarAction extends  Action implements SessionAware {
     private String username, password;
 
     @Override
-    public String execute() throws RemoteException {
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
+        session.clear();
         session.put("site","signuppage");
         if(this.username != null && !username.equals("") && this.password != null && !password.equals("")) {
             this.getRegistarBean().setUsername(this.username);
             this.getRegistarBean().setPassword(this.password);
             String resposta = this.getRegistarBean().verificaRegisto();
-            System.out.println(resposta);
             if(resposta.startsWith("Sucesso")) {
                 super.session.put("username", username);
                 super.session.put("loggedin", true);
-                return "Editor";
+                super.session.put("tipo", "leitor");
+                return "Sucesso";
             }
             else{
                 session.put("erro","Esse utilizador já existe!");

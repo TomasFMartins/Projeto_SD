@@ -22,13 +22,7 @@
                     <a class="nav-link" href="<s:url action="inserirpage" />">Inserir</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Alterar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Remover</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Permissões</a>
+                    <a class="nav-link" href="<s:url action="permissaopage" />">Permissões</a>
                 </li>
             </c:if>
             <li class="nav-item">
@@ -45,69 +39,123 @@
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-4">
-        <li class="list-group-item list-group-item-info">Músicas</li>
-        <div class="list-group" id="list-tab" role="tablist">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0] == 'musica'}">
-                    <a class="list-group-item list-group-item-action" id="a" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
-                </c:if>
-            </c:forEach>
+<div class="container" align="center">
+    <div class="row">
+        <div class="col-4">
+            <li class="list-group-item list-group-item-info">Músicas</li>
+            <div class="list-group" id="list-tab" role="tablist">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0] == 'musica'}">
+                        <a class="list-group-item list-group-item-action" id="a" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
+                    </c:if>
+                </c:forEach>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0] == 'musica'}">
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tabpanel" aria-labelledby="a">Musica: <c:out value="${value.split(';')[1]}" /><br>Álbum: <c:out value="${value.split(';')[2]}" /><br>Artista: <c:out value="${value.split(';')[3]}" /><br>Duração: <c:out value="${value.split(';')[4]}" /></div>
+                    </c:if>
+                </c:forEach>
+            </div>
         </div>
     </div>
-    <div class="col-8">
-        <div class="tab-content" id="nav-tabContent">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0] == 'musica'}">
-                    <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tabpanel" aria-labelledby="a">Musica: <c:out value="${value.split(';')[1]}" /><br>Álbum: <c:out value="${value.split(';')[2]}" /><br>Artista: <c:out value="${value.split(';')[3]}" /><br>Duração: <c:out value="${value.split(';')[4]}" /></div>
-                </c:if>
-            </c:forEach>
+    <br>
+    <div class="row">
+        <div class="col-4">
+            <li class="list-group-item list-group-item-info">Artistas</li>
+            <div class="list-group" id="list-tab" role="tablist">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0]=='artista'}">
+                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]}" /></a>
+                    </c:if>
+                </c:forEach>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0] == 'artista'}">
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">Artista: <c:out value="${value.split(';')[1]}" /><br>Álbuns: <c:out value="${value.split(';')[2]}" /></div>
+                    </c:if>
+                </c:forEach>
+            </div>
         </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-4">
-        <li class="list-group-item list-group-item-info">Artistas</li>
-        <div class="list-group" id="list-tab" role="tablist">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0]=='artista'}">
-                    <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]}" /></a>
-                </c:if>
-            </c:forEach>
+    <br>
+    <div class="row">
+        <div class="col-4">
+            <li class="list-group-item list-group-item-info">Álbuns</li>
+            <div class="list-group" id="list-tab" role="tablist">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0] == 'album'}">
+                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
+                    </c:if>
+                </c:forEach>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Adicionar Crítica</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <s:form action="critica" mehtod="post">
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" name="critica" id="formGroupExampleInput" placeholder="Critica">
+                                    <br>
+                                    <input type="text" class="form-control" name="nota" id="formGroupExampleInput" placeholder="Nota 0 a 5">
+                                    <input type="hidden" name="album" id="album_escolhido">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submite" class="btn btn-primary">Adicionar Crítica</button>
+                                </div>
+                            </s:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-8">
-        <div class="tab-content" id="nav-tabContent">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0] == 'artista'}">
-                    <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">Artista: <c:out value="${value.split(';')[1]}" /><br>Álbuns: <c:out value="${value.split(';')[2]}" /></div>
-                </c:if>
-            </c:forEach>
-        </div>
-    </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-4">
-        <li class="list-group-item list-group-item-info">Álbuns</li>
-        <div class="list-group" id="list-tab" role="tablist">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0] == 'album'}">
-                    <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
-                </c:if>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="col-8">
-        <div class="tab-content" id="nav-tabContent">
-            <c:forEach items="${session.pesquisa.split('#')}" var="value">
-                <c:if test="${value.split(';')[0] == 'album'}">
-                    <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">Álbum: <c:out value="${value.split(';')[1]}" /><br>Artista: <c:out value="${value.split(';')[2]}" /><br>Músicas: <c:out value="${value.split(';')[3]}" /></div>
-                    <!--Botao que abre modal, depois caixa de texto e botao submite dentro do modal-->
-                </c:if>
-            </c:forEach>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <c:forEach items="${session.pesquisa.split('#')}" var="value">
+                    <c:if test="${value.split(';')[0] == 'album'}">
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
+                            Álbum: <c:out value="${value.split(';')[1]}" /><br>
+                            Artista: <c:out value="${value.split(';')[2]}" /><br>
+                            Músicas: <c:out value="${value.split(';')[3]}" /><br>
+                            <c:choose>
+                                <c:when test="${value.split(';')[4] == '~'}">
+                                    Nota: Sem avaliação<br>
+                                </c:when>
+                                <c:otherwise>
+                                    Nota: <c:out value="${value.split(';')[4]}" /><br>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${value.split(';')[5]  == '~'}">
+                                    Crítica: Sem críticas<br><br>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${value.split(';')[5].split('§')}" var="valor">
+                                        Crítica: <c:out value="${valor}" /><br>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="document.getElementById('album_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}'" />
+                                Adicionar Critica
+                            </button>
+                        </div>
+                    </c:if>
+                </c:forEach>
+            </div>
         </div>
     </div>
 </div>

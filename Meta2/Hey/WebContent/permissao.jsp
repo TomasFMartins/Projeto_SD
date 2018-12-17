@@ -26,14 +26,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<s:url action="inserirpage" />">Inserir</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Alterar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Remover</a>
-                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="<s:url action="permissaopage" />">Permissões</a>
+                        <a class="nav-link" href="#">Permissões</a>
                     </li>
                 </c:if>
                 <li class="nav-item">
@@ -49,18 +43,19 @@
             </form>
         </div>
     </nav>
-    <s:form action="promover" method="post">
         <div class="col-4">
             <li class="list-group-item list-group-item-info">Utilizadores com permissão de leitor</li>
             <div class="list-group">
                 <c:forEach items="${session.leitores.split(';')}" var="value">
-                    <button type="button" name="username" class="list-group-item list-group-item-action"><c:out value="${value}" /></button>
+                    <button type="button"  class="list-group-item list-group-item-action" onclick="document.getElementById('caixa_final').value = '<c:out value="${value}'" />"><c:out value="${value}" /></button>
                 </c:forEach>
                 <br>
-                <button type="submit" class="btn btn-primary">Promover</button>
+                <s:form action="promover" method="post">
+                    <input id="caixa_final" type="hidden" name="userApromover" id="exampleInputPassword1" sytle.visibility="hidden">
+                    <button type="submit" class="btn btn-primary">Promover</button>
+                </s:form>
             </div>
         </div>
-    </s:form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

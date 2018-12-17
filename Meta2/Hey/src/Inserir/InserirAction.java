@@ -4,6 +4,7 @@ import Herditarios.Action;
 import Login.LoginBean;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class InserirAction extends Action implements SessionAware {
     String albumMusicas = null;
 
     @Override
-    public String execute() throws RemoteException {
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
         session.put("site","inserir");
         if(musicaNome != null && !musicaNome.equals("") && musicaArtista != null && !musicaArtista.equals("") && musicaAlbum != null && !musicaAlbum.equals("") && musicaDuracao != null && !musicaDuracao.equals("")){
             String resposta = this.getInserirBean().inserirMusica(musicaNome, musicaArtista, musicaAlbum, musicaDuracao);

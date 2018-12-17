@@ -25,12 +25,6 @@
                 <a class="nav-link" href="#">Inserir</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Alterar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Remover</a>
-            </li>
-            <li class="nav-item active">
                 <a class="nav-link" href="<s:url action="permissaopage" />">Permissões</a>
             </li>
             <li class="nav-item">

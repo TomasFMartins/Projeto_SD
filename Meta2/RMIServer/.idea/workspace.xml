@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba849550-000a-4d54-81ac-cf5752e35f67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Hey/WebContent/promover.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Hey/src/Promover/PromoverAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Hey/src/Promover/PromoverBean.java" afterDir="false" />
+    <list default="true" id="9b1e3fd4-6683-4353-89ae-0964e2491d64" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Hey/.idea/artifacts/unnamed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/Hey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/Hey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/WebContent/inserir.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/inserir.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/menu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/WebContent/permissao.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/permissao.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Hey/out/artifacts/unnamed/unnamed.war" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/artifacts/unnamed/unnamed.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/pesquisar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/pesquisar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/promover.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/promover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/WebContent/sucesso.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/WebContent/sucesso.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Herditarios/Bean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Herditarios/Bean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Inserir/InserirAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Inserir/InserirAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Inserir/InserirBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Inserir/InserirBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Login/LoginAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Login/LoginAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Login/LoginBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Login/LoginBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Permissao/PermissaoAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Permissao/PermissaoAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Permissao/PermissaoBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Permissao/PermissaoBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Pesquisar/PesquisarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Pesquisar/PesquisarAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Pesquisar/PesquisarBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Pesquisar/PesquisarBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Promover/PromoverAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Promover/PromoverAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Promover/PromoverBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Promover/PromoverBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Registar/RegistarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Registar/RegistarAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/Registar/RegistarBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/Registar/RegistarBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/rmiserver/RMIServerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/rmiserver/RMIServerInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Herditarios/Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Herditarios/Bean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Inserir/InserirAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Inserir/InserirAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Inserir/InserirBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Inserir/InserirBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Login/LoginAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Login/LoginAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Login/LoginBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Login/LoginBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Permissao/PermissaoAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Permissao/PermissaoAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Permissao/PermissaoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Permissao/PermissaoBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Pesquisar/PesquisarAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Pesquisar/PesquisarAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Pesquisar/PesquisarBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Pesquisar/PesquisarBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Promover/PromoverAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Promover/PromoverAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Promover/PromoverBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Promover/PromoverBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Registar/RegistarAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Registar/RegistarAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/Registar/RegistarBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/Registar/RegistarBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/src/rmiserver/RMIServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/rmiserver/RMIServerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Hey/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/struts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Musicas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Musicas.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Registos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RMIServer/rmiserver/RMIServerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RMIServer/rmiserver/RMIServerInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RMIServer/rmiserver/ServerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RMIServer/rmiserver/ServerRMI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,53 +55,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/rmiserver/ServerRMI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="300" column="13" selection-start-line="300" selection-start-column="13" selection-end-line="300" selection-end-column="13" />
-              <folding>
-                <element signature="method#Login#0;class#ServerRMI#0" />
-                <element signature="method#inserir_musica#0;class#ServerRMI#0" />
-                <element signature="method#inserir_album#0;class#ServerRMI#0" />
-                <element signature="method#inserir_artista#0;class#ServerRMI#0" />
-                <element signature="method#verifica_info#0;class#ServerRMI#0" />
-                <element signature="method#pesquisa_info#0;class#ServerRMI#0" />
-                <element signature="method#get_leitores#0;class#ServerRMI#0" />
-                <element signature="method#main#0;class#ServerRMI#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" />
-        <option value="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -82,6 +69,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -90,29 +78,15 @@
               <item name="RMIServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="RMIServer" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RMIServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RMIServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RMIServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RMIServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="rmiserver" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544941845551" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hey" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -129,9 +103,15 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="RMI Server" type="Application" factoryName="Application">
+    <configuration name="ServerRMI" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rmiserver.ServerRMI" />
       <module name="RMIServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="rmiserver.ServerRMI" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,25 +122,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ba849550-000a-4d54-81ac-cf5752e35f67" name="Default Changelist" comment="" />
-      <created>1544812920394</created>
+      <changelist id="9b1e3fd4-6683-4353-89ae-0964e2491d64" name="Default Changelist" comment="" />
+      <created>1544984621078</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1544812920394</updated>
-      <workItem from="1544812923816" duration="800000" />
-      <workItem from="1544825435906" duration="1231000" />
-      <workItem from="1544931931033" duration="6683000" />
+      <updated>1544984621078</updated>
+      <workItem from="1544984623590" duration="2555000" />
+      <workItem from="1544994331002" duration="2600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8714000" />
+    <option name="totallyTimeSpent" value="5155000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17651007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -169,56 +148,45 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3290461" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Maven" order="9" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rmiserver/ServerRMI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="300" column="13" selection-start-line="300" selection-start-column="13" selection-end-line="300" selection-end-column="13" />
-          <folding>
-            <element signature="method#Login#0;class#ServerRMI#0" />
-            <element signature="method#inserir_musica#0;class#ServerRMI#0" />
-            <element signature="method#inserir_album#0;class#ServerRMI#0" />
-            <element signature="method#inserir_artista#0;class#ServerRMI#0" />
-            <element signature="method#verifica_info#0;class#ServerRMI#0" />
-            <element signature="method#pesquisa_info#0;class#ServerRMI#0" />
-            <element signature="method#get_leitores#0;class#ServerRMI#0" />
-            <element signature="method#main#0;class#ServerRMI#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

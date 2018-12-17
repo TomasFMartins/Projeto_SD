@@ -6,6 +6,7 @@ import rmiserver.RMIServerInterface;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.util.concurrent.TimeUnit;
 
 public class RegistarBean extends Bean {
 
@@ -30,10 +31,16 @@ public class RegistarBean extends Bean {
         this.password = password;
     }
 
-    public String verificaRegisto() throws RemoteException {
+    public String verificaRegisto() throws RemoteException, InterruptedException, NotBoundException {
         if(this.password != null && this.username != null) {
-            return server.Registo(this.username, this.password);
-            //falta catch
+            try {
+                return server.Registo(this.username, this.password);
+            }
+            catch (RemoteException e){
+                TimeUnit.SECONDS.sleep(5);
+                server = (RMIServerInterface) LocateRegistry.getRegistry(IP_RMI, PORT_RMI).lookup("server");
+                return server.Registo(this.username, this.password);
+            }
         }
         else
             return "Erro";

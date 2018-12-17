@@ -11,7 +11,7 @@ import java.rmi.registry.LocateRegistry;
 public class Bean implements Serializable {
 
     public RMIServerInterface server = null;
-    public String IP_RMI = "192.168.1.68";
+    public String IP_RMI = "192.168.1.69";
     public int PORT_RMI = 1099;
 
     public Bean(){

@@ -4,16 +4,16 @@ import Herditarios.Action;
 import Pesquisar.PesquisarBean;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
 public class PermissaoAction extends Action implements SessionAware {
 
-    public String execute() throws RemoteException{
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
         session.put("site" , "menupage");
 
         String resposta = this.getPermissaoBean().lista_leitores();
-        System.out.println("LEITORES: " + resposta);
 
         if(resposta.startsWith("Erro")) {
             session.put("erro", resposta.split("!")[1]);

@@ -3,26 +3,31 @@ package Promover;
 import Herditarios.Action;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
 public class PromoverAction extends Action implements SessionAware {
 
-    private String username;
+    private String userApromover = null;
 
     @Override
-    public String execute() throws RemoteException {
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
         session.put("site", "menupage");
 
-        String resposta = this.getPromoverBean().executa_promocao("rien");
 
-
-        if(resposta.startsWith("Erro")) {
-            session.put("erro" , resposta.split("!")[1]);
-            return "Erro";
+        if(userApromover != null && !userApromover.equals("")) {
+            String resposta = this.getPromoverBean().executa_promocao(userApromover);
+            if (resposta.startsWith("Erro")) {
+                session.put("erro", resposta.split("!")[1]);
+                return "Erro";
+            } else{
+                session.put("promovido", userApromover);
+                return "Sucesso";
+            }
         }
-        else
-            return "Sucesso";
+        session.put("erro","Não selecionou um utilizador.");
+        return "Erro";
     }
 
     public PromoverBean getPromoverBean() {
@@ -35,8 +40,8 @@ public class PromoverAction extends Action implements SessionAware {
         this.session.put("promoverBean", promoverBean);
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserApromover(String userApromover) {
+        this.userApromover = userApromover;
     }
 
     @Override

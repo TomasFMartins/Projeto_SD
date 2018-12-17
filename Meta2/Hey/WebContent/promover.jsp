@@ -14,6 +14,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
+    <script type="text/javascript">
+
+        var websocket = null;
+
+        window.onload = function() { // URI = ws://10.16.0.165:8080/WebSocket/ws
+            connect('ws://' + window.location.host + '/Hey/ws');
+        }
+
+        function connect(host) { // connect to the host websocket
+            if ('WebSocket' in window)
+                websocket = new WebSocket(host);
+            else if ('MozWebSocket' in window)
+                websocket = new MozWebSocket(host);
+            else {
+                return;
+            }
+
+            websocket.onopen    = onOpen; // set the 4 event listeners below
+            websocket.onclose   = onClose;
+            websocket.onmessage = onMessage;
+            websocket.onerror   = onError;
+        }
+
+        function onOpen(event) {
+            websocket.send("${session.username}"+"#"+"${session.tipo}"+"#promover#"+"${session.promovido}");
+        }
+
+        function onClose(event) {
+            alert("On Close" + event);
+        }
+
+        function onMessage(message) { // print the received message
+            alert(message.data);
+        }
+
+        function onError(event) {
+            alert("On Error" + event);
+        }
+
+
+    </script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="<s:url action="menupage" />">DropMusic</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,14 +68,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<s:url action="inserirpage" />">Inserir</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Alterar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Remover</a>
-                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Permissões</a>
+                    <a class="nav-link" href="<s:url action="permissaopage" />">Permissões</a>
                 </li>
             </c:if>
             <li class="nav-item">

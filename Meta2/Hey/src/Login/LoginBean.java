@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class LoginBean extends Bean {
 
@@ -31,10 +32,16 @@ public class LoginBean extends Bean {
         this.password = password;
     }
 
-    public String verificaLogin() throws RemoteException {
+    public String verificaLogin() throws RemoteException, InterruptedException, NotBoundException {
         if(this.password != null && this.username != null) {
-            return server.Login(this.username, this.password);
-            //falta catch
+            try {
+                return server.Login(this.username, this.password);
+            }
+            catch (RemoteException e){
+                TimeUnit.SECONDS.sleep(5);
+                server = (RMIServerInterface) LocateRegistry.getRegistry(IP_RMI, PORT_RMI).lookup("server");
+                return server.Login(this.username, this.password);
+            }
         }
         else
             return "Erro";

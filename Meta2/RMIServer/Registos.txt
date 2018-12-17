@@ -1,5 +1,9 @@
 tomas;123qwe;editor
-damiao;123qwe;leitor
-alex;123456;leitor
+damiao;123qwe;editor
+alex;123456;editor
 rien;123qwe;editor
-martim;123456;leitor
+martim;123456;editor
+aaaa;123qwe;leitor
+qqq;asdasd;editor
+asd;asd;editor
+bbb;dsa;leitor

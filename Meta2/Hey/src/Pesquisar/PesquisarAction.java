@@ -4,6 +4,7 @@ import Herditarios.Action;
 import Inserir.InserirBean;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
@@ -12,11 +13,10 @@ public class PesquisarAction extends Action implements SessionAware {
     String pesquisa = null;
 
     @Override
-    public String execute() throws RemoteException {
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
         session.put("site","menupage");
         if(pesquisa != null && !pesquisa.equals("")){
             String resposta = this.getPesquisarBean().pesquisar(pesquisa);
-            System.out.println(resposta);
             session.put("pesquisa",resposta);
             return "Sucesso";
         }

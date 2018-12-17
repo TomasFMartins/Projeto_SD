@@ -4,6 +4,7 @@ import Herditarios.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class LoginAction extends Action implements SessionAware {
     private String username, password;
 
     @Override
-    public String execute() throws RemoteException {
+    public String execute() throws RemoteException, NotBoundException, InterruptedException {
         session.clear();
         session.put("site","loginpage");
         session.put("loggedin", false);
