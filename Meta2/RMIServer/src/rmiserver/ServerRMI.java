@@ -216,7 +216,7 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
                     //resposta += "album;" + s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + "#";
                     aux = s.split(";");
                     if(aux.length<5)
-                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";;#";
+                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";~;~#";
                     else
                         resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";" + aux[3] + ";" + aux[4] +"#";
                 }
@@ -298,6 +298,61 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
                     pw.println(aux_utilizador);
                 else
                     pw.println(utilizadores.get(i));
+            }
+
+            pw.close();
+
+        }catch(IOException e){
+            System.out.println("Ocorreu a exceção " + e);
+            return "Erro!IOException.";
+        }
+
+        return "Sucesso";
+    }
+
+
+    public String adiciona_critica(String critica, String nota, String album, String artista) throws RemoteException{
+        String s;
+        String linha="";
+        String [] aux;
+        ArrayList<String> lista = new ArrayList<>();
+
+        try{
+            File f = new File("Albuns.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+
+            while((s = br.readLine()) != null){
+
+                if(album.compareTo(s.split(";")[0])==0){
+                    aux = s.split(";");
+                    if(aux.length==3) {
+                        linha = s + ";" + nota + ";" + critica;
+                        lista.add(linha);
+                    }
+                    else{
+                        float aux_nota = Float.parseFloat(aux[3]);
+                        int n_criticas = aux[4].split("§").length;
+
+                        aux_nota = ((aux_nota*n_criticas)+Integer.parseInt(nota))/(n_criticas+1);
+
+                        linha = aux[0] + ";" + aux[1] + ";" + aux[2] + ";" + aux_nota + ";" + aux[4] + "§" + critica;
+
+                        lista.add(linha);
+                    }
+                }
+                else
+                    lista.add(s);
+            }
+
+            br.close();
+
+            f = new File("Albuns.txt");
+            FileWriter fw = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for(int i=0; i<lista.size(); i++){
+                pw.println(lista.get(i));
             }
 
             pw.close();
