@@ -40,6 +40,7 @@
 
         function onOpen(event) {
             websocket.send("${session.username}"+"#"+"${session.tipo}");
+
         }
 
         function onClose(event) {
@@ -47,8 +48,9 @@
         }
 
         function onMessage(message) { // print the received message
-            if(message.equals("Foi Promovido!")){
-                alert(message.data);
+            if(message.data.includes("Promovido")){
+                alert("Foi Promovido a Editor!");
+                location.href="<s:url action = "promovidoAction"/>";
             }
         }
 

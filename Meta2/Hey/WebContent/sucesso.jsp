@@ -10,6 +10,51 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
+	<script type="text/javascript">
+
+		var websocket = null;
+
+		window.onload = function() { // URI = ws://10.16.0.165:8080/WebSocket/ws
+			connect('ws://' + window.location.host + '/Hey/ws');
+		}
+
+		function connect(host) { // connect to the host websocket
+			if ('WebSocket' in window)
+				websocket = new WebSocket(host);
+			else if ('MozWebSocket' in window)
+				websocket = new MozWebSocket(host);
+			else {
+				return;
+			}
+
+			websocket.onopen    = onOpen; // set the 4 event listeners below
+			websocket.onclose   = onClose;
+			websocket.onmessage = onMessage;
+			websocket.onerror   = onError;
+		}
+
+		function onOpen(event){
+			if("${session.sucesso}" == "Crítica adicionada com sucesso.")
+				websocket.send("${session.username}"+"#"+"${session.tipo}"+"#" + "${session.noti_critica}");
+		}
+
+		function onClose(event) {
+			alert("On Close" + event);
+		}
+
+		function onMessage(message) { // print the received message
+			alert(message.data);
+		}
+
+		function onError(event) {
+			alert("On Error" + event);
+		}
+
+
+	</script>
+
+
 	<c:choose>
 		<c:when test="${session.loggedin == true}">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">

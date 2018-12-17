@@ -9,6 +9,63 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
+    <script type="text/javascript">
+
+        var websocket = null;
+
+        window.onload = function() { // URI = ws://10.16.0.165:8080/WebSocket/ws
+            connect('ws://' + window.location.host + '/Hey/ws');
+        }
+
+        function connect(host) { // connect to the host websocket
+            if ('WebSocket' in window)
+                websocket = new WebSocket(host);
+            else if ('MozWebSocket' in window)
+                websocket = new MozWebSocket(host);
+            else {
+                return;
+            }
+
+            websocket.onopen    = onOpen; // set the 4 event listeners below
+            websocket.onclose   = onClose;
+            websocket.onmessage = onMessage;
+            websocket.onerror   = onError;
+        }
+
+        function onOpen(event) {
+            websocket.send("${session.username}"+"#"+"${session.tipo}");
+
+        }
+
+        function onClose(event) {
+            alert("On Close" + event);
+        }
+
+        function onMessage(message) { // print the received message
+            if(message.data.includes("Promovido")){
+                alert("Foi Promovido a Editor!");
+                location.href="<s:url action = "promovidoAction"/>";
+            }
+            else if(message.data.includes("Nota")){
+                console.log(message);
+                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"A").innerHTML="Álbum: " + message.data.split(";")[1];
+                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"T").innerHTML="Artista: " + message.data.split(";")[2];
+                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"M").innerHTML="Músicas: " + message.data.split(";")[3];
+                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"N").innerHTML="Nota: " + message.data.split(";")[4];
+                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"C").innerHTML="Crítica: " + message.data.split(";")[5].split("§")[message.data.split(";")[5].split("§").length-1];
+
+
+            }
+        }
+
+        function onError(event) {
+            alert("On Error" + event);
+        }
+
+
+    </script>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="<s:url action="menupage" />">DropMusic</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,25 +184,26 @@
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'album'}">
                         <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
-                            Álbum: <c:out value="${value.split(';')[1]}" /><br>
-                            Artista: <c:out value="${value.split(';')[2]}" /><br>
-                            Músicas: <c:out value="${value.split(';')[3]}" /><br>
+                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />A">Álbum: <c:out  value="${value.split(';')[1]}" /></p>
+                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />T">Artista: <c:out value="${value.split(';')[2]}" /></p>
+                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />M">Músicas: <c:out value="${value.split(';')[3]}" /></p>
                             <c:choose>
                                 <c:when test="${value.split(';')[4] == '~'}">
-                                    Nota: Sem avaliação<br>
+                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />N">Nota: Sem avaliação</p>
                                 </c:when>
                                 <c:otherwise>
-                                    Nota: <c:out value="${value.split(';')[4]}" /><br>
+                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />N">Nota: <c:out value="${value.split(';')[4]}" /></p>
                                 </c:otherwise>
                             </c:choose>
                             <c:choose>
                                 <c:when test="${value.split(';')[5]  == '~'}">
-                                    Crítica: Sem críticas<br><br>
+                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />C"> Crítica: Sem críticas</p>
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${value.split(';')[5].split('§')}" var="valor">
                                         Crítica: <c:out value="${valor}" /><br>
                                     </c:forEach>
+                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />C"></p>
                                 </c:otherwise>
                             </c:choose>
 

@@ -23,6 +23,7 @@ public class CriticarAction extends Action implements SessionAware {
                 return "Erro";
             } else{
                 session.put("sucesso", "Crítica adicionada com sucesso.");
+                session.put("noti_critica" , "Nota#"+album+"#"+nota);
                 return "Sucesso";
             }
         }

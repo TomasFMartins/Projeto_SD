@@ -84,6 +84,11 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
           <result name="Erro">error.jsp</result>
       </action>
 
+      <action name="promovidoAction" class="Helper.mudaPrivilegio" method="execute">
+          <result name="Sucesso">menu.jsp</result>
+          <result name="Erro">error.jsp</result>
+      </action>
+
 
   </package>
 
