@@ -49,11 +49,11 @@
             }
             else if(message.data.includes("Nota")){
                 console.log(message);
-                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"A").innerHTML="Álbum: " + message.data.split(";")[1];
-                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"T").innerHTML="Artista: " + message.data.split(";")[2];
-                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"M").innerHTML="Músicas: " + message.data.split(";")[3];
-                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"N").innerHTML="Nota: " + message.data.split(";")[4];
-                document.getElementById(message.data.split(";")[1]+"_"+message.data.split(";")[2]+"C").innerHTML="Crítica: " + message.data.split(";")[5].split("§")[message.data.split(";")[5].split("§").length-1];
+                document.getElementById(message.data.split(";")[6]+"A").innerHTML="Álbum: " + message.data.split(";")[1];
+                document.getElementById(message.data.split(";")[6]+"T").innerHTML="Artista: " + message.data.split(";")[2];
+                document.getElementById(message.data.split(";")[6]+"M").innerHTML="Músicas: " + message.data.split(";")[3];
+                document.getElementById(message.data.split(";")[6]+"N").innerHTML="Nota: " + message.data.split(";")[4];
+                document.getElementById(message.data.split(";")[6]+"C").innerHTML="Crítica: " + message.data.split(";")[5].split("§")[message.data.split(";")[5].split("§").length-1];
             }
             else if(message.data.includes("Foi alterado as músicas do álbum"))
                 alert(message.data);
@@ -103,7 +103,7 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'musica'}">
-                        <a class="list-group-item list-group-item-action" id="a" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
+                        <a class="list-group-item list-group-item-action" id="a" data-toggle="list" href="#<c:out value="${value.split(';')[5]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
                     </c:if>
                 </c:forEach>
             </div>
@@ -112,7 +112,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'musica'}">
-                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[3]}" />" role="tabpanel" aria-labelledby="a">Musica: <c:out value="${value.split(';')[1]}" /><br>Álbum: <c:out value="${value.split(';')[2]}" /><br>Artista: <c:out value="${value.split(';')[3]}" /><br>Duração: <c:out value="${value.split(';')[4]}" /></div>
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[5]}" />" role="tabpanel" aria-labelledby="a">Musica: <c:out value="${value.split(';')[1]}" /><br>Álbum: <c:out value="${value.split(';')[2]}" /><br>Artista: <c:out value="${value.split(';')[3]}" /><br>Duração: <c:out value="${value.split(';')[4]}" /></div>
                     </c:if>
                 </c:forEach>
             </div>
@@ -125,7 +125,7 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0]=='artista'}">
-                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]}" /></a>
+                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[3]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]}" /></a>
                     </c:if>
                 </c:forEach>
             </div>
@@ -134,7 +134,7 @@
             <div class="tab-content" id="nav-tabContent">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'artista'}">
-                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[3]}" />" role="tabpanel" aria-labelledby="${value.split(';')[3]}">
                             <s:form action="remover" mehtod="post">
                                 Artista: <c:out value="${value.split(';')[1]}" /><br>
                                 Álbuns: <c:out value="${value.split(';')[2]}" /><br>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="submite" class="btn btn-primary">Alterar Músicas</button>
+                                    <button type="submit" class="btn btn-primary">Alterar Músicas</button>
                                 </div>
                             </s:form>
                         </div>
@@ -180,7 +180,7 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'album'}">
-                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
+                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#<c:out value="${value.split(';')[6]}" />" role="tab" aria-controls="home"><c:out value="${value.split(';')[1]} - ${value.split(';')[2]}" /></a>
                     </c:if>
                 </c:forEach>
 
@@ -204,7 +204,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="submite" class="btn btn-primary">Adicionar Crítica</button>
+                                    <button type="submit" class="btn btn-primary">Adicionar Crítica</button>
                                 </div>
                             </s:form>
                         </div>
@@ -216,34 +216,34 @@
             <div class="tab-content" id="nav-tabContent">
                 <c:forEach items="${session.pesquisa.split('#')}" var="value">
                     <c:if test="${value.split(';')[0] == 'album'}">
-                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
-                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />A">Álbum: <c:out  value="${value.split(';')[1]}" /></p>
-                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />T">Artista: <c:out value="${value.split(';')[2]}" /></p>
-                            <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />M">Músicas: <c:out value="${value.split(';')[3]}" /></p>
+                        <div class="tab-pane fade" id="<c:out value="${value.split(';')[6]}" />" role="tabpanel" aria-labelledby="${value.split(';')[1]}_${value.split(';')[2]}">
+                            <p id="<c:out value="${value.split(';')[6]}" />A">Álbum: <c:out  value="${value.split(';')[1]}" /></p>
+                            <p id="<c:out value="${value.split(';')[6]}" />T">Artista: <c:out value="${value.split(';')[2]}" /></p>
+                            <p id="<c:out value="${value.split(';')[6]}" />M">Músicas: <c:out value="${value.split(';')[3]}" /></p>
                             <c:choose>
                                 <c:when test="${value.split(';')[4] == '~'}">
-                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />N">Nota: Sem avaliação</p>
+                                    <p id="<c:out value="${value.split(';')[6]}" />N">Nota: Sem avaliação</p>
                                 </c:when>
                                 <c:otherwise>
-                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />N">Nota: <c:out value="${value.split(';')[4]}" /></p>
+                                    <p id="<c:out value="${value.split(';')[6]}" />N">Nota: <c:out value="${value.split(';')[4]}" /></p>
                                 </c:otherwise>
                             </c:choose>
                             <c:choose>
                                 <c:when test="${value.split(';')[5]  == '~'}">
-                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />C"> Crítica: Sem críticas</p>
+                                    <p id="<c:out value="${value.split(';')[6]}" />C"> Crítica: Sem críticas</p>
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${value.split(';')[5].split('§')}" var="valor">
                                         Crítica: <c:out value="${valor}" /><br>
                                     </c:forEach>
-                                    <p id="<c:out value="${value.split(';')[1]}" />_<c:out value="${value.split(';')[2]}" />C"></p>
+                                    <p id="<c:out value="${value.split(';')[6]}" />C"></p>
                                 </c:otherwise>
                             </c:choose>
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="document.getElementById('album_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}'" />
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="document.getElementById('album_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}_${value.split(';')[6]}'" />
                                 Adicionar Critica
                             </button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2" onclick="document.getElementById('a_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}'" />
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2" onclick="document.getElementById('a_escolhido').value = '${value.split(';')[1]}_${value.split(';')[2]}_${value.split(';')[6]}'" />
                                 Alterar Músicas
                             </button>
                         </div>

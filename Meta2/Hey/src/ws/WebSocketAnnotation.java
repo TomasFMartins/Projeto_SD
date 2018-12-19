@@ -105,7 +105,8 @@ public class WebSocketAnnotation {
         }
         String album = mensagem.split("#")[1].split("_")[0];
         String artista = mensagem.split("#")[1].split("_")[1];
-        String resposta = server.pesquisa_album(album, artista);
+        String id = mensagem.split("#")[1].split("_")[2];
+        String resposta = server.pesquisa_album(album, artista, id);
 
         try {
             for(WebSocketAnnotation user:users){
