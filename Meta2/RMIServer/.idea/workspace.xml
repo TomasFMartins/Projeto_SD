@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b1e3fd4-6683-4353-89ae-0964e2491d64" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Hey/.idea/libraries/async_http_client_1_9_31.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/.idea/libraries/websocket_api.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/Hey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/Hey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/artifacts/artifact/artifact.war" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/artifacts/artifact/artifact.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/out/production/Hey/DropBox/DropBoxAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/out/production/Hey/DropBox/DropBoxAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/DropBox/DropBoxAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/DropBox/DropBoxAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hey/src/ws/WebSocketAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hey/src/ws/WebSocketAnnotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Albuns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Albuns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artistas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Artistas.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Musicas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Musicas.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Registos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Registos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RMIServer/rmiserver/ServerRMI.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" afterDir="false" />
     </list>
@@ -17,20 +27,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
+              <caret line="19" column="72" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/rmiserver/ServerRMI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="387" column="5" lean-forward="true" selection-start-line="387" selection-start-column="5" selection-end-line="387" selection-end-column="5" />
+            <state relative-caret-position="227">
+              <caret line="379" selection-start-line="379" selection-end-line="379" />
               <folding>
                 <element signature="method#Login#0;class#ServerRMI#0" />
                 <element signature="method#Registo#0;class#ServerRMI#0" />
@@ -41,6 +51,7 @@
                 <element signature="method#get_leitores#0;class#ServerRMI#0" />
                 <element signature="method#update_leitor#0;class#ServerRMI#0" />
                 <element signature="method#adiciona_critica#0;class#ServerRMI#0" />
+                <element signature="method#altera_album#0;class#ServerRMI#0" />
                 <element signature="method#main#0;class#ServerRMI#0" />
               </folding>
             </state>
@@ -49,21 +60,26 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>id</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" />
         <option value="$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java" />
+        <option value="$PROJECT_DIR$/src/rmiserver/ServerRMI.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1057" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -71,7 +87,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -94,6 +109,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -142,16 +158,18 @@
       <updated>1544984621078</updated>
       <workItem from="1544984623590" duration="2555000" />
       <workItem from="1544994331002" duration="2600000" />
+      <workItem from="1545177087029" duration="3909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9077000" />
+    <option name="totallyTimeSpent" value="12986000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17919463" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -160,7 +178,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29036826" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28895184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -186,10 +204,17 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="72" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/rmiserver/ServerRMI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="387" column="5" lean-forward="true" selection-start-line="387" selection-start-column="5" selection-end-line="387" selection-end-column="5" />
+        <state relative-caret-position="227">
+          <caret line="379" selection-start-line="379" selection-end-line="379" />
           <folding>
             <element signature="method#Login#0;class#ServerRMI#0" />
             <element signature="method#Registo#0;class#ServerRMI#0" />
@@ -200,15 +225,9 @@
             <element signature="method#get_leitores#0;class#ServerRMI#0" />
             <element signature="method#update_leitor#0;class#ServerRMI#0" />
             <element signature="method#adiciona_critica#0;class#ServerRMI#0" />
+            <element signature="method#altera_album#0;class#ServerRMI#0" />
             <element signature="method#main#0;class#ServerRMI#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rmiserver/RMIServerInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
         </state>
       </provider>
     </entry>

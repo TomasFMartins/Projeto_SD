@@ -195,14 +195,17 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
         String s;
         String resposta="";
         String [] aux;
+        int id = 1;
         try{
             File f = new File("Musicas.txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
 
-            while((s = br.readLine()) != null){
-                if(s.split(";")[0].toUpperCase().contains(pesquisa.toUpperCase()))
-                    resposta += "musica;" + s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + ";"+ s.split(";")[3] + "#";
+            while((s = br.readLine()) != null) {
+                if (s.split(";")[0].toUpperCase().contains(pesquisa.toUpperCase())) {
+                    resposta += "musica;" + s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + ";" + s.split(";")[3] + ";a" + id + "#";
+                    id++;
+                }
             }
 
             br.close();
@@ -215,10 +218,14 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
                 if(s.split(";")[0].toUpperCase().contains(pesquisa.toUpperCase())) {
                     //resposta += "album;" + s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + "#";
                     aux = s.split(";");
-                    if(aux.length<5)
-                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";~;~#";
-                    else
-                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";" + aux[3] + ";" + aux[4] +"#";
+                    if(aux.length<5) {
+                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";~;~;a" + id + "#";
+                        id++;
+                    }
+                    else {
+                        resposta += "album;" + aux[0] + ";" + aux[1] + ";" + aux[2] + ";" + aux[3] + ";" + aux[4] + ";a" + id + "#";
+                        id++;
+                    }
                 }
             }
 
@@ -229,8 +236,10 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
             br = new BufferedReader(fr);
 
             while((s = br.readLine()) != null){
-                if(s.split(";")[0].toUpperCase().contains(pesquisa.toUpperCase()))
-                    resposta += "artista;" + s.split(";")[0] + ";" + s.split(";")[1] + "#";
+                if(s.split(";")[0].toUpperCase().contains(pesquisa.toUpperCase())) {
+                    resposta += "artista;" + s.split(";")[0] + ";" + s.split(";")[1] + ";a" + id + "#";
+                    id++;
+                }
             }
 
             br.close();
@@ -364,7 +373,7 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
         return "Sucesso";
     }
 
-    public String pesquisa_album(String album, String artista) throws RemoteException{
+    public String pesquisa_album(String album, String artista, String id) throws RemoteException{
         String s;
         String resposta="";
         String [] aux;
@@ -375,7 +384,7 @@ public class ServerRMI extends UnicastRemoteObject implements RMIServerInterface
 
             while((s = br.readLine()) != null){
                 if(s.split(";")[0].compareTo(album) == 0 && s.split(";")[1].compareTo(artista) == 0){
-                    resposta = s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + ";" + s.split(";")[3] + ";" + s.split(";")[4];
+                    resposta = s.split(";")[0] + ";" + s.split(";")[1] + ";" + s.split(";")[2] + ";" + s.split(";")[3] + ";" + s.split(";")[4] + ";" + id;
                 }
             }
 

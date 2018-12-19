@@ -1,2 +1,6 @@
-﻿Album1;Atista1;Teste1,TEste2;28.545455;Bom album§Quase otimo§Nice§Horrivel§Razoavel§Nice one§Muito mau§vai dar§eee§dsfsdf§fhjf
-sasss;ssas;Boa;18.7;aaa§sss§duss§bota dormir§1§gdfjkdasgf§oi§adeus§ulha§amanha ha PGI crl
+﻿Recovery;Eminem;No Love, Not Afraid, Space Bound
+Scorpion;Drake;In My Feelings, Gods Plan, Nonstop, Nice for What
+Views;Drake;One Dance, Hotline Bling, Pop Style, Controlla
+Evolve;Imagine Dragons;Believer, Thunder, Whatever It Takes, Next To Me;4.5;Muito bom álbum§Bom álbum
+Night Vision;Imagine Dragons;Radioactive, Demons, Its Time, On Top Of The World
+Origins;Imagine Dragons;Natural, Zero, Bad Liar, Birds

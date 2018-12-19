@@ -1,10 +1,16 @@
-Musica;Album;Artista;Duracao
-Musica2;AAA;Teste2;333
-Musica3;Album3;Artista2;312
-nome;album;artista;duracao
-a;a;a;a
-Natural;Natural;Imagine Dragons;3:05
-Thunder;Natural;Imagine Dragons;3:05
-Believer;Natural;Imagine Dragons;3:05
-aaa;aaa;aaa;aaa
-Duss;album;artista;3
+Lose Yourself;The Script;Eminem;3:21
+Space Bound;Recovery;Eminem;3:56
+Not Afraid;Recovery;Eminem;4:11
+Controlla;Views;Drake;4:02
+One Dance;Views;Drake;3:59
+Gods Plan;Scropion;Drake;4:31
+In My Feeling;Scorpion;Drake;4:42
+Nonstop;Scorpion;Drake;4:47
+Hotline Bling;Views;Drake;3:55
+Nice for What;Scorpion;Drake;3:57
+Believer;Evolve;Imagine Dragons;4:11
+Thunder;Evolve;Imagine Dragons;4:12
+Demons;Night Visions;Imagine Dragons;4:32
+Whatever It Takes;Evolve;Imagine Dragons;4:51
+Radioative;Night Visions;Imagine Dragons;4:48
+Natural;Origins;Imagine Dragons;4:51
